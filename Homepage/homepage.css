@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbarlogo {
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 5px;
+  left: 150px;
+  height: 50px;
+  width: 300px;
+  padding: 25px;
+}
+
+.navbar {
+  display: flex;
+  gap: 40px;
+  position: absolute;
+  top: 20px;
+  right: 150px;
+  height: auto;
+  width: auto;
+  /* border: 1px solid black; */
+  padding: 25px 40px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  text-decoration: none;
+}
+
+.navbar a {
+  text-decoration: none;   /* removes the underline */
+  color: black;
+  font-weight: 500;        
+}
+
+.navbar a:hover {
+  color: #0077cc;
+}
+
+
+.homelayout {
+  border: 10px solid black;
+  position: relative;
+  width: auto;
+  height: 600px;
+  margin-top: 10px;
+  top: 270px;
+  position: relative;
+}
+
+.title {
+  top: -20px;
+  margin: 100px;
+}
+
+.title h1{
+  position: relative;
+  top: 100px;
+  /* border: 10px solid pink; */
+  width: 650px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 50px;
+}
+
+.title p{
+  position: absolute;
+  top: 300px;
+  /* border: 10px solid pink; */
+  width: 650px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 30px;
+}
+
+.theart {
+  position: absolute;
+  width: 900px;
+  height: 700px;
+  top: -50px;
+  right: 100px;
+}
