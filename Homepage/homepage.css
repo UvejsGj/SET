@@ -1,15 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+
+
+body {
+  background-color: rgb(163, 195, 238);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, *:not(input):not(textarea):not([contenteditable="true"]) {
+  caret-color: transparent;    
+  user-select: none;           
+}
+
+.material-symbols-outlined{
+  font-size: 50px !important;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-.navbarlogo {
+/* .navbarlogo {
   position: absolute;
   width: auto;
   height: auto;
   top: 5px;
-  left: 150px;
+  left: 190px;
   height: 50px;
   width: 300px;
   padding: 25px;
@@ -23,7 +49,8 @@ html {
   right: 150px;
   height: auto;
   width: auto;
-  /* border: 1px solid black; */
+  border-radius: 50px;
+  background-color: white;
   padding: 25px 40px;
   font-size: 20px;
   font-family: "Roboto", sans-serif;
@@ -33,24 +60,121 @@ html {
 }
 
 .navbar a {
-  text-decoration: none;   /* removes the underline */
-  color: black;
-  font-weight: 500;        
+  text-decoration: none; 
+  color: rgb(0, 0, 0);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-weight: 500;
 }
 
 .navbar a:hover {
   color: #0077cc;
+} */
+
+/* Logo stays fixed and above everything */
+.navbarlogo{
+  position: fixed;
+  top: 18px;
+  left: 40px;
+  height: 50px;
+  width: auto;
+  padding: 0;
+  z-index: 1001;
+}
+
+/* --- NAVBAR --- */
+.navbar{
+  position: fixed;                 /* follows as you scroll */
+  top: 16px;
+  right: 120px;
+  z-index: 1000;
+
+  display: flex;
+  gap: 28px;
+  align-items: center;
+
+  padding: 14px 28px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+/* keep anchors from hiding under fixed navbar */
+#homesection, #aboutsection, #servicesection,
+#portfoliosection, #teamsection, #contactsection {
+  scroll-margin-top: 120px;
+}
+
+.navbar a {
+  position: relative;
+  text-decoration: none;
+  color: #0a1320;
+  font-weight: 600;
+  padding: 8px 2px;
+  transition: color .2s ease;
+}
+.navbar a::after {
+  content:"";
+  position:absolute; left:0; right:0; bottom:-4px;
+  height:3px; background:#2e7bd1; border-radius:2px;
+  transform: scaleX(0); transform-origin:center;
+  transition: transform .25s ease;
+}
+.navbar a:hover,
+.navbar a.active { color:#2e7bd1; }
+.navbar a:hover::after,
+.navbar a.active::after { transform: scaleX(1); }
+
+
+
+/* focus ring for keyboard users */
+.navbar a:focus-visible{
+  box-shadow: 0 0 0 6px rgba(46,123,209,.15);
+  border-radius: 6px;
+}
+
+/* --- Responsive tweaks --- */
+@media (max-width: 1100px){
+  .navbar{
+    right: 50%;
+    transform: translateX(50%);   /* center the pill on smaller screens */
+    gap: 22px;
+    padding: 12px 22px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 760px){
+  .navbar{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);  /* fully centered */
+    gap: 18px;
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+  .navbarlogo{
+    left: 16px; top: 14px; height: 42px;
+  }
 }
 
 
+
 .homelayout {
-  border: 10px solid black;
+  /* border: 10px solid black; */
   position: relative;
   width: auto;
   height: 600px;
   margin-top: 10px;
-  top: 270px;
+  top: 180px;
   position: relative;
+  color: white;
 }
 
 .title {
@@ -58,34 +182,530 @@ html {
   margin: 100px;
 }
 
-.title h1{
+.title h1 {
   position: relative;
   top: 100px;
+  left: 150px;
   /* border: 10px solid pink; */
   width: 650px;
-  font-size: 20px;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 50px;
 }
 
-.title p{
+.title p {
   position: absolute;
-  top: 300px;
+  top: 200px;
+  left: 250px;
   /* border: 10px solid pink; */
   width: 650px;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playwrite US Modern", cursive;
+  font-optical-sizing: auto;
+  font-weight: weight;
   font-style: normal;
-  font-variation-settings: "wdth" 100;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .theart {
   position: absolute;
-  width: 900px;
+  width: 800px;
   height: 700px;
-  top: -50px;
-  right: 100px;
+  top: -150px;
+  right: 200px;
+}
+
+/* .customerlist img {
+  background-color: aliceblue;
+  width: auto;
+  height: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 80px;
+  gap: 150px;
+} */
+
+/* .customerlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  padding: 40px 0;
+  margin-top: 50px;
+  background-color: aliceblue;
+  flex-wrap: wrap; 
+}
+
+.customerlist img {
+  max-height: 100px;      
+  width: auto;            
+  max-width: 180px;       
+  object-fit: contain;    
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .customerlist img {
+    max-height: 80px;
+    max-width: 140px;
+  }
+  .customerlist {
+    gap: 25px;
+  }
+} */
+
+/* .partnertext{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 50px;
+  color: white;
+} */
+
+/* .partners-title {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: #ffffff;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.partners-title::after {
+  content: "";
+  display: block;
+  width: 280px;
+  height: 4px;
+  background: #2e7bd1;
+  margin: 10px auto 0;
+  border-radius: 2px;
+} */
+
+.partners-title {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: #ffffff;
+  margin-top: 80px;
+  margin-bottom: 30px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* Decorative blue underline */
+.partners-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+/* Hover effect — underline expands */
+.partners-title:hover::after {
+  width: 180px;
+}
+
+/* Optional fade-in animation (matches .about-title) */
+.partners-title {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.customerlist {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 40px 0;
+  margin-top: 50px;
+  position: relative;
+}
+
+/* Inner container for movement */
+.customerlist-track {
+  display: flex;
+  align-items: center;
+  gap: 150px; /* spacing between logos */
+  animation: scroll 25s linear infinite;
+  will-change: transform; /* 🟡 ADD THIS */
+  backface-visibility: hidden; /* 🟡 ADD THIS */
+  width: max-content; 
+}
+
+/* Pause on hover */
+.customerlist:hover .customerlist-track {
+  animation-play-state: paused;
+}
+
+.customerlist img {
+  max-height: 100px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.customerlist img:hover {
+  filter: grayscale(0%);
+}
+
+/* Keyframes for smooth continuous loop */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .customerlist img {
+    max-height: 80px;
+    max-width: 140px;
+  }
+  .customerlist-track {
+    gap: 60px;
+    animation: scroll 35s linear infinite; /* slower on small screens */
+  }
+}
+
+ .aboutlayout {
+  position: relative;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+} 
+
+.about-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 120px; /* space from previous section */
+  margin-bottom: 40px;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  top: -100px;
+}
+
+/* Decorative blue underline */
+.about-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+/* Optional hover effect */
+.about-title:hover::after {
+  width: 180px;
+}
+
+/* Optional fade-in animation */
+.about-title {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.handshakeimg{
+  position: absolute;
+  width: 800px;
+  height: 700px;
+  top: 150px;
+  left: 70px;
+}
+
+.cards {
+  position: relative;
+  width: 900px;
+  height: 400px;
+  margin: 150px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  left: 400px;
+  top: -80px;
+}
+
+/* Individual Cards */
+.card1, .card2, .card3 {
+  position: relative;
+  width: 260px;
+  height: 350px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 30px 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Layout variation for a “floating” look */
+.card1 { transform: translateY(20px) rotate(-3deg); }
+.card2 { transform: scale(1.05); z-index: 2; }
+.card3 { transform: translateY(20px) rotate(3deg); }
+
+.card1:hover, .card2:hover, .card3:hover {
+  transform: scale(1.1) rotate(0deg);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Inside the card --- */
+.material-symbols-outlined {
+  font-size: 55px;
+  color: #1e73be;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(30, 115, 190, 0.4);
+  transition: all 0.3s ease;
+}
+
+.card1:hover .material-symbols-outlined,
+.card2:hover .material-symbols-outlined,
+.card3:hover .material-symbols-outlined {
+  color: white;
+  background: #1e73be;
+  box-shadow: 0 0 20px rgba(30, 115, 190, 0.7);
+}
+
+.card1 h1, .card2 h1, .card3 h1 {
+  font-size: 60px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 10px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.card1 p, .card2 p, .card3 p {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-family: "Poppins", sans-serif;
+}
+
+.services {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 24px 40px;   
+  text-align: center;
+}
+
+/* Title */
+.servicetitle {
+  display: inline-block;      
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 32px;           
+  position: relative;         
+  font-family: "Roboto", sans-serif;
+  top: -100px;
+}
+
+.servicetitle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.servicetitle:hover::after {
+  width: 180px;
+}
+
+
+.services p {
+  max-width: 900px;           
+  margin: 28px auto 0;       
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: "Playwrite US Modern", cursive;
+  margin-top: -100px;
+}
+/* ---------- Global for this section ---------- */
+.servicecards {
+  --accent: #2e7bd1;
+  --glass: rgba(255,255,255,0.22);
+  --glass-hover: rgba(255,255,255,0.3);
+  --border: rgba(255,255,255,0.35);
+
+  font-family: "Roboto", sans-serif;      /* ← Use Roboto */
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 36px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Every card (targets your divs inside .servicecards) */
+.servicecards > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* keeps icon → title → text stacked neatly */
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 260px;
+  min-height: 370px; /* ensures all cards have equal height */
+  padding: 28px 22px;
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  transition: transform .45s ease, box-shadow .45s ease, background .3s ease;
+}
+
+
+/* Headline + copy */
+.servicecards h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  margin: 14px 0 10px;
+}
+
+.servicecards p {
+  font-size: 15.5px;   /* was 14px — slightly bigger */
+  line-height: 1.7;    /* smoother reading */
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.93);
+}
+
+/* Material Symbols inside the cards */
+.servicecards .material-symbols-outlined {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.65);
+  color: var(--accent);
+  font-size: 36px;
+  box-shadow: 0 0 18px rgba(46,123,209,.35);
+  transition: all .3s ease;
+
+  /* keep outlined set consistent */
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;
+}
+
+/* Hover lift + icon glow */
+.servicecards > div:hover {
+  transform: translateY(-12px) scale(1.03);
+  background: var(--glass-hover);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+.servicecards > div:hover .material-symbols-outlined {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 22px rgba(46,123,209,.6);
+}
+
+/* --- Softer balanced wave --- */
+.servicecards > div:nth-child(1) { transform: translateY(12px) rotate(-1deg); }
+.servicecards > div:nth-child(2) { transform: translateY(6px) rotate(-0.5deg); }
+.servicecards > div:nth-child(3) { transform: translateY(-6px) scale(1.04); z-index: 1; }
+.servicecards > div:nth-child(4) { transform: translateY(6px) rotate(0.5deg); }
+.servicecards > div:nth-child(5) { transform: translateY(12px) rotate(1deg); }
+
+/* Normalize on hover so each card “snaps” upright */
+.servicecards > div:hover { transform: translateY(-12px) scale(1.03) rotate(0deg); }
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 1100px) {
+  .servicecards {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
+  /* soften the wave on smaller screens */
+  .servicecards > div { transform: translateY(8px); }
+  .servicecards > div:nth-child(3) { transform: translateY(-6px) scale(1.03); }
+}
+
+@media (max-width: 720px) {
+  .servicecards {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 28px;
+  }
+  .servicecards > div { transform: translateY(0) rotate(0); }
+}
+
+@media (max-width: 480px) {
+  .servicecards {
+    grid-template-columns: 1fr;
+  }
 }
