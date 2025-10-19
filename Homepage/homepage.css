@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
-
 
 body {
   background-color: rgb(163, 195, 238);
@@ -11,19 +10,19 @@ body {
   box-sizing: border-box;
 }
 
-body, *:not(input):not(textarea):not([contenteditable="true"]) {
-  caret-color: transparent;    
-  user-select: none;           
+body,
+*:not(input):not(textarea):not([contenteditable="true"]) {
+  caret-color: transparent;
+  user-select: none;
 }
 
-.material-symbols-outlined{
+.material-symbols-outlined {
   font-size: 50px !important;
   display: flex;
   vertical-align: middle;
   align-items: center;
   justify-content: center;
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -73,98 +72,137 @@ html {
 } */
 
 /* Logo stays fixed and above everything */
-.navbarlogo{
+.navbarlogo {
   position: fixed;
   top: 18px;
-  left: 40px;
+  left: 200px;
   height: 50px;
   width: auto;
   padding: 0;
   z-index: 1001;
 }
 
-/* --- NAVBAR --- */
-.navbar{
-  position: fixed;                 /* follows as you scroll */
-  top: 16px;
-  right: 120px;
+.navbar {
+  display: flex;
+  gap: 35px;
+  position: fixed;
+  top: 20px;
+  right: 150px;
+  padding: 18px 35px;
+  border-radius: 18px;
+
+  /* Frosted glass with light tint */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+
+  /* Modern soft shadow */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   z-index: 1000;
 
-  display: flex;
-  gap: 28px;
-  align-items: center;
-
-  padding: 14px 28px;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.9);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-
+  /* Typography */
   font-family: "Roboto", sans-serif;
   font-size: 18px;
+  font-weight: 500;
 }
 
-/* keep anchors from hiding under fixed navbar */
-#homesection, #aboutsection, #servicesection,
-#portfoliosection, #teamsection, #contactsection {
-  scroll-margin-top: 120px;
-}
-
+/* Link styling */
 .navbar a {
-  position: relative;
   text-decoration: none;
-  color: #0a1320;
-  font-weight: 600;
-  padding: 8px 2px;
-  transition: color .2s ease;
+  color: #f5f7fa;
+  position: relative;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
-.navbar a::after {
-  content:"";
-  position:absolute; left:0; right:0; bottom:-4px;
-  height:3px; background:#2e7bd1; border-radius:2px;
-  transform: scaleX(0); transform-origin:center;
-  transition: transform .25s ease;
-}
+
+/* Hover & Active Effect */
 .navbar a:hover,
-.navbar a.active { color:#2e7bd1; }
+.navbar a.active {
+  color: #2e7bd1;
+  transform: translateY(-1px);
+}
+
+/* Soft underline animation */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #2e7bd1, #7cb6df);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
 .navbar a:hover::after,
-.navbar a.active::after { transform: scaleX(1); }
+.navbar a.active::after {
+  transform: scaleX(1);
+}
 
+/* Add depth and feel like liquid glass */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: -1;
+}
 
+.navbar.on-light {
+  background: linear-gradient(
+    145deg,
+    rgba(25, 25, 35, 0.75),
+    rgba(15, 15, 25, 0.6)
+  );
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
-/* focus ring for keyboard users */
-.navbar a:focus-visible{
-  box-shadow: 0 0 0 6px rgba(46,123,209,.15);
-  border-radius: 6px;
+.navbar.on-light a {
+  color: #ffffff; /* keep text bright */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Responsive tweaks --- */
-@media (max-width: 1100px){
-  .navbar{
+@media (max-width: 1100px) {
+  .navbar {
     right: 50%;
-    transform: translateX(50%);   /* center the pill on smaller screens */
+    transform: translateX(50%); /* center the pill on smaller screens */
     gap: 22px;
     padding: 12px 22px;
     font-size: 16px;
   }
 }
-@media (max-width: 760px){
-  .navbar{
+@media (max-width: 760px) {
+  .navbar {
     left: 50%;
     right: auto;
-    transform: translateX(-50%);  /* fully centered */
+    transform: translateX(-50%); /* fully centered */
     gap: 18px;
     padding: 10px 16px;
     font-size: 15px;
   }
-  .navbarlogo{
-    left: 16px; top: 14px; height: 42px;
+  .navbarlogo {
+    left: 16px;
+    top: 14px;
+    height: 42px;
   }
 }
-
-
 
 .homelayout {
   /* border: 10px solid black; */
@@ -354,7 +392,7 @@ html {
   animation: scroll 25s linear infinite;
   will-change: transform; /* 🟡 ADD THIS */
   backface-visibility: hidden; /* 🟡 ADD THIS */
-  width: max-content; 
+  width: max-content;
 }
 
 /* Pause on hover */
@@ -398,7 +436,7 @@ html {
   }
 }
 
- .aboutlayout {
+.aboutlayout {
   position: relative;
   color: white;
   font-family: "Roboto", sans-serif;
@@ -408,13 +446,12 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-} 
+  margin-top: -50px;
+}
 
-
-
-#aboutsection { scroll-margin-top: 120px; }
-
+#aboutsection {
+  scroll-margin-top: 120px;
+}
 
 .about-title {
   text-align: center;
@@ -427,7 +464,7 @@ html {
   margin-bottom: 40px;
   position: relative;
   font-family: "Roboto", sans-serif;
-  top: -100px;
+  top: -40px;
 }
 
 /* Decorative blue underline */
@@ -461,12 +498,11 @@ html {
   }
 }
 
-
-.handshakeimg{
+.handshakeimg {
   position: absolute;
   width: 800px;
   height: 700px;
-  top: 150px;
+  top: -50px;
   left: 70px;
 }
 
@@ -484,7 +520,9 @@ html {
 }
 
 /* Individual Cards */
-.card1, .card2, .card3 {
+.card1,
+.card2,
+.card3 {
   position: relative;
   width: 260px;
   height: 350px;
@@ -500,11 +538,20 @@ html {
 }
 
 /* Layout variation for a “floating” look */
-.card1 { transform: translateY(20px) rotate(-3deg); }
-.card2 { transform: scale(1.05); z-index: 2; }
-.card3 { transform: translateY(20px) rotate(3deg); }
+.card1 {
+  transform: translateY(20px) rotate(-3deg);
+}
+.card2 {
+  transform: scale(1.05);
+  z-index: 2;
+}
+.card3 {
+  transform: translateY(20px) rotate(3deg);
+}
 
-.card1:hover, .card2:hover, .card3:hover {
+.card1:hover,
+.card2:hover,
+.card3:hover {
   transform: scale(1.1) rotate(0deg);
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
 }
@@ -529,7 +576,9 @@ html {
   box-shadow: 0 0 20px rgba(30, 115, 190, 0.7);
 }
 
-.card1 h1, .card2 h1, .card3 h1 {
+.card1 h1,
+.card2 h1,
+.card3 h1 {
   font-size: 60px;
   font-weight: 800;
   color: #ffffff;
@@ -537,7 +586,9 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-.card1 p, .card2 p, .card3 p {
+.card1 p,
+.card2 p,
+.card3 p {
   font-size: 20px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
@@ -548,20 +599,21 @@ html {
 .services {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 120px 24px 40px;   
+  padding: 120px 24px 40px;
   text-align: center;
+  margin-top: 20px;
 }
 
 /* Title */
 .servicetitle {
-  display: inline-block;      
+  display: inline-block;
   font-size: 40px;
   font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin: 0 0 32px;           
-  position: relative;         
+  margin: 0 0 32px;
+  position: relative;
   font-family: "Roboto", sans-serif;
   top: -100px;
 }
@@ -583,10 +635,14 @@ html {
   width: 180px;
 }
 
+.servicesection {
+  position: absolute;
+  top: 200px;
+}
 
 .services p {
-  max-width: 900px;           
-  margin: 28px auto 0;       
+  max-width: 900px;
+  margin: 28px auto 0;
   font-size: 17px;
   font-weight: 800;
   color: #ffffff;
@@ -598,11 +654,11 @@ html {
 /* ---------- Global for this section ---------- */
 .servicecards {
   --accent: #2e7bd1;
-  --glass: rgba(255,255,255,0.22);
-  --glass-hover: rgba(255,255,255,0.3);
-  --border: rgba(255,255,255,0.35);
+  --glass: rgba(255, 255, 255, 0.22);
+  --glass-hover: rgba(255, 255, 255, 0.3);
+  --border: rgba(255, 255, 255, 0.35);
 
-  font-family: "Roboto", sans-serif;      /* ← Use Roboto */
+  font-family: "Roboto", sans-serif; /* ← Use Roboto */
   max-width: 1200px;
   margin: 80px auto 0;
   padding: 20px 24px;
@@ -611,6 +667,7 @@ html {
   gap: 36px;
   justify-items: center;
   align-items: start;
+  margin-top: 60px;
 }
 
 /* Every card (targets your divs inside .servicecards) */
@@ -631,22 +688,21 @@ html {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
-  transition: transform .45s ease, box-shadow .45s ease, background .3s ease;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+  transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.3s ease;
 }
-
 
 /* Headline + copy */
 .servicecards h1 {
   font-size: 22px;
   font-weight: 800;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   margin: 14px 0 10px;
 }
 
 .servicecards p {
-  font-size: 15.5px;   /* was 14px — slightly bigger */
-  line-height: 1.7;    /* smoother reading */
+  font-size: 15.5px; /* was 14px — slightly bigger */
+  line-height: 1.7; /* smoother reading */
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.93);
 }
@@ -659,37 +715,50 @@ html {
   height: 64px;
   margin: 0 auto 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,.65);
+  background: rgba(255, 255, 255, 0.65);
   color: var(--accent);
   font-size: 36px;
-  box-shadow: 0 0 18px rgba(46,123,209,.35);
-  transition: all .3s ease;
+  box-shadow: 0 0 18px rgba(46, 123, 209, 0.35);
+  transition: all 0.3s ease;
 
   /* keep outlined set consistent */
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 48;
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
 }
 
 /* Hover lift + icon glow */
 .servicecards > div:hover {
   transform: translateY(-12px) scale(1.03);
   background: var(--glass-hover);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 .servicecards > div:hover .material-symbols-outlined {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 0 22px rgba(46,123,209,.6);
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.6);
 }
 
 /* --- Softer balanced wave --- */
-.servicecards > div:nth-child(1) { transform: translateY(12px) rotate(-1deg); }
-.servicecards > div:nth-child(2) { transform: translateY(6px) rotate(-0.5deg); }
-.servicecards > div:nth-child(3) { transform: translateY(-6px) scale(1.04); z-index: 1; }
-.servicecards > div:nth-child(4) { transform: translateY(6px) rotate(0.5deg); }
-.servicecards > div:nth-child(5) { transform: translateY(12px) rotate(1deg); }
+.servicecards > div:nth-child(1) {
+  transform: translateY(12px) rotate(-1deg);
+}
+.servicecards > div:nth-child(2) {
+  transform: translateY(6px) rotate(-0.5deg);
+}
+.servicecards > div:nth-child(3) {
+  transform: translateY(-6px) scale(1.04);
+  z-index: 1;
+}
+.servicecards > div:nth-child(4) {
+  transform: translateY(6px) rotate(0.5deg);
+}
+.servicecards > div:nth-child(5) {
+  transform: translateY(12px) rotate(1deg);
+}
 
 /* Normalize on hover so each card “snaps” upright */
-.servicecards > div:hover { transform: translateY(-12px) scale(1.03) rotate(0deg); }
+.servicecards > div:hover {
+  transform: translateY(-12px) scale(1.03) rotate(0deg);
+}
 
 /* ---------- Responsive tweaks ---------- */
 @media (max-width: 1100px) {
@@ -697,8 +766,12 @@ html {
     grid-template-columns: repeat(3, minmax(220px, 1fr));
   }
   /* soften the wave on smaller screens */
-  .servicecards > div { transform: translateY(8px); }
-  .servicecards > div:nth-child(3) { transform: translateY(-6px) scale(1.03); }
+  .servicecards > div {
+    transform: translateY(8px);
+  }
+  .servicecards > div:nth-child(3) {
+    transform: translateY(-6px) scale(1.03);
+  }
 }
 
 @media (max-width: 720px) {
@@ -706,7 +779,9 @@ html {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
     gap: 28px;
   }
-  .servicecards > div { transform: translateY(0) rotate(0); }
+  .servicecards > div {
+    transform: translateY(0) rotate(0);
+  }
 }
 
 @media (max-width: 480px) {
