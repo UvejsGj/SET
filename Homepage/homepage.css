@@ -94,13 +94,13 @@ html {
   /* Frosted glass with light tint */
   background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.05)
+    rgba(25, 25, 35, 0.75),
+    rgba(15, 15, 25, 0.6)
   );
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
   /* Modern soft shadow */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
@@ -115,7 +115,7 @@ html {
 /* Link styling */
 .navbar a {
   text-decoration: none;
-  color: #f5f7fa;
+  color: #ffffff;
   position: relative;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
@@ -596,6 +596,95 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
+.wave-stack {
+  position: relative;
+  width: 100%;
+  height: 160px; /* adjust overall height of the divider */
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* base wave */
+.wave {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.w1 path {
+  /* front wave color */
+  fill: #91b5e5; /* slightly darker than your bg */
+  opacity: 1;
+}
+
+.w2 path {
+  /* back wave color */
+  fill: #b7cdf3; /* a bit lighter */
+  opacity: 0.85;
+}
+
+/* flip the second wave vertically and nudge it a bit to overlap nicely */
+.flip {
+  transform: scaleY(-1) translateY(-2px);
+  transform-origin: center;
+}
+
+/* (optional) subtle depth */
+.wave-stack .wave {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12));
+}
+
+/* responsive tweak */
+@media (max-width: 768px) {
+  .wave-stack {
+    height: 120px;
+  }
+}
+
+/* make SVG path transforms behave predictably */
+.wave path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* subtle opposing drifts */
+.w1 path {
+  animation: waveDriftLeft 13s ease-in-out infinite alternate;
+}
+.w2 path {
+  animation: waveDriftRight 17s ease-in-out infinite alternate;
+  opacity: 0.9; /* tiny depth tweak, optional */
+}
+
+/* keyframes */
+@keyframes waveDriftLeft {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: translateX(-32px) translateY(4px);
+  }
+}
+@keyframes waveDriftRight {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: translateX(28px) translateY(-3px);
+  }
+}
+
+/* respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .w1 path,
+  .w2 path {
+    animation: none;
+  }
+}
+
 .services {
   max-width: 1100px;
   margin: 0 auto;
@@ -787,5 +876,249 @@ html {
 @media (max-width: 480px) {
   .servicecards {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Life at Smart Engineering Section ===== */
+.culture-section {
+  position: relative;
+  padding: 100px 24px 140px;
+  background: transparent;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* ===== Animated gradient background ===== */
+.culture-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 25% 30%,
+      rgba(46, 123, 209, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 75% 70%,
+      rgba(124, 182, 223, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 80%);
+  animation: waveFlow 14s ease-in-out infinite alternate;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.9;
+}
+
+@keyframes waveFlow {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) scale(1.02);
+  }
+  100% {
+    transform: translateY(20px) scale(1);
+  }
+}
+
+/* ===== Title ===== */
+.section-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+/* ===== Life at Smart Engineering Section ===== */
+.culture-section {
+  position: relative;
+  padding: 100px 24px 140px;
+  background: transparent;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* ===== Animated background aura ===== */
+.culture-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 25% 30%,
+      rgba(46, 123, 209, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 75% 70%,
+      rgba(124, 182, 223, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 80%);
+  animation: waveFlow 14s ease-in-out infinite alternate;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.9;
+}
+
+@keyframes waveFlow {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-25px) scale(1.02); }
+  100% { transform: translateY(20px) scale(1); }
+}
+
+/* ===== Title ===== */
+.section-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+/* ===== Grid ===== */
+.culture-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Card Base ===== */
+.culture-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  padding: 40px 30px;
+  text-align: left;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  transition: transform 0.45s ease, box-shadow 0.45s ease,
+              background 0.45s ease, border-color 0.45s ease, opacity 0.8s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  z-index: 1;
+}
+
+/* ===== Individual Floating Animations ===== */
+@keyframes float1 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+@keyframes float2 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+@keyframes float3 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+@keyframes float4 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+
+.culture-card:nth-child(1) { animation: float1 6s ease-in-out infinite alternate; }
+.culture-card:nth-child(2) { animation: float2 7s ease-in-out infinite alternate; }
+.culture-card:nth-child(3) { animation: float3 8s ease-in-out infinite alternate; }
+.culture-card:nth-child(4) { animation: float4 9s ease-in-out infinite alternate; }
+
+/* ===== Visible (on scroll) ===== */
+.culture-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Hover ===== */
+.culture-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(46, 123, 209, 0.45);
+  box-shadow:
+    0 20px 46px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(46, 123, 209, 0.25),
+    inset 0 0 10px rgba(46, 123, 209, 0.15);
+}
+
+/* ===== Icon (unified alignment) ===== */
+.culture-card .material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
+  font-size: 48px;
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  align-self: flex-start; /* keeps all icons aligned top-left */
+  margin-bottom: 18px;
+  color: #2e7bd1;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 18px rgba(46, 123, 209, 0.35);
+  transition: all 0.35s ease;
+  z-index: 1;
+}
+
+/* Hover Glow for Icon */
+.culture-card:hover .material-symbols-outlined {
+  background: #2e7bd1;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px rgba(46, 123, 209, 0.55);
+}
+
+/* ===== Text ===== */
+.culture-card h3 {
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  letter-spacing: 0.4px;
+  position: relative;
+  z-index: 1;
+}
+.culture-card p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #eaf2ff;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .culture-grid {
+    grid-template-columns: 1fr;
+  }
+  .culture-card {
+    animation: none;
   }
 }

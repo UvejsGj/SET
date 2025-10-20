@@ -1,76 +1,84 @@
-// homepage.js
-document.addEventListener("DOMContentLoaded", () => {
-  // Track both the container AND the visible heading
-  const selectors = [
-    "#homesection",
-    "#aboutsection", // the image container with real height
-    ".about-title", // the visible h1 "About Us"
-    "#servicesection",
-    "#portfoliosection",
-    "#teamsection",
-    "#contactsection",
-  ];
+// homepage.js — only handles active link highlight
+document.addEventListener('DOMContentLoaded', () => {
+  // Only consider nav links that point to real sections on the page
+  const links = Array.from(document.querySelectorAll('.navbar a'))
+    .filter(a => a.hash && document.querySelector(a.hash));
+  const sections = links.map(a => document.querySelector(a.hash));
 
-  const targets = selectors
-    .map((s) => document.querySelector(s))
-    .filter(Boolean);
+  if (!links.length || !sections.length) return;
 
-  const links = Array.from(document.querySelectorAll(".navbar a")).filter(
-    (a) => a.hash && document.querySelector(a.hash)
-  );
-
-  if (!targets.length || !links.length) return;
-
-  const setActive = (hash) => {
-    links.forEach((a) => a.classList.toggle("active", a.hash === hash));
+  const setActive = (id) => {
+    links.forEach(a => a.classList.toggle('active', a.hash === `#${id}`));
   };
 
-  // Choose the element closest to the viewport center as "current"
-  const pickCurrent = () => {
+  // IntersectionObserver: choose the section most in view near center
+  const io = new IntersectionObserver((entries) => {
+    // pick the intersecting entry with the highest ratio
     let best = null;
-    let bestDist = Infinity;
-    const center = window.innerHeight / 2;
-
-    targets.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      const mid = r.top + r.height / 2;
-      const dist = Math.abs(mid - center);
-      if (dist < bestDist) {
-        bestDist = dist;
-        best = el;
-      }
-    });
-
-    if (best) setActive("#" + (best.id || best.getAttribute("id")));
-  };
-
-  // IntersectionObserver to update as sections enter/leave
-  const io = new IntersectionObserver(() => pickCurrent(), {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+    }
+    if (best) setActive(best.target.id);
+  }, {
     root: null,
-    rootMargin: "-40% 0px -40% 0px",
-    threshold: 0,
+    // bias toward the middle of the viewport
+    rootMargin: '-25% 0px -50% 0px',
+    threshold: [0, 0.25, 0.5, 0.75, 1],
   });
 
-  targets.forEach((t) => io.observe(t));
+  sections.forEach(sec => io.observe(sec));
 
-  window.addEventListener("scroll", pickCurrent, { passive: true });
-  window.addEventListener("load", pickCurrent);
-  pickCurrent();
+  // Initial highlight on load/refresh
+  const center = window.innerHeight / 2;
+  let initial = sections[0];
+  for (const sec of sections) {
+    const r = sec.getBoundingClientRect();
+    const mid = r.top + r.height / 2;
+    if (Math.abs(mid - center) < Math.abs((initial.getBoundingClientRect().top + initial.getBoundingClientRect().height/2) - center)) {
+      initial = sec;
+    }
+  }
+  setActive(initial.id);
+});
+
+// in homepage.js (with defer)
+document.addEventListener('DOMContentLoaded', () => {
+  const homeLink = document.querySelector('.navbar a[href="#homesection"]');
+  if (!homeLink) return;
+
+  homeLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector(".navbar");
-  const hero = document.querySelector("#homesection");
+  const cards = document.querySelectorAll(".culture-card");
 
-  if (!nav || !hero) return;
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      // When hero is NOT visible (you're scrolling past it), darken navbar
-      nav.classList.toggle("on-light", !entry.isIntersecting);
-    },
-    { threshold: 0.1 }
-  );
+  cards.forEach(card => observer.observe(card));
+});
 
-  observer.observe(hero);
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".culture-card");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach((card) => observer.observe(card));
 });
