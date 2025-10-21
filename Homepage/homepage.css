@@ -1025,14 +1025,14 @@ html {
   border-radius: 22px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
   padding: 40px 30px;
-  text-align: left;
+  text-align: center;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 
   transition: transform 0.45s ease, box-shadow 0.45s ease,
               background 0.45s ease, border-color 0.45s ease, opacity 0.8s ease;
@@ -1078,7 +1078,6 @@ html {
   border-radius: 20px;
   display: grid;
   place-items: center;
-  align-self: flex-start; /* keeps all icons aligned top-left */
   margin-bottom: 18px;
   color: #2e7bd1;
   background: rgba(255, 255, 255, 0.85);
@@ -1105,7 +1104,7 @@ html {
   z-index: 1;
 }
 .culture-card p {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.8;
   color: #eaf2ff;
   margin: 0;
