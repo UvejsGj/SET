@@ -1411,111 +1411,139 @@ html {
   border-radius: 2px;
   margin: 14px auto 0;
 }
-/* ===== Testimonials (2-up, paged) ===== */
-.testimonials { position: relative; padding: 90px 24px 110px; text-align: center; }
-.testimonials .section-title {
-  font: 800 42px/1 "Roboto", sans-serif; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 22px;
-}
-.testimonials .section-title::after{
-  content:""; display:block; width:160px; height:4px; background:#2e7bd1; border-radius:2px; margin:12px auto 0;
-}
 
-.t-viewport { 
-  max-width: 1200px; margin: 0 auto; overflow: hidden; position: relative; cursor: grab;
-}
-.t-viewport.dragging { cursor: grabbing; }
+/* ==== FAQ Section ==== */
+#faq { scroll-margin-top: 120px; } /* so anchor links don't hide under navbar */
 
-.t-track {
-  display: flex; gap: var(--gap);
-  will-change: transform; transform: translate3d(0,0,0);
-  padding: 6px 0;
-  --gap: 24px;
-  --card-w: 400px; /* smaller cards: was 520px before */
+.faq-section {
+  position: relative;
+  padding: 100px 24px 120px;
+  background: transparent;
+  text-align: center;
+  overflow: hidden;
 }
 
-.t-card {
-  flex: 0 0 var(--card-w);
-  width: var(--card-w);
-  scroll-snap-align: start;
+/* subtle animated glow to match your theme */
+.faq-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(46,123,209,.12), transparent 55%),
+    radial-gradient(circle at 82% 70%, rgba(124,182,223,.10), transparent 55%);
+  filter: blur(60px);
+  animation: faqGlow 16s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+@keyframes faqGlow {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-18px) scale(1.02); }
+  100% { transform: translateY(12px) scale(1); }
+}
 
-  text-align: left;
-  padding: 28px 26px;
-  border-radius: 22px;
-
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-
-  color: #ffffff;
+/* Title (same language as your other section headings) */
+.faq-section .section-title {
   font-family: "Roboto", sans-serif;
-  transition: transform .35s ease, box-shadow .35s ease, background .35s ease, border-color .35s ease;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 40px;
+  position: relative;
+  z-index: 1;
 }
-.t-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255,255,255,0.24);
+.faq-section .section-title::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 4px;
+  background: #2e7bd1;
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+.faq-list {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 16px;
+}
+
+/* Glassy card for each FAQ */
+.faq {
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+  overflow: hidden; /* clip the animated border glow */
+  transition: box-shadow .35s ease, background .35s ease, border-color .35s ease;
+}
+
+/* Header row */
+.faq > summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.faq > summary::-webkit-details-marker { display: none; } /* remove default triangle */
+
+.faq-q {
+  font: 700 18px/1.35 "Roboto", sans-serif;
+  color: #ffffff;
+  letter-spacing: .2px;
+}
+
+/* Icon arrow */
+.faq-icon {
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+  color: #cfe2ff;
+  transition: transform .3s ease, color .3s ease;
+}
+
+/* Answer body */
+.faq-a {
+  padding: 0 20px 18px 20px;
+  color: #eaf2ff;
+  font: 400 16px/1.75 "Roboto", sans-serif;
+  transform-origin: top;
+  /* smooth height feel */
+  animation: faqOpen .35s ease both;
+}
+@keyframes faqOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover/active polish */
+.faq:hover {
+  background: rgba(255,255,255,0.22);
   border-color: rgba(46,123,209,0.45);
   box-shadow:
-    0 18px 44px rgba(0,0,0,0.32),
-    0 0 18px rgba(46,123,209,0.25),
+    0 16px 34px rgba(0,0,0,0.28),
+    0 0 14px rgba(46,123,209,0.22),
     inset 0 0 8px rgba(46,123,209,0.12);
 }
-
-/* Header */
-.t-head { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
-.t-avatar { width:54px; height:54px; border-radius:14px; display:grid; place-items:center; font-weight:800; letter-spacing:.5px;
-  color:#2e7bd1; background:rgba(255,255,255,0.9); box-shadow:0 0 16px rgba(46,123,209,0.35);
-}
-.t-head h3 { margin:0; font-size:22px; font-weight:900; letter-spacing:.3px; }
-.t-card p { margin:0; font-size:17px; line-height:1.8; color:#eaf2ff; }
-
-/* Dots */
-.t-dots { margin-top:18px; display:flex; gap:10px; justify-content:center; align-items:center; }
-.t-dot { width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,0.45); opacity:.7; cursor:pointer;
-  transition: transform .25s ease, background .25s ease, opacity .25s ease, width .25s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.t-dot.is-active { width:22px; background:#2e7bd1; opacity:1; transform: translateY(-1px); box-shadow:0 0 12px rgba(46,123,209,.35); }
-
-/* Mobile: 1 per page */
-@media (max-width: 960px) {
-  .t-track { --gap: 16px; }
+.faq[open] .faq-icon {
+  transform: rotate(180deg);
+  color: #2e7bd1;
 }
 
-/* Hide carousel (and dots) until the section is in view */
-.testimonials .t-viewport,
-.testimonials .t-dots {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .35s ease;
-}
-.testimonials.is-inview .t-viewport,
-.testimonials.is-inview .t-dots {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Exactly 2 cards visible on desktop — no partial peek */
-.t-track { gap: 24px; }
-.t-card {
-  flex: 0 0 calc((100% - 24px) / 2); /* two per view, respect the gap */
-  scroll-snap-align: start;
-}
-
-/* On narrow screens: only 1 card visible */
-@media (max-width: 960px) {
-  .t-card { flex: 0 0 100%; }
-}
-
-.t-card {
-  flex: 0 0 420px !important;  /* adjust this number to taste */
-  width: 420px !important;
-}
-
-@media (max-width: 960px) {
-  .t-card {
-    flex: 0 0 86% !important;  /* single-card mobile width */
-    width: 86% !important;
-  }
+/* Keyboard focus */
+.faq > summary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(46,123,209,.2) inset;
+  border-radius: 16px;
 }
