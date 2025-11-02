@@ -83,13 +83,3 @@ document.addEventListener("DOMContentLoaded", () => {
   cards.forEach((card) => observer.observe(card));
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const faqs = document.querySelectorAll('.faq-list .faq');
-  faqs.forEach(d => {
-    d.addEventListener('toggle', () => {
-      if (d.open) {
-        faqs.forEach(other => { if (other !== d) other.removeAttribute('open'); });
-      }
-    });
-  });
-});

@@ -976,9 +976,15 @@ html {
 }
 
 @keyframes waveFlow {
-  0% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-25px) scale(1.02); }
-  100% { transform: translateY(20px) scale(1); }
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) scale(1.02);
+  }
+  100% {
+    transform: translateY(20px) scale(1);
+  }
 }
 
 /* ===== Title ===== */
@@ -1042,15 +1048,55 @@ html {
 }
 
 /* ===== Individual Floating Animations ===== */
-@keyframes float1 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
-@keyframes float2 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
-@keyframes float3 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
-@keyframes float4 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes float4 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
 
-.culture-card:nth-child(1) { animation: float1 6s ease-in-out infinite alternate; }
-.culture-card:nth-child(2) { animation: float2 7s ease-in-out infinite alternate; }
-.culture-card:nth-child(3) { animation: float3 8s ease-in-out infinite alternate; }
-.culture-card:nth-child(4) { animation: float4 9s ease-in-out infinite alternate; }
+.culture-card:nth-child(1) {
+  animation: float1 6s ease-in-out infinite alternate;
+}
+.culture-card:nth-child(2) {
+  animation: float2 7s ease-in-out infinite alternate;
+}
+.culture-card:nth-child(3) {
+  animation: float3 8s ease-in-out infinite alternate;
+}
+.culture-card:nth-child(4) {
+  animation: float4 9s ease-in-out infinite alternate;
+}
 
 /* ===== Visible (on scroll) ===== */
 .culture-card.visible {
@@ -1063,9 +1109,7 @@ html {
   transform: translateY(-12px) scale(1.03);
   background: rgba(255, 255, 255, 0.26);
   border-color: rgba(46, 123, 209, 0.45);
-  box-shadow:
-    0 20px 46px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(46, 123, 209, 0.25),
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.35), 0 0 20px rgba(46, 123, 209, 0.25),
     inset 0 0 10px rgba(46, 123, 209, 0.15);
 }
 
@@ -1157,7 +1201,7 @@ html {
   font-family: "Roboto", sans-serif;
   font-size: 16.5px;
   line-height: 1.7;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 /* ===== Grid (12 items) ===== */
@@ -1177,95 +1221,177 @@ html {
   border-radius: 18px;
   text-align: left;
 
-  background: rgba(255,255,255,0.16);
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.28);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
 
   display: grid;
   grid-template-columns: 56px 1fr;
   column-gap: 14px;
   align-items: center;
 
-  transition: transform .35s ease, box-shadow .35s ease, background .35s ease, border-color .35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease,
+    border-color 0.35s ease;
 }
 
 /* Icon (same hover language as your other cards) */
-.tech-card .material-symbols-outlined{
-  font-variation-settings: 'FILL' 0,'wght' 600,'GRAD' 0,'opsz' 48;
+.tech-card .material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
   font-size: 32px;
-  width: 56px; height: 56px; border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
 
-  display: grid; place-items: center;
+  display: grid;
+  place-items: center;
   color: #2e7bd1;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 0 14px rgba(46,123,209,0.32);
-  transition: all .3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 14px rgba(46, 123, 209, 0.32);
+  transition: all 0.3s ease;
 }
 
 /* Title */
-.tech-card h3{
+.tech-card h3 {
   margin: 0;
   color: #fff;
   font-family: "Roboto", sans-serif;
   font-weight: 800;
   font-size: 17px;
   line-height: 1.35;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
 
 /* Hover: lift + icon turns blue background (white glyph) */
-.tech-card:hover{
+.tech-card:hover {
   transform: translateY(-8px);
-  background: rgba(255,255,255,0.24);
-  border-color: rgba(46,123,209,0.45);
-  box-shadow:
-    0 16px 34px rgba(0,0,0,0.28),
-    0 0 16px rgba(46,123,209,0.22),
-    inset 0 0 8px rgba(46,123,209,0.12);
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(46, 123, 209, 0.45);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28), 0 0 16px rgba(46, 123, 209, 0.22),
+    inset 0 0 8px rgba(46, 123, 209, 0.12);
 }
-.tech-card:hover .material-symbols-outlined{
+.tech-card:hover .material-symbols-outlined {
   background: #2e7bd1;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 0 22px rgba(46,123,209,0.48);
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.48);
 }
 
 /* Subtle etched line art per tile (optional; keep faint) */
-.tech-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.18;
-  background-repeat:no-repeat;
+.tech-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-repeat: no-repeat;
   background-position: right -20px bottom -10px;
   background-size: 220px auto;
   mix-blend-mode: overlay;
-  pointer-events:none;
+  pointer-events: none;
 }
-.tech-card:nth-child(1)::before  { background-image: radial-gradient(200px 140px at 80% 90%, rgba(255,255,255,.18), transparent 60%); }
-.tech-card:nth-child(2)::before  { background-image: conic-gradient(from 120deg, rgba(255,255,255,.16), transparent 55%); }
-.tech-card:nth-child(3)::before  { background-image: linear-gradient(45deg, rgba(255,255,255,.12) 0 20%, transparent 20% 40%, rgba(255,255,255,.12) 40% 60%, transparent 60%); }
-.tech-card:nth-child(4)::before  { background-image: radial-gradient(220px 120px at 85% 85%, rgba(255,255,255,.16), transparent 60%); }
-.tech-card:nth-child(5)::before  { background-image: linear-gradient(120deg, rgba(255,255,255,.14), transparent 70%); }
-.tech-card:nth-child(6)::before  { background-image: conic-gradient(from -30deg, rgba(255,255,255,.16), transparent 60%); }
-.tech-card:nth-child(7)::before  { background-image: radial-gradient(180px 120px at 80% 90%, rgba(255,255,255,.16), transparent 60%); }
-.tech-card:nth-child(8)::before  { background-image: linear-gradient(60deg, rgba(255,255,255,.12), transparent 70%); }
-.tech-card:nth-child(9)::before  { background-image: conic-gradient(from 60deg, rgba(255,255,255,.14), transparent 60%); }
-.tech-card:nth-child(10)::before { background-image: radial-gradient(220px 140px at 82% 88%, rgba(255,255,255,.14), transparent 60%); }
-.tech-card:nth-child(11)::before { background-image: linear-gradient(30deg, rgba(255,255,255,.12), transparent 70%); }
-.tech-card:nth-child(12)::before { background-image: conic-gradient(from 10deg, rgba(255,255,255,.14), transparent 60%); }
+.tech-card:nth-child(1)::before {
+  background-image: radial-gradient(
+    200px 140px at 80% 90%,
+    rgba(255, 255, 255, 0.18),
+    transparent 60%
+  );
+}
+.tech-card:nth-child(2)::before {
+  background-image: conic-gradient(
+    from 120deg,
+    rgba(255, 255, 255, 0.16),
+    transparent 55%
+  );
+}
+.tech-card:nth-child(3)::before {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.12) 0 20%,
+    transparent 20% 40%,
+    rgba(255, 255, 255, 0.12) 40% 60%,
+    transparent 60%
+  );
+}
+.tech-card:nth-child(4)::before {
+  background-image: radial-gradient(
+    220px 120px at 85% 85%,
+    rgba(255, 255, 255, 0.16),
+    transparent 60%
+  );
+}
+.tech-card:nth-child(5)::before {
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.14),
+    transparent 70%
+  );
+}
+.tech-card:nth-child(6)::before {
+  background-image: conic-gradient(
+    from -30deg,
+    rgba(255, 255, 255, 0.16),
+    transparent 60%
+  );
+}
+.tech-card:nth-child(7)::before {
+  background-image: radial-gradient(
+    180px 120px at 80% 90%,
+    rgba(255, 255, 255, 0.16),
+    transparent 60%
+  );
+}
+.tech-card:nth-child(8)::before {
+  background-image: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0.12),
+    transparent 70%
+  );
+}
+.tech-card:nth-child(9)::before {
+  background-image: conic-gradient(
+    from 60deg,
+    rgba(255, 255, 255, 0.14),
+    transparent 60%
+  );
+}
+.tech-card:nth-child(10)::before {
+  background-image: radial-gradient(
+    220px 140px at 82% 88%,
+    rgba(255, 255, 255, 0.14),
+    transparent 60%
+  );
+}
+.tech-card:nth-child(11)::before {
+  background-image: linear-gradient(
+    30deg,
+    rgba(255, 255, 255, 0.12),
+    transparent 70%
+  );
+}
+.tech-card:nth-child(12)::before {
+  background-image: conic-gradient(
+    from 10deg,
+    rgba(255, 255, 255, 0.14),
+    transparent 60%
+  );
+}
 
 /* Responsive */
-@media (max-width: 1100px){
-  .tech-grid { grid-template-columns: repeat(3, minmax(220px,1fr)); }
+@media (max-width: 1100px) {
+  .tech-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
 }
-@media (max-width: 800px){
-  .tech-grid { grid-template-columns: repeat(2, minmax(220px,1fr)); }
+@media (max-width: 800px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
 }
-@media (max-width: 520px){
-  .tech-grid { grid-template-columns: 1fr; }
+@media (max-width: 520px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* === TECH CARDS: icon left, text visibly moved right === */
@@ -1361,8 +1487,11 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: 
-    linear-gradient(120deg, rgba(46, 123, 209, 0.12) 0%, rgba(124, 182, 223, 0.1) 100%),
+  background: linear-gradient(
+      120deg,
+      rgba(46, 123, 209, 0.12) 0%,
+      rgba(124, 182, 223, 0.1) 100%
+    ),
     repeating-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.04) 0px,
@@ -1378,9 +1507,15 @@ html {
 
 /* Animate background flow */
 @keyframes techBgFlow {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-40px, 20px) scale(1.03); }
-  100% { transform: translate(30px, -20px) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-40px, 20px) scale(1.03);
+  }
+  100% {
+    transform: translate(30px, -20px) scale(1);
+  }
 }
 
 /* Cards always stay above the background */
@@ -1412,138 +1547,249 @@ html {
   margin: 14px auto 0;
 }
 
-/* ==== FAQ Section ==== */
-#faq { scroll-margin-top: 120px; } /* so anchor links don't hide under navbar */
+/* ===== FAQ Section (glassy, Roboto, icon turns blue on open) ===== */
+:root{
+  --accent: #2e7bd1;
+  --glass-bg: rgba(255,255,255,0.20);
+  --glass-bg-hover: rgba(255,255,255,0.28);
+  --glass-border: rgba(255,255,255,0.30);
+  --text: #ffffff;
+  --muted: #eaf2ff;
+}
 
-.faq-section {
+#faq { scroll-margin-top: 120px; }
+
+.faq-section{
   position: relative;
-  padding: 100px 24px 120px;
+  padding: 110px 24px 120px;
   background: transparent;
   text-align: center;
-  overflow: hidden;
+  font-family: "Roboto", sans-serif; /* ✅ keep Roboto consistent */
+  isolation: isolate;
 }
 
-/* subtle animated glow to match your theme */
-.faq-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* Optional ambient glow behind the section */
+.faq-section::before{
+  content:"";
+  position:absolute; inset:-10% -5% -10% -5%;
   background:
-    radial-gradient(circle at 18% 25%, rgba(46,123,209,.12), transparent 55%),
-    radial-gradient(circle at 82% 70%, rgba(124,182,223,.10), transparent 55%);
-  filter: blur(60px);
-  animation: faqGlow 16s ease-in-out infinite alternate;
-  z-index: 0;
+    radial-gradient(60% 60% at 20% 25%, rgba(46,123,209,.14) 0%, transparent 60%),
+    radial-gradient(55% 55% at 82% 70%, rgba(124,182,223,.10) 0%, transparent 58%),
+    linear-gradient(120deg, rgba(255,255,255,.06), transparent 70%);
+  filter: blur(70px);
+  animation: faqFloat 14s ease-in-out infinite alternate;
   pointer-events: none;
+  z-index: -1;
 }
-@keyframes faqGlow {
+@keyframes faqFloat{
   0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-18px) scale(1.02); }
-  100% { transform: translateY(12px) scale(1); }
+  50%  { transform: translateY(-22px) scale(1.02); }
+  100% { transform: translateY(14px) scale(1); }
 }
 
-/* Title (same language as your other section headings) */
-.faq-section .section-title {
+/* Title */
+.faq-section .section-title{
   font-family: "Roboto", sans-serif;
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffffff;
+  font-size: 52px;          /* ✅ bigger title */
+  font-weight: 900;
   text-transform: uppercase;
-  margin: 0 0 40px;
+  letter-spacing: 1.5px;
+  color: var(--text);
+  margin: 0 0 50px;
   position: relative;
-  z-index: 1;
 }
-.faq-section .section-title::after {
-  content: "";
-  display: block;
-  width: 160px;
-  height: 4px;
-  background: #2e7bd1;
-  border-radius: 2px;
-  margin: 12px auto 0;
+.faq-section .section-title::after{
+  content:"";
+  display:block;
+  width:180px; height:4px;
+  background: var(--accent);
+  border-radius:2px;
+  margin:14px auto 0;
 }
 
-.faq-list {
-  max-width: 900px;
+/* Grid */
+/* Replace your .faq-grid grid rules with flex layout */
+.faq-grid{
+  max-width: 1100px;
   margin: 0 auto;
+  display: flex;            /* was: grid */
+  flex-wrap: wrap;          /* allow wrapping */
+  gap: 26px;
+}
+@media (max-width: 960px){
+  .faq-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card (details) */
+.faq-card{
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  color: var(--text);
   text-align: left;
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 16px;
+  overflow: hidden;
+  flex: 1 1 calc(50% - 13px);   /* two per row, subtract half the gap */
+  align-self: flex-start;       /* don't stretch to row height */
+  /* keep your existing card styles below (glass, shadow, transitions, etc.) *
+
+  /* glass + depth */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.22);
+
+  /* motion */
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    background .35s ease,
+    border-color .35s ease;
 }
 
-/* Glassy card for each FAQ */
-.faq {
-  border: 1px solid rgba(255,255,255,0.28);
-  border-radius: 18px;
-  background: rgba(255,255,255,0.16);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.22);
-  overflow: hidden; /* clip the animated border glow */
-  transition: box-shadow .35s ease, background .35s ease, border-color .35s ease;
+/* Lift when hovering (same feel as other cards) */
+.faq-card:hover{
+  transform: translateY(-8px);
+  background: var(--glass-bg-hover);
+  border-color: rgba(255,255,255,0.34);
+  box-shadow: 0 18px 44px rgba(0,0,0,.32);
 }
 
-/* Header row */
-.faq > summary {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 20px;
-  list-style: none;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-}
-.faq > summary::-webkit-details-marker { display: none; } /* remove default triangle */
-
-.faq-q {
-  font: 700 18px/1.35 "Roboto", sans-serif;
-  color: #ffffff;
-  letter-spacing: .2px;
-}
-
-/* Icon arrow */
-.faq-icon {
-  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
-  color: #cfe2ff;
-  transition: transform .3s ease, color .3s ease;
-}
-
-/* Answer body */
-.faq-a {
-  padding: 0 20px 18px 20px;
-  color: #eaf2ff;
-  font: 400 16px/1.75 "Roboto", sans-serif;
-  transform-origin: top;
-  /* smooth height feel */
-  animation: faqOpen .35s ease both;
-}
-@keyframes faqOpen {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Hover/active polish */
-.faq:hover {
-  background: rgba(255,255,255,0.22);
-  border-color: rgba(46,123,209,0.45);
+/* Slight extra lift when opened */
+.faq-card[open]{
+  transform: translateY(-10px);
   box-shadow:
-    0 16px 34px rgba(0,0,0,0.28),
-    0 0 14px rgba(46,123,209,0.22),
-    inset 0 0 8px rgba(46,123,209,0.12);
+    0 20px 48px rgba(0,0,0,.34),
+    0 0 18px rgba(46,123,209,.22);
 }
-.faq[open] .faq-icon {
-  transform: rotate(180deg);
-  color: #2e7bd1;
+
+/* Summary row */
+.faq-summary{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 26px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.faq-card > summary::-webkit-details-marker{ display: none; }
+
+/* Icon “logo” (turns blue on open) */
+.faq-icon{
+  font-family: "Material Symbols Outlined";
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+  font-size: 36px;
+  width: 68px; height: 68px; border-radius: 18px;
+  display: grid; place-items: center;
+  color: var(--accent);                     /* base: blue glyph */
+  background: rgba(255,255,255,0.88);      /* white pill bg */
+  box-shadow: 0 0 18px rgba(46,123,209,0.35);
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    box-shadow .28s ease,
+    color .28s ease,
+    background-color .28s ease;
+}
+
+/* Open/close icon animation + color flip to solid blue */
+@keyframes iconPop{
+  0%   { transform: translateY(0) scale(1); }
+  55%  { transform: translateY(-4px) scale(1.06); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.faq-card[open] .faq-icon{
+  background: var(--accent);     /* ✅ pill turns blue */
+  color: #ffffff;                /* ✅ glyph flips to white */
+  box-shadow: 0 0 22px rgba(46,123,209,0.45);
+  animation: iconPop 320ms cubic-bezier(.25,.9,.25,1);
+}
+
+/* Also give a tiny lift on hover (like other cards) */
+.faq-card:hover .faq-icon{
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(46,123,209,0.45);
+}
+
+/* Question text */
+.faq-q{
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: var(--text);
+}
+
+/* Toggle (+ → –) drawn with CSS */
+.faq-toggle{
+  position: relative;
+  width: 22px; height: 22px;
+}
+.faq-toggle::before,
+.faq-toggle::after{
+  content:"";
+  position:absolute; inset:0; margin:auto;
+  background: #cfe2ff;
+  transition: transform .3s ease, background .3s ease;
+}
+.faq-toggle::before{ width:14px; height:2px; }
+.faq-toggle::after { width:2px;  height:14px; }
+.faq-card[open] .faq-toggle::after{ transform: scaleY(0); } /* minus */
+.faq-card[open] .faq-toggle::before,
+.faq-card[open] .faq-toggle::after{ background: var(--accent); }
+
+/* Answer — CSS-only smooth open/close */
+.faq-a{
+  padding: 0 26px;            /* vertical padding added when open */
+  color: var(--muted);
+  font-family: "Roboto", sans-serif;
+  font-size: 17px;
+  line-height: 1.8;
+
+  max-height: 0;              /* collapsed */
+  opacity: 0;
+  transform: translateY(-6px);
+  overflow: hidden;
+
+  transition:
+    max-height .46s cubic-bezier(.25,1,.5,1),
+    opacity .30s ease,
+    transform .35s ease,
+    padding-top .30s ease,
+    padding-bottom .30s ease;
+}
+
+.faq-card[open] .faq-a{
+  max-height: 640px;          /* increase if answers get longer */
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: 0;
+  padding-bottom: 20px;
 }
 
 /* Keyboard focus */
-.faq > summary:focus-visible {
+.faq-summary:focus-visible{
   outline: none;
-  box-shadow: 0 0 0 6px rgba(46,123,209,.2) inset;
+  box-shadow: 0 0 0 6px rgba(46,123,209,.20) inset;
   border-radius: 16px;
+}
+
+/* ✅ Keep a 2×2 grid */
+.faq-grid{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+}
+
+/* ✅ Each card keeps its own height (doesn't stretch to the row height) */
+.faq-card{
+  align-self: start;    /* key line: prevents “empty open” look on the neighbor */
+  height: auto;         /* ensure no fixed/stretch heights linger */
+}
+
+/* 📱 Mobile: 1 column */
+@media (max-width: 960px){
+  .faq-grid{ grid-template-columns: 1fr; }
 }
