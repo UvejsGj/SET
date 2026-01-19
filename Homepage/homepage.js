@@ -83,3 +83,112 @@ document.addEventListener("DOMContentLoaded", () => {
   cards.forEach((card) => observer.observe(card));
 });
 
+const track = document.querySelector(".portfolio-track");
+const cards = document.querySelectorAll(".project-card");
+const dotsContainer = document.querySelector(".portfolio-dots");
+
+/* ===== SLIDER STATE ===== */
+let index = 0;
+let startX = 0;
+let currentTranslate = 0;
+let isDragging = false;
+let autoSlideInterval;
+
+/* ===== CREATE DOTS ===== */
+cards.forEach((_, i) => {
+  const dot = document.createElement("button");
+  if (i === 0) dot.classList.add("active");
+  dot.addEventListener("click", () => {
+    stopAutoSlide();
+    goToSlide(i);
+    startAutoSlide();
+  });
+  dotsContainer.appendChild(dot);
+});
+
+function updateDots() {
+  document.querySelectorAll(".portfolio-dots button").forEach((d, i) => {
+    d.classList.toggle("active", i === index);
+  });
+}
+
+function goToSlide(i) {
+  index = Math.max(0, Math.min(i, cards.length - 1));
+  currentTranslate = -index * track.offsetWidth;
+  track.style.transform = `translateX(${currentTranslate}px)`;
+  updateDots();
+}
+
+/* ===== AUTO SLIDE (every 6s) ===== */
+function startAutoSlide() {
+  autoSlideInterval = setInterval(() => {
+    index = (index + 1) % cards.length;
+    goToSlide(index);
+  }, 6000);
+}
+
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+}
+
+startAutoSlide();
+
+/* ===== DRAG SUPPORT ===== */
+track.addEventListener("mousedown", e => {
+  stopAutoSlide();
+  isDragging = true;
+  startX = e.pageX;
+  track.style.transition = "none";
+});
+
+window.addEventListener("mouseup", () => {
+  if (!isDragging) return;
+  isDragging = false;
+  track.style.transition = "";
+  const moved = currentTranslate % track.offsetWidth;
+  if (moved < -120) index++;
+  if (moved > 120) index--;
+  goToSlide(index);
+  startAutoSlide();
+});
+
+window.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  const diff = e.pageX - startX;
+  track.style.transform = `translateX(${currentTranslate + diff}px)`;
+});
+
+/* ===== FULLSCREEN MODAL ===== */
+const modal = document.createElement("div");
+modal.className = "portfolio-modal";
+modal.innerHTML = `
+  <div class="modal-inner">
+    <span class="modal-close">&times;</span>
+    <img src="" alt="">
+  </div>
+`;
+document.body.appendChild(modal);
+
+const modalImg = modal.querySelector("img");
+const closeBtn = modal.querySelector(".modal-close");
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    stopAutoSlide();
+    modalImg.src = card.querySelector("img").src;
+    modal.classList.add("open");
+  });
+});
+
+closeBtn.addEventListener("click", closeModal);
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeModal();
+});
+window.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+
+function closeModal() {
+  modal.classList.remove("open");
+  startAutoSlide();
+}
