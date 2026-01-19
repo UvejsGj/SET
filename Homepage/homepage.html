@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,6 +13,7 @@
     />
   </head>
   <body>
+    <!-- Logo stays the same -->
     <a href="#homesection">
       <img
         class="navbarlogo"
@@ -21,15 +22,24 @@
       />
     </a>
 
-    <nav class="navbar" aria-label="Main navigation">
+    <!-- ✅ NEW: Hamburger button (only shows on mobile) -->
+    <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">
+      <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      <span class="sr-only">Open menu</span>
+    </button>
+
+    <!-- ✅ Add id="main-nav" -->
+    <nav class="navbar" id="main-nav" aria-label="Main navigation">
       <a href="#homesection" class="homebtn">Home</a>
       <a href="#aboutsection" class="aboutbtn">About</a>
       <a href="#servicesection" class="servicesbtn">Services</a>
-      <!-- <a href="#lifesection" class="workbtn">Work Environment</a> -->
       <a href="#portfolio" class="portofoliobtn">Portofolio</a>
       <a href="#team" class="teambtn">Team</a>
       <a href="#contact" class="contactusbtn">Contact Us</a>
     </nav>
+
+    <!-- ✅ NEW: overlay (click to close) -->
+    <div class="nav-overlay" hidden></div>
 
     <div id="homesection" class="homelayout">
       <div class="title">
@@ -393,113 +403,226 @@
     </section>
 
     <section class="portfolio-section" id="portfolio">
-  <h2 class="section-title">Portofolio</h2>
+      <h2 class="section-title">Portfolio</h2>
 
-  <div class="portfolio-slider">
-    <div class="portfolio-track">
+      <div class="portfolio-shell" aria-roledescription="carousel">
+        <button
+          class="portfolio-arrow prev"
+          type="button"
+          aria-label="Previous project"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >chevron_left</span
+          >
+        </button>
 
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE1.png" alt="Project 1">
-        <div class="project-overlay">
-          <h3>Interactive 3D Web Experience</h3>
-          <p>Immersive real-time 3D website built for high-end brand presentation.</p>
+        <div class="portfolio-frame">
+          <div class="portfolio-viewport">
+            <div class="portfolio-track">
+              <!-- Slide 1 -->
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE1.png"
+                  alt="Project 1"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Interactive 3D Web Experience</h3>
+                  <p>
+                    Immersive real-time 3D website built for high-end brand
+                    presentation.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Slide 2 -->
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE2.png"
+                  alt="Project 2"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Motion-Driven Landing Page</h3>
+                  <p>
+                    Smooth motion graphics and micro-interactions enhancing user
+                    flow.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Keep the rest the same pattern -->
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE3.png"
+                  alt="Project 3"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <!-- ... continue SE4..SE12 as portfolio-slide ... -->
+
+              <!-- Keep the rest the same pattern -->
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE4.png"
+                  alt="Project 4"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE5.png"
+                  alt="Project 5"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE6.png"
+                  alt="Project 6"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE7.png"
+                  alt="Project 7"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE8.png"
+                  alt="Project 8"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE9.png"
+                  alt="Project 9"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE10.png"
+                  alt="Project 10"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE11.png"
+                  alt="Project 11"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="portfolio-slide" tabindex="0">
+                <img
+                  src="/Homepage/Projektet/SE12.png"
+                  alt="Project 12"
+                  loading="lazy"
+                />
+                <div class="portfolio-overlay">
+                  <h3>Product Visualization Platform</h3>
+                  <p>
+                    High-resolution 3D product renders with interactive
+                    rotation.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
-      </article>
 
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE2.png" alt="Project 2">
-        <div class="project-overlay">
-          <h3>Motion-Driven Landing Page</h3>
-          <p>Smooth motion graphics and micro-interactions enhancing user flow.</p>
+        <button
+          class="portfolio-arrow next"
+          type="button"
+          aria-label="Next project"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true"
+            >chevron_right</span
+          >
+        </button>
+
+        <div class="portfolio-ui">
+          <div class="portfolio-dots" aria-label="Slide navigation"></div>
         </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE3.png" alt="Project 3">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE4.png" alt="Project 4">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE5.png" alt="Project 5">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE6.png" alt="Project 6">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE7.png" alt="Project 7">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE8.png" alt="Project 8">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE9.png" alt="Project 9">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE10.png" alt="Project 10">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE11.png" alt="Project 11">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="/Homepage/Projektet/SE12.png" alt="Project 12">
-        <div class="project-overlay">
-          <h3>Product Visualization Platform</h3>
-          <p>High-resolution 3D product renders with interactive rotation.</p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-
-  <div class="portfolio-dots"></div>
-</section>
-
+      </div>
+    </section>
 
     <section id="faq" class="faq-section">
       <h2 class="section-title">Frequently Asked Questions</h2>

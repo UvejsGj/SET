@@ -3,25 +3,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
 
-body {
-  background-color: rgb(163, 195, 238);
-  margin: 0;
-  padding: 0;
+/* =========================
+   GLOBAL / RESET
+   ========================= */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-}
-
-body,
-*:not(input):not(textarea):not([contenteditable="true"]) {
-  caret-color: transparent;
-  user-select: none;
-}
-
-.material-symbols-outlined {
-  font-size: 50px !important;
-  display: flex;
-  vertical-align: middle;
-  align-items: center;
-  justify-content: center;
 }
 
 html {
@@ -29,49 +17,37 @@ html {
   overflow-x: hidden;
 }
 
-/* .navbarlogo {
-  position: absolute;
-  width: auto;
-  height: auto;
-  top: 5px;
-  left: 190px;
-  height: 50px;
-  width: 300px;
-  padding: 25px;
+body {
+  background-color: rgb(163, 195, 238);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-.navbar {
+/* Keep your “no caret + no select” behavior */
+body,
+*:not(input):not(textarea):not([contenteditable="true"]) {
+  caret-color: transparent;
+  user-select: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Base icon style (don’t force a size here, sections will override as needed) */
+.material-symbols-outlined {
   display: flex;
-  gap: 40px;
-  position: absolute;
-  top: 20px;
-  right: 150px;
-  height: auto;
-  width: auto;
-  border-radius: 50px;
-  background-color: white;
-  padding: 25px 40px;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-  text-decoration: none;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar a {
-  text-decoration: none; 
-  color: rgb(0, 0, 0);
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-  font-weight: 500;
-}
-
-.navbar a:hover {
-  color: #0077cc;
-} */
-
-/* Logo stays fixed and above everything */
+/* =========================
+   NAVBAR
+   ========================= */
 .navbarlogo {
   position: fixed;
   top: 18px;
@@ -91,7 +67,6 @@ html {
   padding: 18px 35px;
   border-radius: 18px;
 
-  /* Frosted glass with light tint */
   background: linear-gradient(
     145deg,
     rgba(25, 25, 35, 0.75),
@@ -100,13 +75,10 @@ html {
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
-  /* Modern soft shadow */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   z-index: 1000;
 
-  /* Typography */
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -128,7 +100,7 @@ html {
   transform: translateY(-1px);
 }
 
-/* Soft underline animation */
+/* Underline animation */
 .navbar a::after {
   content: "";
   position: absolute;
@@ -141,13 +113,12 @@ html {
   transform-origin: center;
   transition: transform 0.3s ease;
 }
-
 .navbar a:hover::after,
 .navbar a.active::after {
   transform: scaleX(1);
 }
 
-/* Add depth and feel like liquid glass */
+/* glass overlay layer */
 .navbar::before {
   content: "";
   position: absolute;
@@ -163,6 +134,7 @@ html {
   z-index: -1;
 }
 
+/* Optional “on-light” mode */
 .navbar.on-light {
   background: linear-gradient(
     145deg,
@@ -172,163 +144,73 @@ html {
   border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
-
 .navbar.on-light a {
-  color: #ffffff; /* keep text bright */
+  color: #ffffff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Responsive tweaks --- */
-@media (max-width: 1100px) {
-  .navbar {
-    right: 50%;
-    transform: translateX(50%); /* center the pill on smaller screens */
-    gap: 22px;
-    padding: 12px 22px;
-    font-size: 16px;
-  }
-}
-@media (max-width: 760px) {
-  .navbar {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%); /* fully centered */
-    gap: 18px;
-    padding: 10px 16px;
-    font-size: 15px;
-  }
-  .navbarlogo {
-    left: 16px;
-    top: 14px;
-    height: 42px;
-  }
-}
-
+/* =========================
+   HERO
+   ========================= */
 .homelayout {
-  /* border: 10px solid black; */
   position: relative;
   width: auto;
   height: 600px;
   margin-top: 10px;
   top: 180px;
-  position: relative;
   color: white;
 }
 
 .title {
+  position: relative; /* IMPORTANT for z-index stacking */
   top: -20px;
   margin: 100px;
 }
 
+/* Desktop stays exactly your values */
 .title h1 {
   position: relative;
   top: 100px;
   left: 150px;
-  /* border: 10px solid pink; */
   width: 650px;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 50px;
+
+  /* FIX: keep text above the hero image */
+  z-index: 3;
 }
 
 .title p {
   position: absolute;
-  top: 200px;
-  left: 250px;
-  /* border: 10px solid pink; */
+  top: 80px;
+  left: 150px;
   width: 650px;
   font-family: "Playwrite US Modern", cursive;
   font-optical-sizing: auto;
-  font-weight: weight;
   font-style: normal;
   font-size: 25px;
+
+  /* FIX: keep text above the hero image */
+  z-index: 3;
 }
 
+/* Hero image */
 .theart {
   position: absolute;
   width: 800px;
   height: 700px;
   top: -150px;
   right: 200px;
+
+  /* FIX: force image behind */
+  z-index: 1;
 }
 
-/* .customerlist img {
-  background-color: aliceblue;
-  width: auto;
-  height: 150px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 80px;
-  gap: 150px;
-} */
-
-/* .customerlist {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 150px;
-  padding: 40px 0;
-  margin-top: 50px;
-  background-color: aliceblue;
-  flex-wrap: wrap; 
-}
-
-.customerlist img {
-  max-height: 100px;      
-  width: auto;            
-  max-width: 180px;       
-  object-fit: contain;    
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .customerlist img {
-    max-height: 80px;
-    max-width: 140px;
-  }
-  .customerlist {
-    gap: 25px;
-  }
-} */
-
-/* .partnertext{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-  font-size: 50px;
-  color: white;
-} */
-
-/* .partners-title {
-  font-size: 3rem;
-  text-align: center;
-  font-weight: 700;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-  color: #ffffff;
-  margin-top: 80px;
-  margin-bottom: 30px;
-  position: relative;
-}
-
-.partners-title::after {
-  content: "";
-  display: block;
-  width: 280px;
-  height: 4px;
-  background: #2e7bd1;
-  margin: 10px auto 0;
-  border-radius: 2px;
-} */
-
+/* =========================
+   PARTNERS
+   ========================= */
 .partners-title {
   font-size: 3rem;
   text-align: center;
@@ -341,9 +223,12 @@ html {
   margin-bottom: 30px;
   position: relative;
   text-transform: uppercase;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Decorative blue underline */
 .partners-title::after {
   content: "";
   display: block;
@@ -355,16 +240,8 @@ html {
   transition: width 0.4s ease;
 }
 
-/* Hover effect — underline expands */
 .partners-title:hover::after {
   width: 180px;
-}
-
-/* Optional fade-in animation (matches .about-title) */
-.partners-title {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 @keyframes fadeInUp {
@@ -384,18 +261,16 @@ html {
   position: relative;
 }
 
-/* Inner container for movement */
 .customerlist-track {
   display: flex;
   align-items: center;
-  gap: 150px; /* spacing between logos */
+  gap: 150px;
   animation: scroll 25s linear infinite;
-  will-change: transform; /* 🟡 ADD THIS */
-  backface-visibility: hidden; /* 🟡 ADD THIS */
+  will-change: transform;
+  backface-visibility: hidden;
   width: max-content;
 }
 
-/* Pause on hover */
 .customerlist:hover .customerlist-track {
   animation-play-state: paused;
 }
@@ -414,7 +289,6 @@ html {
   filter: grayscale(0%);
 }
 
-/* Keyframes for smooth continuous loop */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -424,16 +298,43 @@ html {
   }
 }
 
-/* Responsive adjustment */
-@media (max-width: 768px) {
-  .customerlist img {
-    max-height: 80px;
-    max-width: 140px;
-  }
-  .customerlist-track {
-    gap: 60px;
-    animation: scroll 35s linear infinite; /* slower on small screens */
-  }
+/* =========================
+   ABOUT
+   ========================= */
+#aboutsection {
+  scroll-margin-top: 120px;
+}
+
+.about-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 120px;
+  margin-bottom: 40px;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  top: -40px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.about-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.about-title:hover::after {
+  width: 180px;
 }
 
 .aboutlayout {
@@ -447,55 +348,6 @@ html {
   justify-content: center;
   align-items: center;
   margin-top: -50px;
-}
-
-#aboutsection {
-  scroll-margin-top: 120px;
-}
-
-.about-title {
-  text-align: center;
-  font-size: 40px;
-  font-weight: 800;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-top: 120px; /* space from previous section */
-  margin-bottom: 40px;
-  position: relative;
-  font-family: "Roboto", sans-serif;
-  top: -40px;
-}
-
-/* Decorative blue underline */
-.about-title::after {
-  content: "";
-  display: block;
-  width: 140px;
-  height: 4px;
-  background: #2e7bd1;
-  margin: 12px auto 0;
-  border-radius: 2px;
-  transition: width 0.4s ease;
-}
-
-/* Optional hover effect */
-.about-title:hover::after {
-  width: 180px;
-}
-
-/* Optional fade-in animation */
-.about-title {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .handshakeimg {
@@ -519,7 +371,7 @@ html {
   top: -80px;
 }
 
-/* Individual Cards */
+/* Card base */
 .card1,
 .card2,
 .card3 {
@@ -537,7 +389,7 @@ html {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Layout variation for a “floating” look */
+/* Layout variation */
 .card1 {
   transform: translateY(20px) rotate(-3deg);
 }
@@ -556,8 +408,8 @@ html {
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
 }
 
-/* --- Inside the card --- */
-.material-symbols-outlined {
+/* Card icons (scoped so it doesn’t affect navbar icons etc.) */
+.cards .material-symbols-outlined {
   font-size: 55px;
   color: #1e73be;
   background: rgba(255, 255, 255, 0.6);
@@ -596,95 +448,9 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
-.wave-stack {
-  position: relative;
-  width: 100%;
-  height: 160px; /* adjust overall height of the divider */
-  overflow: hidden;
-  line-height: 0;
-}
-
-/* base wave */
-.wave {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.w1 path {
-  /* front wave color */
-  fill: #91b5e5; /* slightly darker than your bg */
-  opacity: 1;
-}
-
-.w2 path {
-  /* back wave color */
-  fill: #b7cdf3; /* a bit lighter */
-  opacity: 0.85;
-}
-
-/* flip the second wave vertically and nudge it a bit to overlap nicely */
-.flip {
-  transform: scaleY(-1) translateY(-2px);
-  transform-origin: center;
-}
-
-/* (optional) subtle depth */
-.wave-stack .wave {
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12));
-}
-
-/* responsive tweak */
-@media (max-width: 768px) {
-  .wave-stack {
-    height: 120px;
-  }
-}
-
-/* make SVG path transforms behave predictably */
-.wave path {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-/* subtle opposing drifts */
-.w1 path {
-  animation: waveDriftLeft 13s ease-in-out infinite alternate;
-}
-.w2 path {
-  animation: waveDriftRight 17s ease-in-out infinite alternate;
-  opacity: 0.9; /* tiny depth tweak, optional */
-}
-
-/* keyframes */
-@keyframes waveDriftLeft {
-  from {
-    transform: translateX(0) translateY(0);
-  }
-  to {
-    transform: translateX(-32px) translateY(4px);
-  }
-}
-@keyframes waveDriftRight {
-  from {
-    transform: translateX(0) translateY(0);
-  }
-  to {
-    transform: translateX(28px) translateY(-3px);
-  }
-}
-
-/* respect users who prefer less motion */
-@media (prefers-reduced-motion: reduce) {
-  .w1 path,
-  .w2 path {
-    animation: none;
-  }
-}
-
+/* =========================
+   SERVICES
+   ========================= */
 .services {
   max-width: 1100px;
   margin: 0 auto;
@@ -693,7 +459,6 @@ html {
   margin-top: 20px;
 }
 
-/* Title */
 .servicetitle {
   display: inline-block;
   font-size: 40px;
@@ -706,7 +471,6 @@ html {
   font-family: "Roboto", sans-serif;
   top: -100px;
 }
-
 .servicetitle::after {
   content: "";
   position: absolute;
@@ -719,14 +483,8 @@ html {
   border-radius: 2px;
   transition: width 0.4s ease;
 }
-
 .servicetitle:hover::after {
   width: 180px;
-}
-
-.servicesection {
-  position: absolute;
-  top: 200px;
 }
 
 .services p {
@@ -740,14 +498,12 @@ html {
   font-family: "Playwrite US Modern", cursive;
   margin-top: -100px;
 }
-/* ---------- Global for this section ---------- */
+
 .servicecards {
   --accent: #2e7bd1;
-  --glass: rgba(255, 255, 255, 0.22);
   --glass-hover: rgba(255, 255, 255, 0.3);
-  --border: rgba(255, 255, 255, 0.35);
 
-  font-family: "Roboto", sans-serif; /* ← Use Roboto */
+  font-family: "Roboto", sans-serif;
   max-width: 1200px;
   margin: 80px auto 0;
   padding: 20px 24px;
@@ -759,16 +515,15 @@ html {
   margin-top: 60px;
 }
 
-/* Every card (targets your divs inside .servicecards) */
 .servicecards > div {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* keeps icon → title → text stacked neatly */
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   width: 100%;
   max-width: 260px;
-  min-height: 370px; /* ensures all cards have equal height */
+  min-height: 370px;
   padding: 28px 22px;
   color: #fff;
 
@@ -781,7 +536,6 @@ html {
   transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.3s ease;
 }
 
-/* Headline + copy */
 .servicecards h1 {
   font-size: 22px;
   font-weight: 800;
@@ -790,13 +544,12 @@ html {
 }
 
 .servicecards p {
-  font-size: 15.5px; /* was 14px — slightly bigger */
-  line-height: 1.7; /* smoother reading */
+  font-size: 15.5px;
+  line-height: 1.7;
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.93);
 }
 
-/* Material Symbols inside the cards */
 .servicecards .material-symbols-outlined {
   display: inline-grid;
   place-items: center;
@@ -809,14 +562,11 @@ html {
   font-size: 36px;
   box-shadow: 0 0 18px rgba(46, 123, 209, 0.35);
   transition: all 0.3s ease;
-
-  /* keep outlined set consistent */
   font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
 }
 
-/* Hover lift + icon glow */
 .servicecards > div:hover {
-  transform: translateY(-12px) scale(1.03);
+  transform: translateY(-12px) scale(1.03) rotate(0deg);
   background: var(--glass-hover);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
@@ -826,7 +576,7 @@ html {
   box-shadow: 0 0 22px rgba(46, 123, 209, 0.6);
 }
 
-/* --- Softer balanced wave --- */
+/* Wave layout on desktop only */
 .servicecards > div:nth-child(1) {
   transform: translateY(12px) rotate(-1deg);
 }
@@ -844,42 +594,33 @@ html {
   transform: translateY(12px) rotate(1deg);
 }
 
-/* Normalize on hover so each card “snaps” upright */
-.servicecards > div:hover {
-  transform: translateY(-12px) scale(1.03) rotate(0deg);
+/* =========================
+   SECTION TITLE (shared)
+   ========================= */
+.section-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  border-radius: 2px;
+  margin: 14px auto 0;
 }
 
-/* ---------- Responsive tweaks ---------- */
-@media (max-width: 1100px) {
-  .servicecards {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
-  }
-  /* soften the wave on smaller screens */
-  .servicecards > div {
-    transform: translateY(8px);
-  }
-  .servicecards > div:nth-child(3) {
-    transform: translateY(-6px) scale(1.03);
-  }
-}
-
-@media (max-width: 720px) {
-  .servicecards {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
-    gap: 28px;
-  }
-  .servicecards > div {
-    transform: translateY(0) rotate(0);
-  }
-}
-
-@media (max-width: 480px) {
-  .servicecards {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== Life at Smart Engineering Section ===== */
+/* =========================
+   CULTURE SECTION
+   ========================= */
 .culture-section {
   position: relative;
   padding: 100px 24px 140px;
@@ -888,7 +629,6 @@ html {
   overflow: hidden;
 }
 
-/* ===== Animated gradient background ===== */
 .culture-section::before {
   content: "";
   position: absolute;
@@ -922,94 +662,6 @@ html {
   }
 }
 
-/* ===== Title ===== */
-.section-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 46px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffffff;
-  text-transform: uppercase;
-  margin-bottom: 60px;
-  position: relative;
-  z-index: 1;
-}
-.section-title::after {
-  content: "";
-  display: block;
-  width: 140px;
-  height: 4px;
-  background: #2e7bd1;
-  border-radius: 2px;
-  margin: 14px auto 0;
-}
-
-/* ===== Life at Smart Engineering Section ===== */
-.culture-section {
-  position: relative;
-  padding: 100px 24px 140px;
-  background: transparent;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* ===== Animated background aura ===== */
-.culture-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 25% 30%,
-      rgba(46, 123, 209, 0.15),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 75% 70%,
-      rgba(124, 182, 223, 0.12),
-      transparent 60%
-    ),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 80%);
-  animation: waveFlow 14s ease-in-out infinite alternate;
-  z-index: 0;
-  filter: blur(60px);
-  opacity: 0.9;
-}
-
-@keyframes waveFlow {
-  0% {
-    transform: translateY(0px) scale(1);
-  }
-  50% {
-    transform: translateY(-25px) scale(1.02);
-  }
-  100% {
-    transform: translateY(20px) scale(1);
-  }
-}
-
-/* ===== Title ===== */
-.section-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 46px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffffff;
-  text-transform: uppercase;
-  margin-bottom: 60px;
-  position: relative;
-  z-index: 1;
-}
-.section-title::after {
-  content: "";
-  display: block;
-  width: 140px;
-  height: 4px;
-  background: #2e7bd1;
-  border-radius: 2px;
-  margin: 14px auto 0;
-}
-
-/* ===== Grid ===== */
 .culture-grid {
   max-width: 1200px;
   margin: 0 auto;
@@ -1020,7 +672,6 @@ html {
   z-index: 2;
 }
 
-/* ===== Card Base ===== */
 .culture-card {
   position: relative;
   overflow: hidden;
@@ -1041,13 +692,12 @@ html {
   justify-content: center;
 
   transition: transform 0.45s ease, box-shadow 0.45s ease;
-  background: 0.45s ease, border-color 0.45s ease, opacity 0.8s ease;
   opacity: 0;
   transform: translateY(40px);
   z-index: 1;
 }
 
-/* ===== Individual Floating Animations ===== */
+/* Floating animations */
 @keyframes float1 {
   0%,
   100% {
@@ -1098,13 +748,11 @@ html {
   animation: float4 9s ease-in-out infinite alternate;
 }
 
-/* ===== Visible (on scroll) ===== */
 .culture-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===== Hover ===== */
 .culture-card:hover {
   transform: translateY(-12px) scale(1.03);
   background: rgba(255, 255, 255, 0.26);
@@ -1113,7 +761,6 @@ html {
     inset 0 0 10px rgba(46, 123, 209, 0.15);
 }
 
-/* ===== Icon (unified alignment) ===== */
 .culture-card .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
   font-size: 48px;
@@ -1130,7 +777,6 @@ html {
   z-index: 1;
 }
 
-/* Hover Glow for Icon */
 .culture-card:hover .material-symbols-outlined {
   background: #2e7bd1;
   color: #ffffff;
@@ -1138,7 +784,6 @@ html {
   box-shadow: 0 0 28px rgba(46, 123, 209, 0.55);
 }
 
-/* ===== Text ===== */
 .culture-card h3 {
   font-size: 26px;
   font-weight: 900;
@@ -1156,333 +801,18 @@ html {
   z-index: 1;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 1024px) {
-  .culture-grid {
-    grid-template-columns: 1fr;
-  }
-  .culture-card {
-    animation: none;
-  }
-}
-
-/* ===== Tech Section ===== */
-.tech-section {
-  position: relative;
-  padding: 90px 24px 110px;
-  background: transparent;
-  text-align: center;
-}
-
-/* Title + intro (reuse your section-title if you like) */
-.tech-section .section-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 42px;
-  font-weight: 800;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 0 0 12px;
-  position: relative;
-}
-.tech-section .section-title::after {
-  content: "";
-  display: block;
-  width: 140px;
-  height: 4px;
-  background: #2e7bd1;
-  border-radius: 2px;
-  margin: 12px auto 0;
-}
-.tech-intro {
-  max-width: 820px;
-  margin: 10px auto 36px;
-  color: #eaf2ff;
-  font-family: "Roboto", sans-serif;
-  font-size: 16.5px;
-  line-height: 1.7;
-  opacity: 0.9;
-}
-
-/* ===== Grid (12 items) ===== */
-.tech-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
-  gap: 22px;
-}
-
-/* ===== Card (small glass tiles) ===== */
-.tech-card {
-  position: relative;
-  overflow: hidden;
-  padding: 22px 18px;
-  border-radius: 18px;
-  text-align: left;
-
-  background: rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
-
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  column-gap: 14px;
-  align-items: center;
-
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease,
-    border-color 0.35s ease;
-}
-
-/* Icon (same hover language as your other cards) */
-.tech-card .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
-  font-size: 32px;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-
-  display: grid;
-  place-items: center;
-  color: #2e7bd1;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 14px rgba(46, 123, 209, 0.32);
-  transition: all 0.3s ease;
-}
-
-/* Title */
-.tech-card h3 {
-  margin: 0;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-weight: 800;
-  font-size: 17px;
-  line-height: 1.35;
-  letter-spacing: 0.2px;
-}
-
-/* Hover: lift + icon turns blue background (white glyph) */
-.tech-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.24);
-  border-color: rgba(46, 123, 209, 0.45);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28), 0 0 16px rgba(46, 123, 209, 0.22),
-    inset 0 0 8px rgba(46, 123, 209, 0.12);
-}
-.tech-card:hover .material-symbols-outlined {
-  background: #2e7bd1;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 0 22px rgba(46, 123, 209, 0.48);
-}
-
-/* Subtle etched line art per tile (optional; keep faint) */
-.tech-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.18;
-  background-repeat: no-repeat;
-  background-position: right -20px bottom -10px;
-  background-size: 220px auto;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-.tech-card:nth-child(1)::before {
-  background-image: radial-gradient(
-    200px 140px at 80% 90%,
-    rgba(255, 255, 255, 0.18),
-    transparent 60%
-  );
-}
-.tech-card:nth-child(2)::before {
-  background-image: conic-gradient(
-    from 120deg,
-    rgba(255, 255, 255, 0.16),
-    transparent 55%
-  );
-}
-.tech-card:nth-child(3)::before {
-  background-image: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.12) 0 20%,
-    transparent 20% 40%,
-    rgba(255, 255, 255, 0.12) 40% 60%,
-    transparent 60%
-  );
-}
-.tech-card:nth-child(4)::before {
-  background-image: radial-gradient(
-    220px 120px at 85% 85%,
-    rgba(255, 255, 255, 0.16),
-    transparent 60%
-  );
-}
-.tech-card:nth-child(5)::before {
-  background-image: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.14),
-    transparent 70%
-  );
-}
-.tech-card:nth-child(6)::before {
-  background-image: conic-gradient(
-    from -30deg,
-    rgba(255, 255, 255, 0.16),
-    transparent 60%
-  );
-}
-.tech-card:nth-child(7)::before {
-  background-image: radial-gradient(
-    180px 120px at 80% 90%,
-    rgba(255, 255, 255, 0.16),
-    transparent 60%
-  );
-}
-.tech-card:nth-child(8)::before {
-  background-image: linear-gradient(
-    60deg,
-    rgba(255, 255, 255, 0.12),
-    transparent 70%
-  );
-}
-.tech-card:nth-child(9)::before {
-  background-image: conic-gradient(
-    from 60deg,
-    rgba(255, 255, 255, 0.14),
-    transparent 60%
-  );
-}
-.tech-card:nth-child(10)::before {
-  background-image: radial-gradient(
-    220px 140px at 82% 88%,
-    rgba(255, 255, 255, 0.14),
-    transparent 60%
-  );
-}
-.tech-card:nth-child(11)::before {
-  background-image: linear-gradient(
-    30deg,
-    rgba(255, 255, 255, 0.12),
-    transparent 70%
-  );
-}
-.tech-card:nth-child(12)::before {
-  background-image: conic-gradient(
-    from 10deg,
-    rgba(255, 255, 255, 0.14),
-    transparent 60%
-  );
-}
-
-/* Responsive */
-@media (max-width: 1100px) {
-  .tech-grid {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
-  }
-}
-@media (max-width: 800px) {
-  .tech-grid {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
-  }
-}
-@media (max-width: 520px) {
-  .tech-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* === TECH CARDS: icon left, text visibly moved right === */
-.tech-card {
-  position: relative;
-  display: flex !important;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 20px;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-  transition: all 0.35s ease;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
-}
-
-/* Small left icon */
-.tech-card .material-symbols-outlined {
-  flex-shrink: 0;
-  font-size: 26px;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.85);
-  color: #2e7bd1;
-  box-shadow: 0 0 14px rgba(46, 123, 209, 0.3);
-  transition: all 0.3s ease;
-  margin-top: 4px;
-}
-
-/* Move text to the right more */
-.tech-card-content {
-  padding-left: 8px;
-}
-
-/* Title & paragraph inside */
-.tech-card h3 {
-  margin: 0 0 6px 0;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-}
-.tech-card p {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #eaf2ff;
-}
-
-/* Hover animation (matches your other cards) */
-.tech-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: rgba(255, 255, 255, 0.26);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
-}
-.tech-card:hover .material-symbols-outlined {
-  background: #2e7bd1;
-  color: #ffffff;
-  box-shadow: 0 0 22px rgba(46, 123, 209, 0.45);
-}
-
-/* Mobile — stack neatly */
-@media (max-width: 500px) {
-  .tech-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .tech-card .material-symbols-outlined {
-    margin-bottom: 10px;
-  }
-  .tech-card-content {
-    padding-left: 0;
-  }
-}
-
-/* === Animated background behind all tech cards === */
+/* =========================
+   TECH SECTION (keep ONE version)
+   You ended with FLEX cards, so we keep that
+   ========================= */
 .tech-section {
   position: relative;
   padding: 120px 24px;
   overflow: hidden;
-  background: transparent; /* Keeps your site style */
+  background: transparent;
+  text-align: center;
 }
 
-/* Subtle animated background */
 .tech-section::before {
   content: "";
   position: absolute;
@@ -1505,7 +835,6 @@ html {
   z-index: 0;
 }
 
-/* Animate background flow */
 @keyframes techBgFlow {
   0% {
     transform: translate(0, 0) scale(1);
@@ -1518,151 +847,196 @@ html {
   }
 }
 
-/* Cards always stay above the background */
-.tech-section .tech-card {
-  position: relative;
+.tech-section .section-title {
+  font-size: 42px;
+  margin: 0 0 12px;
   z-index: 2;
 }
 
-/* Optional title for section */
-.tech-title {
-  text-align: center;
+.tech-intro {
+  max-width: 820px;
+  margin: 10px auto 36px;
+  color: #eaf2ff;
   font-family: "Roboto", sans-serif;
-  font-size: 44px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #ffffff;
-  text-transform: uppercase;
-  margin-bottom: 60px;
+  font-size: 16.5px;
+  line-height: 1.7;
+  opacity: 0.9;
   position: relative;
   z-index: 2;
 }
-.tech-title::after {
-  content: "";
-  display: block;
-  width: 140px;
-  height: 4px;
-  background: #2e7bd1;
-  border-radius: 2px;
-  margin: 14px auto 0;
+
+.tech-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 22px;
+  position: relative;
+  z-index: 2;
 }
 
-/* ===== FAQ Section (glassy, Roboto, icon turns blue on open) ===== */
-:root{
+/* Final tech-card style (flex) */
+.tech-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 20px;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.35s ease;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  overflow: hidden;
+}
+
+.tech-card .material-symbols-outlined {
+  flex-shrink: 0;
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
+  font-size: 26px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #2e7bd1;
+  box-shadow: 0 0 14px rgba(46, 123, 209, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 4px;
+}
+
+.tech-card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+}
+
+.tech-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+}
+.tech-card:hover .material-symbols-outlined {
+  background: #2e7bd1;
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.45);
+}
+
+/* =========================
+   FAQ
+   ========================= */
+:root {
   --accent: #2e7bd1;
-  --glass-bg: rgba(255,255,255,0.20);
-  --glass-bg-hover: rgba(255,255,255,0.28);
-  --glass-border: rgba(255,255,255,0.30);
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-bg-hover: rgba(255, 255, 255, 0.28);
+  --glass-border: rgba(255, 255, 255, 0.3);
   --text: #ffffff;
   --muted: #eaf2ff;
 }
 
-#faq { scroll-margin-top: 120px; }
+#faq {
+  scroll-margin-top: 120px;
+}
 
-.faq-section{
+.faq-section {
   position: relative;
   padding: 110px 24px 120px;
   background: transparent;
   text-align: center;
-  font-family: "Roboto", sans-serif; /* ✅ keep Roboto consistent */
+  font-family: "Roboto", sans-serif;
   isolation: isolate;
 }
 
-/* Optional ambient glow behind the section */
-.faq-section::before{
-  content:"";
-  position:absolute; inset:-10% -5% -10% -5%;
-  background:
-    radial-gradient(60% 60% at 20% 25%, rgba(46,123,209,.14) 0%, transparent 60%),
-    radial-gradient(55% 55% at 82% 70%, rgba(124,182,223,.10) 0%, transparent 58%),
-    linear-gradient(120deg, rgba(255,255,255,.06), transparent 70%);
+.faq-section::before {
+  content: "";
+  position: absolute;
+  inset: -10% -5% -10% -5%;
+  background: radial-gradient(
+      60% 60% at 20% 25%,
+      rgba(46, 123, 209, 0.14) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      55% 55% at 82% 70%,
+      rgba(124, 182, 223, 0.1) 0%,
+      transparent 58%
+    ),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 70%);
   filter: blur(70px);
   animation: faqFloat 14s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: -1;
 }
-@keyframes faqFloat{
-  0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(-22px) scale(1.02); }
-  100% { transform: translateY(14px) scale(1); }
+
+@keyframes faqFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-22px) scale(1.02);
+  }
+  100% {
+    transform: translateY(14px) scale(1);
+  }
 }
 
-/* Title */
-.faq-section .section-title{
-  font-family: "Roboto", sans-serif;
-  font-size: 52px;          /* ✅ bigger title */
+.faq-section .section-title {
+  font-size: 52px;
   font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--text);
   margin: 0 0 50px;
-  position: relative;
-}
-.faq-section .section-title::after{
-  content:"";
-  display:block;
-  width:180px; height:4px;
-  background: var(--accent);
-  border-radius:2px;
-  margin:14px auto 0;
+  color: var(--text);
 }
 
-/* Grid */
-/* Replace your .faq-grid grid rules with flex layout */
-.faq-grid{
+/* Keep ONE grid definition */
+.faq-grid {
   max-width: 1100px;
   margin: 0 auto;
-  display: flex;            /* was: grid */
-  flex-wrap: wrap;          /* allow wrapping */
+  display: grid;
   gap: 26px;
-}
-@media (max-width: 960px){
-  .faq-grid{ grid-template-columns: 1fr; }
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
 }
 
-/* Card (details) */
-.faq-card{
+.faq-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 22px;
   color: var(--text);
   text-align: left;
   overflow: hidden;
-  flex: 1 1 calc(50% - 13px);   /* two per row, subtract half the gap */
-  align-self: flex-start;       /* don't stretch to row height */
-  /* keep your existing card styles below (glass, shadow, transitions, etc.) *
+  align-self: start;
 
-  /* glass + depth */
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 12px 28px rgba(0,0,0,.22);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 
-  /* motion */
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    background .35s ease,
-    border-color .35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease,
+    border-color 0.35s ease;
 }
 
-/* Lift when hovering (same feel as other cards) */
-.faq-card:hover{
+.faq-card:hover {
   transform: translateY(-8px);
   background: var(--glass-bg-hover);
-  border-color: rgba(255,255,255,0.34);
-  box-shadow: 0 18px 44px rgba(0,0,0,.32);
+  border-color: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
 }
 
-/* Slight extra lift when opened */
-.faq-card[open]{
+.faq-card[open] {
   transform: translateY(-10px);
-  box-shadow:
-    0 20px 48px rgba(0,0,0,.34),
-    0 0 18px rgba(46,123,209,.22);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34), 0 0 18px rgba(46, 123, 209, 0.22);
 }
 
-/* Summary row */
-.faq-summary{
+.faq-summary {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -1672,322 +1046,966 @@ html {
   list-style: none;
   user-select: none;
 }
-.faq-card > summary::-webkit-details-marker{ display: none; }
+.faq-card > summary::-webkit-details-marker {
+  display: none;
+}
 
-/* Icon “logo” (turns blue on open) */
-.faq-icon{
+.faq-icon {
   font-family: "Material Symbols Outlined";
-  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
   font-size: 36px;
-  width: 68px; height: 68px; border-radius: 18px;
-  display: grid; place-items: center;
-  color: var(--accent);                     /* base: blue glyph */
-  background: rgba(255,255,255,0.88);      /* white pill bg */
-  box-shadow: 0 0 18px rgba(46,123,209,0.35);
-  transition:
-    transform .28s cubic-bezier(.2,.8,.2,1),
-    box-shadow .28s ease,
-    color .28s ease,
-    background-color .28s ease;
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 0 18px rgba(46, 123, 209, 0.35);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.28s ease, color 0.28s ease, background-color 0.28s ease;
 }
 
-/* Open/close icon animation + color flip to solid blue */
-@keyframes iconPop{
-  0%   { transform: translateY(0) scale(1); }
-  55%  { transform: translateY(-4px) scale(1.06); }
-  100% { transform: translateY(0) scale(1); }
+@keyframes iconPop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  55% {
+    transform: translateY(-4px) scale(1.06);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
-.faq-card[open] .faq-icon{
-  background: var(--accent);     /* ✅ pill turns blue */
-  color: #ffffff;                /* ✅ glyph flips to white */
-  box-shadow: 0 0 22px rgba(46,123,209,0.45);
-  animation: iconPop 320ms cubic-bezier(.25,.9,.25,1);
+.faq-card[open] .faq-icon {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.45);
+  animation: iconPop 320ms cubic-bezier(0.25, 0.9, 0.25, 1);
 }
 
-/* Also give a tiny lift on hover (like other cards) */
-.faq-card:hover .faq-icon{
+.faq-card:hover .faq-icon {
   transform: translateY(-2px);
-  box-shadow: 0 0 22px rgba(46,123,209,0.45);
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.45);
 }
 
-/* Question text */
-.faq-q{
+.faq-q {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 700;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
   color: var(--text);
 }
 
-/* Toggle (+ → –) drawn with CSS */
-.faq-toggle{
+.faq-toggle {
   position: relative;
-  width: 22px; height: 22px;
+  width: 22px;
+  height: 22px;
 }
 .faq-toggle::before,
-.faq-toggle::after{
-  content:"";
-  position:absolute; inset:0; margin:auto;
+.faq-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
   background: #cfe2ff;
-  transition: transform .3s ease, background .3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
-.faq-toggle::before{ width:14px; height:2px; }
-.faq-toggle::after { width:2px;  height:14px; }
-.faq-card[open] .faq-toggle::after{ transform: scaleY(0); } /* minus */
+.faq-toggle::before {
+  width: 14px;
+  height: 2px;
+}
+.faq-toggle::after {
+  width: 2px;
+  height: 14px;
+}
+.faq-card[open] .faq-toggle::after {
+  transform: scaleY(0);
+}
 .faq-card[open] .faq-toggle::before,
-.faq-card[open] .faq-toggle::after{ background: var(--accent); }
+.faq-card[open] .faq-toggle::after {
+  background: var(--accent);
+}
 
-/* Answer — CSS-only smooth open/close */
-.faq-a{
-  padding: 0 26px;            /* vertical padding added when open */
+.faq-a {
+  padding: 0 26px;
   color: var(--muted);
   font-family: "Roboto", sans-serif;
   font-size: 17px;
   line-height: 1.8;
 
-  max-height: 0;              /* collapsed */
+  max-height: 0;
   opacity: 0;
   transform: translateY(-6px);
   overflow: hidden;
 
-  transition:
-    max-height .46s cubic-bezier(.25,1,.5,1),
-    opacity .30s ease,
-    transform .35s ease,
-    padding-top .30s ease,
-    padding-bottom .30s ease;
+  transition: max-height 0.46s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.3s ease, transform 0.35s ease, padding-top 0.3s ease,
+    padding-bottom 0.3s ease;
 }
 
-.faq-card[open] .faq-a{
-  max-height: 640px;          /* increase if answers get longer */
+.faq-card[open] .faq-a {
+  max-height: 640px;
   opacity: 1;
   transform: translateY(0);
   padding-top: 0;
   padding-bottom: 20px;
 }
 
-/* Keyboard focus */
-.faq-summary:focus-visible{
+.faq-summary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 6px rgba(46,123,209,.20) inset;
+  box-shadow: 0 0 0 6px rgba(46, 123, 209, 0.2) inset;
   border-radius: 16px;
 }
 
-/* ✅ Keep a 2×2 grid */
-.faq-grid{
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  gap: 26px;
-  grid-template-columns: repeat(2, minmax(320px, 1fr));
-}
-
-/* ✅ Each card keeps its own height (doesn't stretch to the row height) */
-.faq-card{
-  align-self: start;    /* key line: prevents “empty open” look on the neighbor */
-  height: auto;         /* ensure no fixed/stretch heights linger */
-}
-
-/* 📱 Mobile: 1 column */
-@media (max-width: 960px){
-  .faq-grid{ grid-template-columns: 1fr; }
-}
-
-/* ==== PORTFOLIO SECTION ==== */
-.portfolio-section {
+/* =========================
+   PORTFOLIO (New Cinematic Slider) — SEAM-FREE
+   ========================= */
+.portfolio-section{
   padding: 120px 24px;
   text-align: center;
   overflow: hidden;
 }
 
-.portfolio-section .section-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 44px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #fff;
-  margin-bottom: 50px;
-}
-
-/* Slider container */
-.portfolio-slider {
-  max-width: 1100px;
+.portfolio-shell{
+  --accent: #2e7bd1;
+  max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
-  cursor: grab;
+  position: relative;
+  padding: 10px 0 0;
 }
 
-.portfolio-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
-}
-
-/* Project card */
-.project-card {
-  flex: 0 0 100%;
+/* Frame: clips + owns border radius
+   Shadow is drawn on ::before (separate layer) */
+.portfolio-frame{
   position: relative;
   border-radius: 22px;
-  overflow: hidden;
-  height: 520px;
-  background: #000;
-  box-shadow: 0 20px 45px rgba(0,0,0,.35);
-  transition: transform .35s ease, box-shadow .35s ease;
-  
+  overflow: hidden;                 /* IMPORTANT: clip everything inside */
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.20);
+  isolation: isolate;               /* keeps layers clean */
 }
 
-.project-card img {
+/* Shadow is outside the clipping layer (no seam) */
+.portfolio-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 26px 70px rgba(0,0,0,.35);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Viewport clips slides + keeps 16:9 */
+.portfolio-viewport{
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-height: 620px;
+
+  background: rgba(0,0,0,.35);
+
+  /* If seam still happens on some GPUs: set blur to 0 or 2 */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Track slides horizontally */
+.portfolio-track{
+  display: flex;
+  height: 100%;
+
+  transition: transform 520ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+
+  /* IMPORTANT: force GPU layer in a stable way */
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+}
+
+/* Each slide takes full viewport */
+.portfolio-slide{
+  flex: 0 0 100%;
+  position: relative;
+  height: 100%;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  /* Keeps slide on its own layer (reduces seams) */
+  transform: translate3d(0,0,0);
+}
+
+/* Image always fits 16:9 */
+.portfolio-slide img{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.04);
-  transition: transform .6s ease;
+  object-position: center;
+
+  transform: scale(1.02);
+  transition: transform 700ms ease;
 }
 
-/* Hover lift (same feel as your cards) */
-/* .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow:
-    0 30px 70px rgba(0,0,0,.45),
-    0 0 28px rgba(46,123,209,.35);
-} */
-
-.project-card:hover img {
-  transform: scale(1.1);
-
+/* Subtle zoom on hover */
+.portfolio-viewport:hover .portfolio-slide img{
+  transform: scale(1.06);
 }
 
-/* Overlay text */
-.project-overlay {
+/* Overlay */
+.portfolio-overlay{
   position: absolute;
-  border-radius: 22px;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,.75),
-    rgba(0,0,0,.15),
-    transparent
-  );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 36px;
-  opacity: 0;
-  transition: opacity .35s ease;
+  padding: 30px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.78) 0%,
+    rgba(0,0,0,.18) 55%,
+    rgba(0,0,0,0) 100%
+  );
 }
 
-.project-card:hover .project-overlay {
-  opacity: 1;
-  border-radius: 22px;
-}
-
-.project-overlay h3 {
+.portfolio-overlay h3{
+  margin: 0 0 10px;
+  color: #fff;
   font-family: "Roboto", sans-serif;
   font-size: 26px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: .2px;
 }
 
-.project-overlay p {
+.portfolio-overlay p{
+  margin: 0;
+  max-width: 70ch;
+  color: #dce9ff;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #dce9ff;
-  max-width: 520px;
+  opacity: .95;
 }
 
-.portfolio-dots {
-  margin-top: 26px;
+/* Arrows */
+.portfolio-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(145deg, rgba(25,25,35,.78), rgba(15,15,25,.60));
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 18px 44px rgba(0,0,0,.35);
+
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.portfolio-arrow .material-symbols-outlined{
+  font-size: 34px;
+  color: #fff;
+}
+
+.portfolio-arrow:hover{
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 22px 54px rgba(0,0,0,.45), 0 0 18px rgba(46,123,209,.22);
+}
+
+.portfolio-arrow.prev{ left: 14px; }
+.portfolio-arrow.next{ right: 14px; }
+
+/* Dots */
+.portfolio-ui{
+  margin-top: 18px;
   display: flex;
   justify-content: center;
-  gap: 10px;
 }
 
-.portfolio-dots button {
+.portfolio-dots{
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.portfolio-dots button{
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: 999px;
   border: none;
-  background: rgba(255,255,255,.35);
   cursor: pointer;
-  transition: all .3s ease;
+  background: rgba(255,255,255,.35);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
 
-.portfolio-dots button.active {
+.portfolio-dots button.active{
   background: #2e7bd1;
-  box-shadow: 0 0 12px rgba(46,123,209,.8);
+  transform: scale(1.25);
+  box-shadow: 0 0 12px rgba(46,123,209,.75);
 }
 
-/* Responsive */
+/* Mobile tweaks */
+@media (max-width: 768px){
+  .portfolio-section{ padding: 90px 16px; }
+  .portfolio-overlay{ padding: 18px; }
+  .portfolio-overlay h3{ font-size: 18px; }
+  .portfolio-overlay p{ font-size: 13.5px; }
+  .portfolio-arrow{
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .portfolio-arrow .material-symbols-outlined{ font-size: 30px; }
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px){
+  .portfolio-section{ padding: 90px 16px; }
+  .portfolio-overlay{ padding: 18px; }
+  .portfolio-overlay h3{ font-size: 18px; }
+  .portfolio-overlay p{ font-size: 13.5px; }
+  .portfolio-arrow{
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .portfolio-arrow .material-symbols-outlined{ font-size: 30px; }
+}
+
+
+/* =========================
+   RESPONSIVE (does NOT touch desktop)
+   ========================= */
+@media (max-width: 1100px) {
+  .navbar {
+    right: 50%;
+    transform: translateX(50%);
+    gap: 22px;
+    padding: 12px 22px;
+    font-size: 16px;
+    max-width: calc(100% - 24px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .navbar::-webkit-scrollbar {
+    height: 0;
+  }
+
+  .servicecards {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .culture-grid {
+    grid-template-columns: 1fr;
+  }
+  .culture-card {
+    animation: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
+  .customerlist img {
+    max-height: 80px;
+    max-width: 140px;
+  }
+  .customerlist-track {
+    gap: 60px;
+    animation: scroll 35s linear infinite;
+  }
+
   .project-card {
     height: 420px;
   }
 }
 
-/* ===== FULLSCREEN PROJECT MODAL ===== */
-.portfolio-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 14, 22, 0.92);
-  backdrop-filter: blur(14px);
+@media (max-width: 760px) {
+  .navbar {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    gap: 18px;
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+  .navbarlogo {
+    left: 16px;
+    top: 14px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 720px) {
+  .servicecards {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 28px;
+  }
+  .servicecards > div:nth-child(1),
+  .servicecards > div:nth-child(2),
+  .servicecards > div:nth-child(3),
+  .servicecards > div:nth-child(4),
+  .servicecards > div:nth-child(5) {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbarlogo {
+    left: 14px;
+    top: 12px;
+    height: 38px;
+  }
+
+  .navbar {
+    max-width: calc(100% - 16px);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* HERO stacks on mobile */
+  .homelayout {
+    top: 0;
+    margin-top: 110px;
+    height: auto;
+    padding: 0 18px 60px;
+  }
+
+  .title {
+    margin: 0;
+    width: 100%;
+    max-width: 1100px;
+    margin-inline: auto;
+  }
+
+  .title h1 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: clamp(26px, 7vw, 36px);
+    margin: 0;
+    padding-top: 40px;
+  }
+
+  .title p {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 14px 0 0;
+    font-size: 15px;
+  }
+
+  .theart {
+    position: relative;
+    top: 0;
+    right: auto;
+    margin: 26px auto 0;
+    width: min(720px, 92vw);
+    height: auto;
+  }
+
+  /* About stacks */
+  .aboutlayout {
+    display: block;
+    padding: 0 18px;
+  }
+  .handshakeimg {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: 0 auto 24px;
+    width: min(720px, 92vw);
+    height: auto;
+  }
+  .cards {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    margin: 40px auto 0;
+    left: 0;
+    top: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card1,
+  .card2,
+  .card3 {
+    width: min(300px, 92vw);
+    height: auto;
+    min-height: 320px;
+    transform: none !important;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Anchor offset for fixed navbar */
+#homesection,
+#aboutsection,
+#servicesection,
+#portfolio,
+#faq {
+  scroll-margin-top: 140px;
+}
+
+/* --- FIX: prevent double vertical scrollbars --- */
+/* Make ONLY the body scroll, not html */
+
+
+
+
+
+/* --------------------------------
+   1) SERVICES: make cards equal size
+   + 2) more height so text looks good
+   -------------------------------- */
+.servicecards {
+  align-items: stretch;           /* allow equal heights */
+}
+
+.servicecards > div {
+  height: 100%;                   /* equalize */
+  min-height: 420px;              /* was 370, too tight for long text */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .4s ease;
-  z-index: 9999;
+  justify-content: flex-start;
 }
 
-.portfolio-modal.open {
-  opacity: 1;
-  pointer-events: auto;
+/* Better spacing so text doesn’t look squashed */
+.servicecards h1 {
+  margin-top: 12px;
 }
 
-.modal-inner {
-  position: relative;
-  max-width: 92vw;
-  max-height: 90vh;
-  animation: modalIn .45s cubic-bezier(.22,.61,.36,1);
+.servicecards p {
+  margin-top: 12px;
+  line-height: 1.75;
 }
 
-.modal-inner img {
-  width: 100%;
-  height: auto;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 16px;
-  box-shadow:
-    0 40px 90px rgba(0,0,0,.55),
-    0 0 60px rgba(46,123,209,.25);
+/* 4) restore service icon size */
+.servicecards .material-symbols-outlined {
+  width: 74px !important;
+  height: 74px !important;
+  font-size: 42px !important;
 }
 
-@keyframes modalIn {
-  from {
-    transform: scale(.92) translateY(12px);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
+
+/* --------------------------------
+   ABOUT CARDS: prevent text clipping
+   (your about cards were fixed height)
+   -------------------------------- */
+.card1, .card2, .card3 {
+  height: auto !important;
+  min-height: 360px;              /* gives room for paragraph */
 }
 
-/* Close button */
-.modal-close {
+.card1 p, .card2 p, .card3 p {
+  line-height: 1.7;
+}
+
+
+/* --------------------------------
+   4 + 5) TECH: icons bigger + blue hover
+   (your tech cards currently use small icon rules)
+   -------------------------------- */
+.tech-card {
+  align-items: center;            /* nicer vertical alignment */
+  min-height: 96px;               /* makes all tiles feel equal */
+}
+
+/* Bigger icon, like your old style */
+.tech-card .material-symbols-outlined {
+  width: 56px !important;
+  height: 56px !important;
+  font-size: 32px !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #2e7bd1 !important;
+  box-shadow: 0 0 14px rgba(46, 123, 209, 0.32) !important;
+}
+
+/* Hover: icon turns solid blue + white glyph (your old effect) */
+.tech-card:hover .material-symbols-outlined {
+  background: #2e7bd1 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.5) !important;
+}
+
+
+/* --------------------------------
+   FAQ: equal height feel + icons bigger + blue on open
+   (your screenshot shows icons shrunk and no emphasis)
+   -------------------------------- */
+.faq-grid {
+  align-items: start; /* keep each card independent */
+}
+
+/* Make each FAQ tile feel consistent */
+.faq-card {
+  min-height: 110px;
+}
+
+/* Bigger icon again */
+.faq-icon {
+  width: 72px !important;
+  height: 72px !important;
+  font-size: 40px !important;
+  border-radius: 18px !important;
+}
+
+/* Make the open-state “blue” very obvious */
+.faq-card[open] .faq-icon {
+  background: #2e7bd1 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.55) !important;
+}
+
+
+
+/* ===== Accessibility helper ===== */
+.sr-only {
   position: absolute;
-  top: -48px;
-  right: 0;
-  font-size: 40px;
-  color: #cfe2ff;
-  cursor: pointer;
-  transition: color .25s ease, transform .25s ease;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.modal-close:hover {
-  color: #2e7bd1;
-  transform: scale(1.1);
+/* ===== Hamburger button (hidden on desktop) ===== */
+.nav-toggle {
+  display: none;
+}
+
+/* ===== MOBILE NAV MENU ===== */
+@media (max-width: 600px) {
+  /* Show hamburger */
+  .nav-toggle {
+    display: inline-flex;
+    position: fixed;
+    top: 10px;
+    right: 12px;
+    z-index: 2500;
+
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(
+      145deg,
+      rgba(25, 25, 35, 0.75),
+      rgba(15, 15, 25, 0.6)
+    );
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    cursor: pointer;
+  }
+
+  /* Make the hamburger icon sized nicely */
+  .nav-toggle .material-symbols-outlined {
+    font-size: 28px !important;
+    color: #fff;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  /* Logo position on mobile */
+  .navbarlogo {
+    left: 12px !important;
+    top: 10px !important;
+    height: 36px !important;
+    z-index: 2500;
+  }
+
+  /* Turn navbar into a dropdown sheet */
+  .navbar {
+    left: 12px !important;
+    right: 12px !important;
+    top: 64px !important;          /* sits under header row */
+    transform: none !important;
+
+    display: grid;
+    gap: 10px;
+    padding: 14px !important;
+
+    border-radius: 18px !important;
+
+    /* Hide by default */
+    opacity: 0;
+    transform: translateY(-10px) !important;
+    pointer-events: none;
+
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    z-index: 2400;
+  }
+
+  /* When open */
+  body.nav-open .navbar {
+    opacity: 1;
+    transform: translateY(0) !important;
+    pointer-events: auto;
+  }
+
+  /* Mobile link style */
+  .navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 12px;
+    border-radius: 14px;
+    font-size: 15px !important;
+
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar a:hover,
+  .navbar a.active {
+    background: rgba(46, 123, 209, 0.22);
+    color: #ffffff;
+  }
+
+  /* Remove underline animation on mobile (looks messy in stacked list) */
+  .navbar a::after {
+    display: none;
+  }
+
+  /* Overlay behind menu */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 22, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 2300;
+  }
+
+  body.nav-open .nav-overlay {
+    display: block;
+  }
+
+  /* Prevent page scroll when menu is open */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  /* Give hero space so header doesn't cover it */
+  .homelayout {
+    margin-top: 140px !important;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* prevents layout jump when scrollbar appears/disappears */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* =========================================
+   CLEAN FINAL FIXES (END OF FILE)
+   - keep desktop unchanged
+   - burger menu mobile
+   - smooth anchors
+   - prevent double scrollbars safely
+   ========================================= */
+
+html, body { overflow-x: hidden; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+
+/* anchors with fixed navbar */
+#homesection,
+#aboutsection,
+#servicesection,
+#portfolio,
+#faq {
+  scroll-margin-top: 140px;
+}
+
+/* Keep hero text above image (desktop + mobile) */
+.title { position: relative; }
+.title h1, .title p { position: relative; z-index: 5; }
+.theart { z-index: 1; pointer-events: none; }
+
+/* Make service cards equal height nicely */
+.servicecards { align-items: stretch; }
+.servicecards > div { min-height: 420px; height: 100%; }
+
+/* ===== Burger menu only (mobile) ===== */
+@media (max-width: 600px) {
+  .navbarlogo {
+    left: 12px !important;
+    top: 10px !important;
+    height: 36px !important;
+    z-index: 2500;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    position: fixed;
+    top: 10px;
+    right: 12px;
+    z-index: 2500;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(145deg, rgba(25, 25, 35, 0.75), rgba(15, 15, 25, 0.6));
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+  .nav-toggle .material-symbols-outlined {
+    font-size: 28px !important;
+    color: #fff;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  /* Dropdown sheet nav */
+  .navbar {
+    left: 12px !important;
+    right: 12px !important;
+    top: 64px !important;
+    transform: none !important;
+
+    display: grid;
+    gap: 10px;
+    padding: 14px !important;
+    border-radius: 18px !important;
+
+    opacity: 0;
+    transform: translateY(-10px) !important;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    z-index: 2400;
+  }
+
+  body.nav-open .navbar {
+    opacity: 1;
+    transform: translateY(0) !important;
+    pointer-events: auto;
+  }
+
+  .navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 12px;
+    border-radius: 14px;
+    font-size: 15px !important;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar a::after { display: none; }
+
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 22, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 2300;
+  }
+
+  body.nav-open .nav-overlay { display: block; }
+  body.nav-open { overflow: hidden; }
+
+  /* Mobile hero: stack cleanly WITHOUT forcing desktop left offsets */
+  .homelayout {
+    top: 0;
+    margin-top: 120px;
+    height: auto;
+    padding: 0 18px 60px;
+  }
+
+  .title { margin: 0; }
+  .title h1 { top: 0; left: 0; width: 100%; font-size: clamp(26px, 7vw, 36px); }
+  .title p  { top: 0; left: 0; width: 100%; margin-top: 14px; font-size: 15px; }
+
+  .theart {
+    position: relative;
+    top: 0;
+    right: auto;
+    margin: 26px auto 0;
+    width: min(720px, 92vw);
+    height: auto;
+  }
+}
+
+/* === SINGLE SCROLLBAR (fix double scrollbar) === */
+/* === FORCE SINGLE SCROLLBAR (HTML only) === */
+html {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+}
+
+body {
+  overflow: visible !important;   /* body must NOT scroll */
+  height: auto !important;
+  min-height: 100vh !important;
+}
+
+/* keep your menu lock working */
+body.nav-open {
+  overflow: hidden !important;
 }
 

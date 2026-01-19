@@ -1,194 +1,225 @@
-// homepage.js — only handles active link highlight
-document.addEventListener('DOMContentLoaded', () => {
-  // Only consider nav links that point to real sections on the page
-  const links = Array.from(document.querySelectorAll('.navbar a'))
-    .filter(a => a.hash && document.querySelector(a.hash));
-  const sections = links.map(a => document.querySelector(a.hash));
+// homepage.js — safe + organized
 
-  if (!links.length || !sections.length) return;
+document.addEventListener("DOMContentLoaded", () => {
+  /* =========================
+     NAV: active link highlight
+     ========================= */
+  const navLinks = Array.from(document.querySelectorAll(".navbar a")).filter(
+    (a) => a.hash && document.querySelector(a.hash)
+  );
+  const sections = navLinks.map((a) => document.querySelector(a.hash)).filter(Boolean);
 
   const setActive = (id) => {
-    links.forEach(a => a.classList.toggle('active', a.hash === `#${id}`));
+    navLinks.forEach((a) => a.classList.toggle("active", a.hash === `#${id}`));
   };
 
-  // IntersectionObserver: choose the section most in view near center
-  const io = new IntersectionObserver((entries) => {
-    // pick the intersecting entry with the highest ratio
-    let best = null;
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
-    }
-    if (best) setActive(best.target.id);
-  }, {
-    root: null,
-    // bias toward the middle of the viewport
-    rootMargin: '-25% 0px -50% 0px',
-    threshold: [0, 0.25, 0.5, 0.75, 1],
-  });
+  if (sections.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        let best = null;
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+        }
+        if (best) setActive(best.target.id);
+      },
+      {
+        root: null,
+        rootMargin: "-25% 0px -50% 0px",
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
 
-  sections.forEach(sec => io.observe(sec));
+    sections.forEach((sec) => io.observe(sec));
 
-  // Initial highlight on load/refresh
-  const center = window.innerHeight / 2;
-  let initial = sections[0];
-  for (const sec of sections) {
-    const r = sec.getBoundingClientRect();
-    const mid = r.top + r.height / 2;
-    if (Math.abs(mid - center) < Math.abs((initial.getBoundingClientRect().top + initial.getBoundingClientRect().height/2) - center)) {
-      initial = sec;
-    }
+    // initial active
+    setActive(sections[0].id);
   }
-  setActive(initial.id);
-});
 
-// in homepage.js (with defer)
-document.addEventListener('DOMContentLoaded', () => {
-  const homeLink = document.querySelector('.navbar a[href="#homesection"]');
-  if (!homeLink) return;
+  /* =========================
+     NAV: smooth scroll (all # links)
+     ========================= */
+  const headerOffset = 140; // tune if needed
 
-  homeLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    const hash = a.getAttribute("href");
+    if (!hash || hash === "#") return;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".culture-card");
+    const target = document.querySelector(hash);
+    if (!target) return;
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
-      }
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+
+      history.pushState(null, "", hash);
     });
-  }, { threshold: 0.2 });
+  });
 
-  cards.forEach(card => observer.observe(card));
-});
+  /* =========================
+     CULTURE: reveal on scroll
+     (removed duplicate observer)
+     ========================= */
+  const cultureCards = document.querySelectorAll(".culture-card");
+  if (cultureCards.length) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".culture-card");
+    cultureCards.forEach((card) => observer.observe(card));
+  }
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
-      }
+  /* =========================
+   PORTFOLIO (New Slider)
+   ========================= */
+(() => {
+  const shell = document.querySelector(".portfolio-shell");
+  const viewport = document.querySelector(".portfolio-viewport");
+  const track = document.querySelector(".portfolio-track");
+  const slides = Array.from(document.querySelectorAll(".portfolio-slide"));
+  const dotsWrap = document.querySelector(".portfolio-dots");
+  const prevBtn = document.querySelector(".portfolio-arrow.prev");
+  const nextBtn = document.querySelector(".portfolio-arrow.next");
+
+  if (!shell || !viewport || !track || !slides.length || !dotsWrap || !prevBtn || !nextBtn) return;
+
+  let index = 0;
+  let isDragging = false;
+  let startX = 0;
+  let startTranslate = 0;
+
+  // Build dots
+  dotsWrap.innerHTML = "";
+  const dots = slides.map((_, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    b.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  const slideWidth = () => viewport.getBoundingClientRect().width;
+
+  function update() {
+    track.style.transform = `translateX(${-index * slideWidth()}px)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  }
+
+  function goTo(i) {
+    index = (i + slides.length) % slides.length;
+    track.style.transition = "transform 520ms cubic-bezier(.22,.61,.36,1)";
+    update();
+  }
+
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+
+  prevBtn.addEventListener("click", prev);
+  nextBtn.addEventListener("click", next);
+
+  // Keyboard support
+  window.addEventListener("keydown", (e) => {
+    const inViewport = viewport.getBoundingClientRect().top < window.innerHeight &&
+                      viewport.getBoundingClientRect().bottom > 0;
+    if (!inViewport) return;
+
+    if (e.key === "ArrowLeft") prev();
+    if (e.key === "ArrowRight") next();
+  });
+
+  // Drag / swipe (mouse + touch)
+  const pointerDown = (clientX) => {
+    isDragging = true;
+    startX = clientX;
+    startTranslate = -index * slideWidth();
+    track.style.transition = "none";
+  };
+
+  const pointerMove = (clientX) => {
+    if (!isDragging) return;
+    const dx = clientX - startX;
+    track.style.transform = `translateX(${startTranslate + dx}px)`;
+  };
+
+  const pointerUp = (clientX) => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const dx = clientX - startX;
+    const threshold = slideWidth() * 0.18; // swipe sensitivity
+
+    if (dx > threshold) prev();
+    else if (dx < -threshold) next();
+    else goTo(index);
+  };
+
+  // Mouse
+  viewport.addEventListener("mousedown", (e) => pointerDown(e.clientX));
+  window.addEventListener("mousemove", (e) => pointerMove(e.clientX));
+  window.addEventListener("mouseup", (e) => pointerUp(e.clientX));
+
+  // Touch
+  viewport.addEventListener("touchstart", (e) => pointerDown(e.touches[0].clientX), { passive: true });
+  viewport.addEventListener("touchmove", (e) => pointerMove(e.touches[0].clientX), { passive: true });
+  viewport.addEventListener("touchend", (e) => pointerUp((e.changedTouches[0] || {}).clientX || startX), { passive: true });
+
+  // Keep correct position on resize
+  window.addEventListener("resize", () => goTo(index));
+
+  // Init
+  update();
+})();
+
+
+  /* =========================
+     MOBILE NAV: burger menu
+     ========================= */
+  const btn = document.querySelector(".nav-toggle");
+  const nav = document.getElementById("main-nav");
+  const overlay = document.querySelector(".nav-overlay");
+
+  if (btn && nav && overlay) {
+    const openMenu = () => {
+      document.body.classList.add("nav-open");
+      overlay.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      const icon = btn.querySelector(".material-symbols-outlined");
+      if (icon) icon.textContent = "close";
+    };
+
+    const closeMenu = () => {
+      document.body.classList.remove("nav-open");
+      overlay.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+      const icon = btn.querySelector(".material-symbols-outlined");
+      if (icon) icon.textContent = "menu";
+    };
+
+    const isOpen = () => document.body.classList.contains("nav-open");
+
+    btn.addEventListener("click", () => (isOpen() ? closeMenu() : openMenu()));
+    overlay.addEventListener("click", closeMenu);
+
+    nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen()) closeMenu();
     });
-  }, { threshold: 0.2 });
 
-  cards.forEach((card) => observer.observe(card));
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 600 && isOpen()) closeMenu();
+    });
+  }
 });
 
-const track = document.querySelector(".portfolio-track");
-const cards = document.querySelectorAll(".project-card");
-const dotsContainer = document.querySelector(".portfolio-dots");
-
-/* ===== SLIDER STATE ===== */
-let index = 0;
-let startX = 0;
-let currentTranslate = 0;
-let isDragging = false;
-let autoSlideInterval;
-
-/* ===== CREATE DOTS ===== */
-cards.forEach((_, i) => {
-  const dot = document.createElement("button");
-  if (i === 0) dot.classList.add("active");
-  dot.addEventListener("click", () => {
-    stopAutoSlide();
-    goToSlide(i);
-    startAutoSlide();
-  });
-  dotsContainer.appendChild(dot);
-});
-
-function updateDots() {
-  document.querySelectorAll(".portfolio-dots button").forEach((d, i) => {
-    d.classList.toggle("active", i === index);
-  });
-}
-
-function goToSlide(i) {
-  index = Math.max(0, Math.min(i, cards.length - 1));
-  currentTranslate = -index * track.offsetWidth;
-  track.style.transform = `translateX(${currentTranslate}px)`;
-  updateDots();
-}
-
-/* ===== AUTO SLIDE (every 6s) ===== */
-function startAutoSlide() {
-  autoSlideInterval = setInterval(() => {
-    index = (index + 1) % cards.length;
-    goToSlide(index);
-  }, 6000);
-}
-
-function stopAutoSlide() {
-  clearInterval(autoSlideInterval);
-}
-
-startAutoSlide();
-
-/* ===== DRAG SUPPORT ===== */
-track.addEventListener("mousedown", e => {
-  stopAutoSlide();
-  isDragging = true;
-  startX = e.pageX;
-  track.style.transition = "none";
-});
-
-window.addEventListener("mouseup", () => {
-  if (!isDragging) return;
-  isDragging = false;
-  track.style.transition = "";
-  const moved = currentTranslate % track.offsetWidth;
-  if (moved < -120) index++;
-  if (moved > 120) index--;
-  goToSlide(index);
-  startAutoSlide();
-});
-
-window.addEventListener("mousemove", e => {
-  if (!isDragging) return;
-  const diff = e.pageX - startX;
-  track.style.transform = `translateX(${currentTranslate + diff}px)`;
-});
-
-/* ===== FULLSCREEN MODAL ===== */
-const modal = document.createElement("div");
-modal.className = "portfolio-modal";
-modal.innerHTML = `
-  <div class="modal-inner">
-    <span class="modal-close">&times;</span>
-    <img src="" alt="">
-  </div>
-`;
-document.body.appendChild(modal);
-
-const modalImg = modal.querySelector("img");
-const closeBtn = modal.querySelector(".modal-close");
-
-cards.forEach(card => {
-  card.addEventListener("click", () => {
-    stopAutoSlide();
-    modalImg.src = card.querySelector("img").src;
-    modal.classList.add("open");
-  });
-});
-
-closeBtn.addEventListener("click", closeModal);
-modal.addEventListener("click", e => {
-  if (e.target === modal) closeModal();
-});
-window.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeModal();
-});
-
-function closeModal() {
-  modal.classList.remove("open");
-  startAutoSlide();
-}
