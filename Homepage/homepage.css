@@ -1293,20 +1293,18 @@ svg {
 
   background: transparent;
 
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  cursor: grab;
+  /* If seam still happens on some GPUs: set blur to 0 or 2 */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
-.portfolio-shell.is-dragging .portfolio-viewport { cursor: grabbing; }
 
 /* Track slides horizontally */
 .portfolio-track{
   display: flex;
   height: 100%;
 
-  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 520ms cubic-bezier(.22,.61,.36,1);
   will-change: transform;
-  contain: layout paint;
 
   /* IMPORTANT: force GPU layer in a stable way */
   transform: translate3d(0,0,0);
@@ -1337,14 +1335,6 @@ svg {
   transition: transform 700ms ease;
 }
 
-.img-missing {
-  opacity: 0;
-}
-
-.portfolio-slide.media-missing {
-  background: linear-gradient(145deg, rgba(25, 25, 35, 0.9), rgba(15, 15, 25, 0.8));
-}
-
 /* Subtle zoom on hover */
 .portfolio-viewport:hover .portfolio-slide img{
   transform: scale(1.06);
@@ -1360,7 +1350,6 @@ svg {
   padding: 30px;
 
   background: transparent;
-  transition: opacity .35s ease;
 }
 
 .portfolio-overlay h3{
@@ -1399,8 +1388,8 @@ svg {
 
   border: 1px solid rgba(255,255,255,.18);
   background: linear-gradient(145deg, rgba(25,25,35,.78), rgba(15,15,25,.60));
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
   box-shadow: 0 18px 44px rgba(0,0,0,.35);
 
   transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
@@ -1414,13 +1403,6 @@ svg {
 .portfolio-arrow:hover{
   transform: translateY(-50%) scale(1.06);
   box-shadow: 0 22px 54px rgba(0,0,0,.45), 0 0 18px rgba(46,123,209,.22);
-}
-
-.portfolio-arrow:focus-visible,
-.portfolio-dots button:focus-visible,
-.portfolio-viewport:focus-visible {
-  outline: 2px solid rgba(124, 182, 223, 0.95);
-  outline-offset: 2px;
 }
 
 .portfolio-arrow.prev{ left: 14px; }
@@ -1440,8 +1422,8 @@ svg {
   border-radius: 999px;
   background: rgba(255,255,255,.10);
   border: 1px solid rgba(255,255,255,.18);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .portfolio-dots button{
@@ -1458,17 +1440,6 @@ svg {
   background: #2e7bd1;
   transform: scale(1.25);
   box-shadow: 0 0 12px rgba(46,123,209,.75);
-}
-
-@media (prefers-reduced-motion: reduce){
-  .portfolio-track,
-  .portfolio-slide img,
-  .portfolio-overlay,
-  .portfolio-arrow,
-  .portfolio-dots button {
-    transition: none !important;
-    animation: none !important;
-  }
 }
 
 /* Mobile tweaks */
@@ -1506,11 +1477,14 @@ svg {
   }
 
   .servicecards {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    padding: 16px 18px;
   }
 
   .tech-grid {
-    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
   }
 }
 
@@ -1525,7 +1499,7 @@ svg {
 
 @media (max-width: 800px) {
   .tech-grid {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1562,8 +1536,14 @@ svg {
 
 @media (max-width: 720px) {
   .servicecards {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 12px 14px;
+  }
+  .servicecards > div {
+    max-width: none;
+    min-height: auto;
+    padding: 22px 16px;
   }
   .servicecards > div:nth-child(1),
   .servicecards > div:nth-child(2),
@@ -1665,11 +1645,117 @@ svg {
   .faq-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Services: single column, reset desktop negative offsets */
+  .services {
+    padding: 64px 16px 28px;
+  }
+  .servicetitle {
+    top: 0;
+    font-size: clamp(26px, 6.5vw, 34px);
+    margin-bottom: 20px;
+  }
+  .services p {
+    top: 0;
+    margin-top: 12px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1.55;
+    padding: 0 4px;
+  }
+  .servicecards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+    padding: 0 12px 8px;
+  }
+  .servicecards > div {
+    max-width: none;
+    min-height: 0;
+    padding: 22px 18px;
+  }
+  .servicecards h1 {
+    font-size: 19px;
+  }
+  .servicecards p {
+    font-size: 14.5px;
+  }
+  .servicecards .material-symbols-outlined {
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 30px !important;
+  }
+
+  /* Technologies */
+  .tech-section {
+    padding: 64px 16px 72px;
+  }
+  .tech-section .section-title {
+    font-size: clamp(26px, 6.5vw, 34px);
+    margin-bottom: 36px;
+  }
+  .tech-intro {
+    font-size: 14.5px;
+    margin: 8px auto 24px;
+    line-height: 1.65;
+    padding: 0 4px;
+  }
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .tech-card {
+    align-items: center;
+    padding: 16px 14px;
+    gap: 12px;
+    min-height: 0;
+  }
+  .tech-card h3 {
+    font-size: clamp(15px, 4vw, 18px);
+    line-height: 1.35;
+  }
+  .tech-card .material-symbols-outlined {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 26px !important;
+    margin-top: 2px;
+  }
 }
 
 @media (max-width: 520px) {
   .tech-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Services + Technologies: tablet / small laptop */
+@media (max-width: 900px) and (min-width: 601px) {
+  .services {
+    padding: 80px 18px 36px;
+  }
+  .servicetitle {
+    top: 0;
+    font-size: clamp(30px, 4vw, 38px);
+  }
+  .services p {
+    margin-top: 16px;
+    top: 0;
+  }
+  .servicecards > div {
+    min-height: 0;
+  }
+  .tech-section {
+    padding: 80px 18px 96px;
+  }
+  .tech-section .section-title {
+    font-size: clamp(30px, 4vw, 38px);
+  }
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .tech-card h3 {
+    font-size: clamp(15px, 2.6vw, 19px);
   }
 }
 
@@ -1681,35 +1767,34 @@ svg {
 
 
 /* --------------------------------
-   1) SERVICES: make cards equal size
-   + 2) more height so text looks good
+   1) SERVICES: equal-height cards (desktop only — avoids tall cards on mobile)
    -------------------------------- */
-.servicecards {
-  align-items: stretch;           /* allow equal heights */
-}
+@media (min-width: 901px) {
+  .servicecards {
+    align-items: stretch;
+  }
 
-.servicecards > div {
-  height: 100%;                   /* equalize */
-  min-height: 420px;              /* was 370, too tight for long text */
-  display: flex;
-  justify-content: flex-start;
-}
+  .servicecards > div {
+    height: 100%;
+    min-height: 420px;
+    display: flex;
+    justify-content: flex-start;
+  }
 
-/* Better spacing so text doesn’t look squashed */
-.servicecards h1 {
-  margin-top: 12px;
-}
+  .servicecards h1 {
+    margin-top: 12px;
+  }
 
-.servicecards p {
-  margin-top: 12px;
-  line-height: 1.75;
-}
+  .servicecards p {
+    margin-top: 12px;
+    line-height: 1.75;
+  }
 
-/* 4) restore service icon size */
-.servicecards .material-symbols-outlined {
-  width: 74px !important;
-  height: 74px !important;
-  font-size: 42px !important;
+  .servicecards .material-symbols-outlined {
+    width: 74px !important;
+    height: 74px !important;
+    font-size: 42px !important;
+  }
 }
 
 
@@ -1759,30 +1844,29 @@ svg {
 
 
 /* --------------------------------
-   4 + 5) TECH: icons bigger + blue hover
-   (your tech cards currently use small icon rules)
+   4 + 5) TECH: icons bigger + blue hover (desktop only)
    -------------------------------- */
-.tech-card {
-  align-items: center;            /* nicer vertical alignment */
-  min-height: 96px;               /* makes all tiles feel equal */
-}
+@media (min-width: 901px) {
+  .tech-card {
+    align-items: center;
+    min-height: 96px;
+  }
 
-/* Bigger icon, like your old style */
-.tech-card .material-symbols-outlined {
-  width: 56px !important;
-  height: 56px !important;
-  font-size: 32px !important;
-  border-radius: 14px !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #2e7bd1 !important;
-  box-shadow: 0 0 14px rgba(46, 123, 209, 0.32) !important;
-}
+  .tech-card .material-symbols-outlined {
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 32px !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #2e7bd1 !important;
+    box-shadow: 0 0 14px rgba(46, 123, 209, 0.32) !important;
+  }
 
-/* Hover: icon turns solid blue + white glyph (your old effect) */
-.tech-card:hover .material-symbols-outlined {
-  background: #2e7bd1 !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 22px rgba(46, 123, 209, 0.5) !important;
+  .tech-card:hover .material-symbols-outlined {
+    background: #2e7bd1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 22px rgba(46, 123, 209, 0.5) !important;
+  }
 }
 
 
