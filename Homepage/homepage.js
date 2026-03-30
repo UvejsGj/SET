@@ -59,6 +59,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =========================
+     MEDIA: graceful fallback for missing images
+     ========================= */
+  document.querySelectorAll("img").forEach((img) => {
+    img.addEventListener("load", () => {
+      img.classList.remove("img-missing");
+      const portfolioSlide = img.closest(".portfolio-slide");
+      if (portfolioSlide) portfolioSlide.classList.remove("media-missing");
+    });
+
+    img.addEventListener("error", () => {
+      const portfolioSlide = img.closest(".portfolio-slide");
+      if (portfolioSlide) {
+        portfolioSlide.classList.add("media-missing");
+        img.classList.add("img-missing");
+      }
+    });
+  });
+
+  /* =========================
      CULTURE: reveal on scroll
      (removed duplicate observer)
      ========================= */
@@ -95,8 +114,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let index = 0;
   let isDragging = false;
+  let pointerId = null;
   let startX = 0;
   let startTranslate = 0;
+  let autoTimer = null;
+  const AUTO_MS = 5200;
+  const SLIDE_EASING = "transform 620ms cubic-bezier(0.22, 1, 0.36, 1)";
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  shell.setAttribute("role", "region");
+  shell.setAttribute("aria-label", "Portfolio slider");
+  viewport.setAttribute("tabindex", "0");
+  viewport.style.touchAction = "pan-y";
+
+  if (slides.length < 2) {
+    prevBtn.hidden = true;
+    nextBtn.hidden = true;
+    dotsWrap.hidden = true;
+    slides[0].setAttribute("aria-hidden", "false");
+    return;
+  }
 
   // Build dots
   dotsWrap.innerHTML = "";
@@ -104,81 +141,119 @@ document.addEventListener("DOMContentLoaded", () => {
     const b = document.createElement("button");
     b.type = "button";
     b.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    b.setAttribute("aria-controls", "portfolio-track");
     b.addEventListener("click", () => goTo(i));
     dotsWrap.appendChild(b);
     return b;
   });
+  track.id = "portfolio-track";
 
-  const slideWidth = () => viewport.getBoundingClientRect().width;
+  const slideWidth = () => viewport.getBoundingClientRect().width || viewport.clientWidth || 1;
+  const inViewport = () => {
+    const rect = viewport.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  };
 
   function update() {
     track.style.transform = `translateX(${-index * slideWidth()}px)`;
-    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    dots.forEach((d, i) => {
+      const active = i === index;
+      d.classList.toggle("active", active);
+      d.setAttribute("aria-current", active ? "true" : "false");
+    });
+    slides.forEach((s, i) => {
+      const active = i === index;
+      s.setAttribute("aria-hidden", active ? "false" : "true");
+      s.tabIndex = active ? 0 : -1;
+    });
   }
 
   function goTo(i) {
     index = (i + slides.length) % slides.length;
-    track.style.transition = "transform 520ms cubic-bezier(.22,.61,.36,1)";
+    track.style.transition = prefersReducedMotion ? "none" : SLIDE_EASING;
     update();
   }
 
   function next() { goTo(index + 1); }
   function prev() { goTo(index - 1); }
+  function stopAuto() {
+    if (autoTimer) {
+      window.clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+  function startAuto() {
+    if (prefersReducedMotion || autoTimer) return;
+    autoTimer = window.setInterval(() => {
+      if (!document.hidden && !isDragging && inViewport()) next();
+    }, AUTO_MS);
+  }
 
   prevBtn.addEventListener("click", prev);
   nextBtn.addEventListener("click", next);
 
   // Keyboard support
-  window.addEventListener("keydown", (e) => {
-    const inViewport = viewport.getBoundingClientRect().top < window.innerHeight &&
-                      viewport.getBoundingClientRect().bottom > 0;
-    if (!inViewport) return;
+  viewport.addEventListener("keydown", (e) => {
+    if (!inViewport()) return;
 
     if (e.key === "ArrowLeft") prev();
     if (e.key === "ArrowRight") next();
   });
 
-  // Drag / swipe (mouse + touch)
-  const pointerDown = (clientX) => {
+  // Drag / swipe (pointer events: mouse + touch + pen)
+  const pointerDown = (e) => {
+    if (e.button !== undefined && e.button !== 0) return;
     isDragging = true;
-    startX = clientX;
+    pointerId = e.pointerId ?? null;
+    startX = e.clientX;
     startTranslate = -index * slideWidth();
     track.style.transition = "none";
+    viewport.setPointerCapture?.(pointerId);
+    shell.classList.add("is-dragging");
   };
 
-  const pointerMove = (clientX) => {
+  const pointerMove = (e) => {
     if (!isDragging) return;
-    const dx = clientX - startX;
+    if (pointerId !== null && e.pointerId !== pointerId) return;
+    const dx = e.clientX - startX;
     track.style.transform = `translateX(${startTranslate + dx}px)`;
   };
 
-  const pointerUp = (clientX) => {
+  const pointerUp = (e) => {
     if (!isDragging) return;
+    if (pointerId !== null && e.pointerId !== pointerId) return;
     isDragging = false;
+    shell.classList.remove("is-dragging");
 
-    const dx = clientX - startX;
+    const dx = e.clientX - startX;
     const threshold = slideWidth() * 0.18; // swipe sensitivity
 
     if (dx > threshold) prev();
     else if (dx < -threshold) next();
     else goTo(index);
+
+    pointerId = null;
   };
 
-  // Mouse
-  viewport.addEventListener("mousedown", (e) => pointerDown(e.clientX));
-  window.addEventListener("mousemove", (e) => pointerMove(e.clientX));
-  window.addEventListener("mouseup", (e) => pointerUp(e.clientX));
-
-  // Touch
-  viewport.addEventListener("touchstart", (e) => pointerDown(e.touches[0].clientX), { passive: true });
-  viewport.addEventListener("touchmove", (e) => pointerMove(e.touches[0].clientX), { passive: true });
-  viewport.addEventListener("touchend", (e) => pointerUp((e.changedTouches[0] || {}).clientX || startX), { passive: true });
+  viewport.addEventListener("pointerdown", pointerDown);
+  window.addEventListener("pointermove", pointerMove);
+  window.addEventListener("pointerup", pointerUp);
+  window.addEventListener("pointercancel", pointerUp);
 
   // Keep correct position on resize
   window.addEventListener("resize", () => goTo(index));
+  shell.addEventListener("mouseenter", stopAuto);
+  shell.addEventListener("mouseleave", startAuto);
+  shell.addEventListener("focusin", stopAuto);
+  shell.addEventListener("focusout", startAuto);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopAuto();
+    else startAuto();
+  });
 
   // Init
   update();
+  startAuto();
 })();
 
 

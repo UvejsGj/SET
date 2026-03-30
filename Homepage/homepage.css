@@ -208,6 +208,65 @@ svg {
   z-index: 1;
 }
 
+/* Desktop hero: make layout aspect-ratio-safe (fix 1920x1200) */
+@media (min-width: 1101px) {
+  .homelayout {
+    top: 0;
+    margin-top: 0;
+    height: auto;
+    padding-top: 220px; /* fixed navbar space */
+    padding-bottom: 40px;
+  }
+
+  .title {
+    top: 0;
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 80px;
+    display: grid;
+    grid-template-columns: minmax(520px, 650px) minmax(520px, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 60px;
+    align-items: center;
+  }
+
+  .title h1 {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 0;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .title p {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 14px 0 0;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .theart {
+    position: relative;
+    top: auto;
+    right: auto;
+    height: auto;
+    width: min(820px, 44vw);
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .partners-title {
+    margin-top: 60px;
+  }
+}
+
 /* =========================
    PARTNERS
    ========================= */
@@ -647,7 +706,7 @@ svg {
   animation: waveFlow 14s ease-in-out infinite alternate;
   z-index: 0;
   filter: blur(60px);
-  opacity: 0.9;
+  opacity: var(--section-overlay-opacity);
 }
 
 @keyframes waveFlow {
@@ -831,7 +890,7 @@ svg {
     );
   animation: techBgFlow 18s ease-in-out infinite alternate;
   filter: blur(50px);
-  opacity: 0.8;
+  opacity: var(--section-overlay-opacity);
   z-index: 0;
 }
 
@@ -943,6 +1002,7 @@ svg {
   --glass-border: rgba(255, 255, 255, 0.3);
   --text: #ffffff;
   --muted: #eaf2ff;
+  --section-overlay-opacity: 0.72;
 }
 
 #faq {
@@ -975,6 +1035,7 @@ svg {
     linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 70%);
   filter: blur(70px);
   animation: faqFloat 14s ease-in-out infinite alternate;
+  opacity: var(--section-overlay-opacity);
   pointer-events: none;
   z-index: -1;
 }
@@ -1016,24 +1077,28 @@ svg {
   overflow: hidden;
   align-self: start;
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  transform: translateZ(0);
+  will-change: transform;
+  contain: paint;
 
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease,
-    border-color 0.35s ease;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.24s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .faq-card:hover {
-  transform: translateY(-8px);
-  background: var(--glass-bg-hover);
+  transform: translateY(-6px);
   border-color: rgba(255, 255, 255, 0.34);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
 }
 
 .faq-card[open] {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34), 0 0 18px rgba(46, 123, 209, 0.22);
+  transform: translateY(-7px);
+  border-color: rgba(46, 123, 209, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32), 0 0 14px rgba(46, 123, 209, 0.2);
 }
 
 .faq-summary {
@@ -1057,11 +1122,18 @@ svg {
   width: 68px;
   height: 68px;
   border-radius: 18px;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent);
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 0 18px rgba(46, 123, 209, 0.35);
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 14px !important; /* strong optical correction for this font */
+  transform: translateZ(0);
+  will-change: transform;
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.28s ease, color 0.28s ease, background-color 0.28s ease;
 }
@@ -1140,17 +1212,28 @@ svg {
   transform: translateY(-6px);
   overflow: hidden;
 
-  transition: max-height 0.46s cubic-bezier(0.25, 1, 0.5, 1),
-    opacity 0.3s ease, transform 0.35s ease, padding-top 0.3s ease,
-    padding-bottom 0.3s ease;
+  transition: max-height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease, transform 0.24s ease, padding-top 0.22s ease,
+    padding-bottom 0.22s ease;
 }
 
 .faq-card[open] .faq-a {
-  max-height: 640px;
+  max-height: 560px;
   opacity: 1;
   transform: translateY(0);
   padding-top: 0;
   padding-bottom: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-card,
+  .faq-icon,
+  .faq-a,
+  .faq-toggle::before,
+  .faq-toggle::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 .faq-summary:focus-visible {
@@ -1208,20 +1291,22 @@ svg {
   width: 100%;
   max-height: 620px;
 
-  background: rgba(0,0,0,.35);
+  background: transparent;
 
-  /* If seam still happens on some GPUs: set blur to 0 or 2 */
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  cursor: grab;
 }
+.portfolio-shell.is-dragging .portfolio-viewport { cursor: grabbing; }
 
 /* Track slides horizontally */
 .portfolio-track{
   display: flex;
   height: 100%;
 
-  transition: transform 520ms cubic-bezier(.22,.61,.36,1);
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
+  contain: layout paint;
 
   /* IMPORTANT: force GPU layer in a stable way */
   transform: translate3d(0,0,0);
@@ -1252,6 +1337,14 @@ svg {
   transition: transform 700ms ease;
 }
 
+.img-missing {
+  opacity: 0;
+}
+
+.portfolio-slide.media-missing {
+  background: linear-gradient(145deg, rgba(25, 25, 35, 0.9), rgba(15, 15, 25, 0.8));
+}
+
 /* Subtle zoom on hover */
 .portfolio-viewport:hover .portfolio-slide img{
   transform: scale(1.06);
@@ -1266,12 +1359,8 @@ svg {
   justify-content: flex-end;
   padding: 30px;
 
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,.78) 0%,
-    rgba(0,0,0,.18) 55%,
-    rgba(0,0,0,0) 100%
-  );
+  background: transparent;
+  transition: opacity .35s ease;
 }
 
 .portfolio-overlay h3{
@@ -1310,8 +1399,8 @@ svg {
 
   border: 1px solid rgba(255,255,255,.18);
   background: linear-gradient(145deg, rgba(25,25,35,.78), rgba(15,15,25,.60));
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   box-shadow: 0 18px 44px rgba(0,0,0,.35);
 
   transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
@@ -1325,6 +1414,13 @@ svg {
 .portfolio-arrow:hover{
   transform: translateY(-50%) scale(1.06);
   box-shadow: 0 22px 54px rgba(0,0,0,.45), 0 0 18px rgba(46,123,209,.22);
+}
+
+.portfolio-arrow:focus-visible,
+.portfolio-dots button:focus-visible,
+.portfolio-viewport:focus-visible {
+  outline: 2px solid rgba(124, 182, 223, 0.95);
+  outline-offset: 2px;
 }
 
 .portfolio-arrow.prev{ left: 14px; }
@@ -1344,8 +1440,8 @@ svg {
   border-radius: 999px;
   background: rgba(255,255,255,.10);
   border: 1px solid rgba(255,255,255,.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .portfolio-dots button{
@@ -1364,18 +1460,15 @@ svg {
   box-shadow: 0 0 12px rgba(46,123,209,.75);
 }
 
-/* Mobile tweaks */
-@media (max-width: 768px){
-  .portfolio-section{ padding: 90px 16px; }
-  .portfolio-overlay{ padding: 18px; }
-  .portfolio-overlay h3{ font-size: 18px; }
-  .portfolio-overlay p{ font-size: 13.5px; }
-  .portfolio-arrow{
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
+@media (prefers-reduced-motion: reduce){
+  .portfolio-track,
+  .portfolio-slide img,
+  .portfolio-overlay,
+  .portfolio-arrow,
+  .portfolio-dots button {
+    transition: none !important;
+    animation: none !important;
   }
-  .portfolio-arrow .material-symbols-outlined{ font-size: 30px; }
 }
 
 /* Mobile tweaks */
@@ -1580,15 +1673,6 @@ svg {
   }
 }
 
-/* Anchor offset for fixed navbar */
-#homesection,
-#aboutsection,
-#servicesection,
-#portfolio,
-#faq {
-  scroll-margin-top: 140px;
-}
-
 /* --- FIX: prevent double vertical scrollbars --- */
 /* Make ONLY the body scroll, not html */
 
@@ -1640,6 +1724,37 @@ svg {
 
 .card1 p, .card2 p, .card3 p {
   line-height: 1.7;
+}
+
+/* 16:10 desktop fit: About cards slightly more compact */
+@media (min-width: 1600px) and (max-width: 2200px) and (min-height: 1150px) {
+  .cards {
+    width: 840px;
+    gap: 40px;
+    margin: 110px auto;
+    left: 10%;
+  }
+
+  .card1,
+  .card2,
+  .card3 {
+    width: 235px;
+    min-height: 320px;
+    padding: 24px 18px;
+  }
+
+  .card1 h1,
+  .card2 h1,
+  .card3 h1 {
+    font-size: 50px;
+  }
+
+  .card1 p,
+  .card2 p,
+  .card3 p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
 }
 
 
@@ -1719,140 +1834,6 @@ svg {
   display: none;
 }
 
-/* ===== MOBILE NAV MENU ===== */
-@media (max-width: 600px) {
-  /* Show hamburger */
-  .nav-toggle {
-    display: inline-flex;
-    position: fixed;
-    top: 10px;
-    right: 12px;
-    z-index: 2500;
-
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 14px;
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: linear-gradient(
-      145deg,
-      rgba(25, 25, 35, 0.75),
-      rgba(15, 15, 25, 0.6)
-    );
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-
-    cursor: pointer;
-  }
-
-  /* Make the hamburger icon sized nicely */
-  .nav-toggle .material-symbols-outlined {
-    font-size: 28px !important;
-    color: #fff;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
-
-  /* Logo position on mobile */
-  .navbarlogo {
-    left: 12px !important;
-    top: 10px !important;
-    height: 36px !important;
-    z-index: 2500;
-  }
-
-  /* Turn navbar into a dropdown sheet */
-  .navbar {
-    left: 12px !important;
-    right: 12px !important;
-    top: 64px !important;          /* sits under header row */
-    transform: none !important;
-
-    display: grid;
-    gap: 10px;
-    padding: 14px !important;
-
-    border-radius: 18px !important;
-
-    /* Hide by default */
-    opacity: 0;
-    transform: translateY(-10px) !important;
-    pointer-events: none;
-
-    transition: opacity 0.2s ease, transform 0.2s ease;
-
-    z-index: 2400;
-  }
-
-  /* When open */
-  body.nav-open .navbar {
-    opacity: 1;
-    transform: translateY(0) !important;
-    pointer-events: auto;
-  }
-
-  /* Mobile link style */
-  .navbar a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 12px 12px;
-    border-radius: 14px;
-    font-size: 15px !important;
-
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .navbar a:hover,
-  .navbar a.active {
-    background: rgba(46, 123, 209, 0.22);
-    color: #ffffff;
-  }
-
-  /* Remove underline animation on mobile (looks messy in stacked list) */
-  .navbar a::after {
-    display: none;
-  }
-
-  /* Overlay behind menu */
-  .nav-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 14, 22, 0.45);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: 2300;
-  }
-
-  body.nav-open .nav-overlay {
-    display: block;
-  }
-
-  /* Prevent page scroll when menu is open */
-  body.nav-open {
-    overflow: hidden;
-  }
-
-  /* Give hero space so header doesn't cover it */
-  .homelayout {
-    margin-top: 140px !important;
-  }
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
-/* prevents layout jump when scrollbar appears/disappears */
-html {
-  scrollbar-gutter: stable;
-}
-
 /* =========================================
    CLEAN FINAL FIXES (END OF FILE)
    - keep desktop unchanged
@@ -1877,10 +1858,6 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 .title { position: relative; }
 .title h1, .title p { position: relative; z-index: 5; }
 .theart { z-index: 1; pointer-events: none; }
-
-/* Make service cards equal height nicely */
-.servicecards { align-items: stretch; }
-.servicecards > div { min-height: 420px; height: 100%; }
 
 /* ===== Burger menu only (mobile) ===== */
 @media (max-width: 600px) {
@@ -1954,6 +1931,12 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
     background: rgba(255, 255, 255, 0.06);
   }
 
+  .navbar a:hover,
+  .navbar a.active {
+    background: rgba(46, 123, 209, 0.22);
+    color: #ffffff;
+  }
+
   .navbar a::after { display: none; }
 
   .nav-overlay {
@@ -1992,6 +1975,39 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
 /* === SINGLE SCROLLBAR (fix double scrollbar) === */
 /* === FORCE SINGLE SCROLLBAR (HTML only) === */
+
+/* About cards: compact on large desktop screens */
+@media (min-width: 1400px) {
+  .cards {
+    width: 760px !important;
+    gap: 32px !important;
+    margin: 90px 0 0 !important;
+    left: 22% !important;
+    top: -60px !important;
+  }
+
+  .card1,
+  .card2,
+  .card3 {
+    width: 220px !important;
+    min-height: 300px !important;
+    padding: 20px 16px !important;
+  }
+
+  .card1 h1,
+  .card2 h1,
+  .card3 h1 {
+    font-size: 44px !important;
+  }
+
+  .card1 p,
+  .card2 p,
+  .card3 p {
+    font-size: 17px !important;
+    line-height: 1.55 !important;
+  }
+}
+
 html {
   overflow-y: auto !important;
   overflow-x: hidden !important;
