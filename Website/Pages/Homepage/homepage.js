@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       servicesIntro: "Smart engineering meets innovation - modern solutions that move your business forward.",
       lifeTitle: "Life at Smart Engineering",
       techTitle: "Our Technologies",
+      techIntro: "We use advanced tools-3D animation, motion graphics, modern frameworks-to build visually captivating and interactive experiences.",
       teamTitle: "Meet our Team",
       portfolioTitle: "Portfolio",
       contactTitle: "Contact Us",
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navAbout: "Rreth Nesh",
       navServices: "Shërbime",
       navTeam: "Ekipi",
-      navPortfolio: "Portofolio",
+      navPortfolio: "Portofoli",
       navContact: "Na Kontaktoni",
       navFaq: "Pyetje",
       heroTitle: "Inovoni të ardhmen tuaj me <br />Smart Engineering",
@@ -113,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       servicesIntro: "Inxhinieria e mençur takohet me inovacionin - zgjidhje moderne që e çojnë biznesin tuaj përpara.",
       lifeTitle: "Jeta në Smart Engineering",
       techTitle: "Teknologjitë Tona",
+      techIntro: "Ne përdorim mjete të avancuara-si animacioni 3D, motion graphics dhe framework modern-për të ndërtuar përvoja vizuale tërheqëse dhe interaktive.",
       teamTitle: "Njihuni me Ekipin Tonë",
       portfolioTitle: "Portofolio",
       contactTitle: "Na Kontaktoni",
@@ -220,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setText(".services > p", dict.servicesIntro);
     setText("#lifesection", dict.lifeTitle);
     setText("#techstack .section-title", dict.techTitle);
+    setText(".tech-intro", dict.techIntro);
     setText("#team .section-title", dict.teamTitle);
     setText("#portfolio .section-title", dict.portfolioTitle);
     setText("#contact .section-title", dict.contactTitle);
