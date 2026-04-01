@@ -1128,6 +1128,7 @@ html[lang="sq"] .navbar {
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
   gap: 36px;
   align-items: start;
+  top: -400px;
 }
 
 .contact-info-card {
@@ -1414,6 +1415,7 @@ a.contact-info-value:hover {
   font-weight: 900;
   margin: 0 0 50px;
   color: var(--text);
+  top: -100px;
 }
 
 /* FAQ grid */
