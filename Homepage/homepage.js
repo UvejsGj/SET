@@ -70,13 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.max(72, Math.ceil(maxBottom + gap));
   }
 
-  // Some sections need a few extra pixels down after the header gap
   const NAV_SCROLL_EXTRA_DOWN = {
     servicesection: 56,
     portfolio: 12,
   };
 
-  // What we scroll to (portfolio = the big title, not the slider box)
   function getNavScrollAnchor(id) {
     const root = document.getElementById(id);
     if (!root) return null;
@@ -143,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Nav highlight: uses scroll + section order on the page
   const navLinks = Array.from(document.querySelectorAll(".navbar a")).filter(
     (a) => a.hash && document.getElementById(normalizeHash(a.hash))
   );
@@ -320,7 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   })();
 
-  // Contact form (FormSubmit — first-time setup needs email confirmation from their service)
   const contactForm = document.getElementById("contact-form");
   const contactStatus = document.getElementById("contact-form-status");
   if (contactForm && contactStatus) {
