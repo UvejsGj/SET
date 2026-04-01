@@ -1312,6 +1312,17 @@ a.contact-info-value:hover {
   color: var(--muted);
 }
 
+.contact-status-link {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 182, 223, 0.9);
+}
+
+.contact-status-link:hover {
+  color: #7cb6df;
+}
+
 @media (max-width: 800px) {
   .contact-layout {
     grid-template-columns: 1fr;

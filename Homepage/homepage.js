@@ -324,6 +324,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   const contactStatus = document.getElementById("contact-form-status");
   if (contactForm && contactStatus) {
+    const buildMailtoFallback = () => {
+      const name = String(contactForm.querySelector('[name="name"]')?.value || "").trim();
+      const email = String(contactForm.querySelector('[name="email"]')?.value || "").trim();
+      const subject = String(contactForm.querySelector('[name="subject"]')?.value || "").trim();
+      const message = String(contactForm.querySelector('[name="message"]')?.value || "").trim();
+      const finalSubject = subject || "Website contact";
+      const body =
+        `Name: ${name || "-"}` +
+        `\nEmail: ${email || "-"}` +
+        `\n\nMessage:\n${message || "-"}`;
+      return (
+        `mailto:uvejsgjelaj03@gmail.com?subject=${encodeURIComponent(finalSubject)}` +
+        `&body=${encodeURIComponent(body)}`
+      );
+    };
+
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const submitBtn = contactForm.querySelector(".contact-submit");
@@ -364,9 +380,10 @@ document.addEventListener("DOMContentLoaded", () => {
         contactStatus.className = "contact-form-status contact-form-status--err";
         const msg = String((err && err.message) || "");
         const providerDown = /\b521\b/.test(msg);
-        contactStatus.textContent = providerDown
-          ? "Form provider is temporarily down (521). Please try again later or email us at uvejsgjelaj03@gmail.com."
-          : "Could not send right now. Email us at uvejsgjelaj03@gmail.com or try again in a moment.";
+        const mailtoUrl = buildMailtoFallback();
+        contactStatus.innerHTML = providerDown
+          ? `Form provider is temporarily down (521). <a class="contact-status-link" href="${mailtoUrl}">Send via email app instead</a>.`
+          : `Could not send right now. <a class="contact-status-link" href="${mailtoUrl}">Send via email app instead</a>.`;
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
