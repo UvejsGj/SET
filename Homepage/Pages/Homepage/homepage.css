@@ -2523,3 +2523,38 @@ body.nav-open {
   }
 }
 
+.site-footer {
+  margin-top: 28px;
+  padding: 20px 16px 28px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.footer-text {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #f4f9ff;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+.footer-text span {
+  opacity: 0.95;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 182, 223, 0.85);
+  font-weight: 600;
+}
+
+.footer-link:hover {
+  color: #7cb6df;
+}
+

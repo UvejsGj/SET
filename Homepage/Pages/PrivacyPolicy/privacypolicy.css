@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap");
+
+:root {
+  --bg: rgb(163, 195, 238);
+  --card: rgba(255, 255, 255, 0.22);
+  --border: rgba(255, 255, 255, 0.35);
+  --text: #ffffff;
+  --muted: #eaf2ff;
+  --accent: #2e7bd1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Roboto", sans-serif;
+}
+
+.policy-wrap {
+  width: min(980px, calc(100% - 32px));
+  margin: 32px auto 56px;
+  padding: 28px 24px 34px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.back-home-wrap {
+  margin: 0 0 12px;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(124, 182, 223, 0.42);
+  background: rgba(46, 123, 209, 0.18);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.back-home-btn:hover {
+  background: rgba(46, 123, 209, 0.3);
+  border-color: rgba(124, 182, 223, 0.62);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.updated {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.45em;
+  line-height: 1.25;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: clamp(30px, 5vw, 42px);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(23px, 3.4vw, 30px);
+  font-weight: 800;
+  padding-top: 8px;
+}
+
+h3 {
+  font-size: clamp(19px, 2.7vw, 24px);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: clamp(17px, 2.2vw, 20px);
+  font-weight: 700;
+}
+
+p,
+li {
+  color: var(--muted);
+  line-height: 1.72;
+  font-size: 16px;
+}
+
+ul {
+  margin-top: 0.4em;
+  margin-bottom: 1em;
+  padding-left: 1.2em;
+}
+
+strong {
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .policy-wrap {
+    width: calc(100% - 20px);
+    margin: 14px auto 28px;
+    padding: 18px 14px 22px;
+    border-radius: 16px;
+  }
+
+  p,
+  li {
+    font-size: 15px;
+  }
+
+  .back-home-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
