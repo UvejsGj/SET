@@ -1,0 +1,153 @@
+
+.services-stack {
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-bg);
+}
+
+.services {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 24px 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.servicetitle {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 32px;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  top: -100px;
+}
+.servicetitle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.servicetitle:hover::after {
+  width: 180px;
+}
+
+.services p {
+  max-width: 900px;
+  margin: 28px auto 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: "Playwrite US Modern", cursive;
+  margin-top: -100px;
+}
+
+.servicecards {
+  --accent: #2e7bd1;
+  --glass-hover: rgba(255, 255, 255, 0.3);
+
+  font-family: "Roboto", sans-serif;
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 36px;
+  justify-items: center;
+  align-items: start;
+  margin-top: 60px;
+}
+
+.servicecards > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 260px;
+  min-height: 370px;
+  padding: 28px 22px;
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+  transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.3s ease;
+}
+
+.servicecards h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 14px 0 10px;
+}
+
+.servicecards p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.93);
+}
+
+.servicecards .material-symbols-outlined {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--accent);
+  font-size: 36px;
+  box-shadow: 0 0 18px rgba(46, 123, 209, 0.35);
+  transition: all 0.3s ease;
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
+}
+
+.servicecards > div:hover {
+  transform: translateY(-12px) scale(1.03) rotate(0deg);
+  background: var(--glass-hover);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+.servicecards > div:hover .material-symbols-outlined {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.6);
+}
+
+
+.servicecards > div:nth-child(1) {
+  transform: translateY(-6px) scale(1.04);
+  z-index: 1;
+}
+.servicecards > div:nth-child(2) {
+  transform: translateY(-6px) scale(1.04);
+  z-index: 1;
+}
+.servicecards > div:nth-child(3) {
+  transform: translateY(-6px) scale(1.04);
+  z-index: 1;
+}
+.servicecards > div:nth-child(4) {
+  transform: translateY(-6px) scale(1.04);
+  z-index: 1;
+}
+.servicecards > div:nth-child(5) {
+  transform: translateY(-6px) scale(1.04);
+  z-index: 1;
+}

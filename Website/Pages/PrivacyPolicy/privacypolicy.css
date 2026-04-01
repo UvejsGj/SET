@@ -36,6 +36,33 @@ body {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
+.policy-lang-switch {
+  margin: 0 0 12px;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.policy-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(124, 182, 223, 0.42);
+  background: rgba(46, 123, 209, 0.12);
+  color: #123056;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.policy-lang-btn.active {
+  background: rgba(46, 123, 209, 0.24);
+  border-color: rgba(46, 123, 209, 0.58);
+  color: #0f2a4a;
+}
+
 .back-home-wrap {
   margin: 0 0 12px;
 }

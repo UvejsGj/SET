@@ -1,0 +1,208 @@
+
+.portfolio-section{
+  padding: 120px 24px;
+  text-align: center;
+  overflow: hidden;
+  background-color: var(--page-bg);
+}
+
+.portfolio-shell{
+  --accent: #2e7bd1;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 10px 0 0;
+}
+
+
+.portfolio-frame{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.20);
+  isolation: isolate;
+}
+
+
+.portfolio-frame::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 26px 70px rgba(0,0,0,.35);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+.portfolio-viewport{
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-height: 620px;
+
+  background: transparent;
+
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+
+.portfolio-track{
+  display: flex;
+  height: 100%;
+
+  transition: transform 520ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+}
+
+
+.portfolio-slide{
+  flex: 0 0 100%;
+  position: relative;
+  height: 100%;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transform: translate3d(0,0,0);
+}
+
+
+.portfolio-slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.02);
+  transition: transform 700ms ease;
+}
+
+
+.portfolio-viewport:hover .portfolio-slide img{
+  transform: scale(1.06);
+}
+
+
+.portfolio-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+
+  background: transparent;
+}
+
+.portfolio-overlay h3{
+  margin: 0 0 10px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.portfolio-overlay p{
+  margin: 0;
+  max-width: 70ch;
+  color: #dce9ff;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: .95;
+}
+
+
+.portfolio-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(145deg, rgba(25,25,35,.78), rgba(15,15,25,.60));
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 18px 44px rgba(0,0,0,.35);
+
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.portfolio-arrow .material-symbols-outlined{
+  font-size: 34px;
+  color: #fff;
+}
+
+.portfolio-arrow:hover{
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 22px 54px rgba(0,0,0,.45), 0 0 18px rgba(46,123,209,.22);
+}
+
+.portfolio-arrow.prev{ left: 14px; }
+.portfolio-arrow.next{ right: 14px; }
+
+
+.portfolio-ui{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-dots{
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.portfolio-dots button{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,.35);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.portfolio-dots button.active{
+  background: #2e7bd1;
+  transform: scale(1.25);
+  box-shadow: 0 0 12px rgba(46,123,209,.75);
+}
+
+
+@media (max-width: 768px){
+  .portfolio-section{ padding: 90px 16px; }
+  .portfolio-overlay{ padding: 18px; }
+  .portfolio-overlay h3{ font-size: 18px; }
+  .portfolio-overlay p{ font-size: 13.5px; }
+  .portfolio-arrow{
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .portfolio-arrow .material-symbols-outlined{ font-size: 30px; }
+}

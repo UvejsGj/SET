@@ -1,0 +1,148 @@
+
+#aboutsection {
+  scroll-margin-top: 120px;
+  background-color: var(--page-bg);
+}
+
+.about-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 120px;
+  margin-bottom: 40px;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  top: -40px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.about-title::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #2e7bd1;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.about-title:hover::after {
+  width: 180px;
+}
+
+.aboutlayout {
+  position: relative;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
+}
+
+.handshakeimg {
+  position: absolute;
+  width: 800px;
+  height: 700px;
+  top: -50px;
+  left: 70px;
+}
+
+.cards {
+  position: relative;
+  width: 900px;
+  height: 400px;
+  margin: 150px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  left: 15%;
+  top: -80px;
+}
+
+
+.card1,
+.card2,
+.card3 {
+  position: relative;
+  width: 260px;
+  height: 350px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 30px 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.card1 {
+  transform: translateY(20px) rotate(-3deg);
+}
+.card2 {
+  transform: scale(1.05);
+  z-index: 2;
+}
+.card3 {
+  transform: translateY(20px) rotate(3deg);
+}
+
+.card1:hover,
+.card2:hover,
+.card3:hover {
+  transform: scale(1.1) rotate(0deg);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+
+.cards .material-symbols-outlined {
+  font-size: 55px;
+  color: #1e73be;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(30, 115, 190, 0.4);
+  transition: all 0.3s ease;
+}
+
+.card1:hover .material-symbols-outlined,
+.card2:hover .material-symbols-outlined,
+.card3:hover .material-symbols-outlined {
+  color: white;
+  background: #1e73be;
+  box-shadow: 0 0 20px rgba(30, 115, 190, 0.7);
+}
+
+.card1 h1,
+.card2 h1,
+.card3 h1 {
+  font-size: 60px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 10px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.card1 p,
+.card2 p,
+.card3 p {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-family: "Poppins", sans-serif;
+}
