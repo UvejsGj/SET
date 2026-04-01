@@ -2,10 +2,10 @@
 
 :root {
   --bg: rgb(163, 195, 238);
-  --card: rgba(255, 255, 255, 0.22);
-  --border: rgba(255, 255, 255, 0.35);
-  --text: #ffffff;
-  --muted: #eaf2ff;
+  --card: rgba(255, 255, 255, 0.9);
+  --border: rgba(46, 123, 209, 0.22);
+  --text: #123056;
+  --muted: #27486e;
   --accent: #2e7bd1;
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 .policy-wrap {
-  width: min(980px, calc(100% - 32px));
+  width: min(920px, calc(100% - 32px));
   margin: 32px auto 56px;
   padding: 28px 24px 34px;
   border-radius: 22px;
@@ -62,13 +62,13 @@ body {
 
 .eyebrow {
   margin: 0 0 6px;
-  color: var(--muted);
+  color: #315882;
   font-weight: 500;
 }
 
 .updated {
   margin-top: 0;
-  color: var(--muted);
+  color: #315882;
 }
 
 h1,
@@ -84,29 +84,33 @@ h1 {
   margin-top: 0;
   font-size: clamp(30px, 5vw, 42px);
   font-weight: 800;
+  color: #0f2a4a;
 }
 
 h2 {
   font-size: clamp(23px, 3.4vw, 30px);
   font-weight: 800;
   padding-top: 8px;
+  color: #16385f;
 }
 
 h3 {
   font-size: clamp(19px, 2.7vw, 24px);
   font-weight: 700;
+  color: #1b416c;
 }
 
 h4 {
   font-size: clamp(17px, 2.2vw, 20px);
   font-weight: 700;
+  color: #1f4a79;
 }
 
 p,
 li {
   color: var(--muted);
-  line-height: 1.72;
-  font-size: 16px;
+  line-height: 1.78;
+  font-size: 17px;
 }
 
 ul {
@@ -116,7 +120,7 @@ ul {
 }
 
 strong {
-  color: #ffffff;
+  color: #123056;
 }
 
 @media (max-width: 700px) {
