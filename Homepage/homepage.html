@@ -13,7 +13,7 @@
     />
   </head>
   <body>
-    <!-- Logo stays the same -->
+    <!-- Site logo -->
     <a href="#homesection">
       <img
         class="navbarlogo"
@@ -22,23 +22,24 @@
       />
     </a>
 
-    <!-- ✅ NEW: Hamburger button (only shows on mobile) -->
+    <!-- Open menu (shown on small screens) -->
     <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">
       <span class="material-symbols-outlined" aria-hidden="true">menu</span>
       <span class="sr-only">Open menu</span>
     </button>
 
-    <!-- ✅ Add id="main-nav" -->
+    <!-- Main links -->
     <nav class="navbar" id="main-nav" aria-label="Main navigation">
       <a href="#homesection" class="homebtn">Home</a>
       <a href="#aboutsection" class="aboutbtn">About</a>
       <a href="#servicesection" class="servicesbtn">Services</a>
       <a href="#portfolio" class="portofoliobtn">Portofolio</a>
-      <a href="#techstack" class="teambtn">Team</a>
-      <a href="#faq" class="contactusbtn">Contact Us</a>
+      <a href="#team" class="teambtn">Team</a>
+      <a href="#faq" class="faqbtn">FAQ</a>
+      <a href="#contact" class="contactusbtn">Contact Us</a>
     </nav>
 
-    <!-- ✅ NEW: overlay (click to close) -->
+    <!-- Dark layer behind menu; click to close -->
     <div class="nav-overlay" hidden></div>
 
     <div id="homesection" class="homelayout">
@@ -61,7 +62,7 @@
 
     <div class="customerlist">
       <div class="customerlist-track">
-        <!-- faza par -->
+        <!-- Step 1 -->
         <a href="https://www.gropyus.com/">
           <img
             src="Imazhet/Customer/gropys.svg"
@@ -93,7 +94,7 @@
             alt="Detay Studio logo"
             loading="lazy"
         /></a>
-        <!-- faza dy -->
+        <!-- Step 2 -->
         <a href="https://www.gropyus.com/">
           <img
             src="Imazhet/Customer/gropys.svg"
@@ -119,7 +120,7 @@
             alt="Detay Studio logo"
             loading="lazy"
         /></a>
-        <!-- faza tre -->
+        <!-- Step 3 -->
         <a href="https://www.gropyus.com/">
           <img
             src="Imazhet/Customer/gropys.svg"
@@ -214,7 +215,8 @@
       </div>
     </div>
 
-    <!-- <div class="wave-stack">
+    <!-- Wave SVGs (turned off)
+    <div class="wave-stack">
       <svg class="wave w1" viewBox="0 0 1440 320" preserveAspectRatio="none">
         <path
           d="M0,192L60,181.3C120,171,240,149,360,128C480,107,600,85,720,106.7C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160V320H0Z"
@@ -232,16 +234,17 @@
       </svg>
     </div> -->
 
-    <div id="servicesection" class="services">
-      <h1 class="servicetitle">Services</h1>
-      <br />
-      <p>
-        Smart engineering meets innovation — modern solutions that move your
-        business forward.
-      </p>
-    </div>
+    <section id="servicesection" class="services-stack" aria-label="Services">
+      <div class="services">
+        <h1 class="servicetitle">Services</h1>
+        <br />
+        <p>
+          Smart engineering meets innovation — modern solutions that move your
+          business forward.
+        </p>
+      </div>
 
-    <div class="servicecards">
+      <div class="servicecards">
       <div class="3dcad">
         <span class="material-symbols-outlined">3d</span>
         <h1>3D Cad</h1>
@@ -285,6 +288,7 @@
         </p>
       </div>
     </div>
+    </section>
 
     <section class="culture-section">
       <h2 id="lifesection" class="section-title">Life at Smart Engineering</h2>
@@ -402,6 +406,238 @@
       </div>
     </section>
 
+    <section id="team" class="team-section" aria-label="Our team">
+      <h2 class="section-title">Meet our Team</h2>
+      <p class="team-intro">
+        Meet the experienced and talented team behind our cutting-edge technology
+        solutions.
+      </p>
+
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/besart-berisha.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Besart Berisha</h3>
+            <p class="team-card-role">Chief Executive Officer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/clirim-zenelaj.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Çlirim Zenelaj</h3>
+            <p class="team-card-role">Project Lead Developer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/ardian-berisha.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Ardian Berisha</h3>
+            <p class="team-card-role">Manager of finance</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/mehmet-zeqiraj.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Mehmet Zeqiraj</h3>
+            <p class="team-card-role">Senior mechanical engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/gezim-preniqi.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Gëzim Preniqi</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/granit-arifaj.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Granit Arifaj</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/samet-xhemajli.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Samet Xhemaili</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/qendrim-tara.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Qendrim Tara</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/albi-macula.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Albi Macula</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/endrit-gashi.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Endrit Gashi</h3>
+            <p class="team-card-role">Mechatronics Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/enes-gjelaj.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Enes Gjelaj</h3>
+            <p class="team-card-role">Mechanical Engineer</p>
+          </div>
+        </article>
+
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/endrit-gjelaj.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Endrit Gjelaj</h3>
+            <p class="team-card-role">Mechanical Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="Imazhet/Team/bernard-kastrati.jpg"
+              alt=""
+              width="308"
+              height="415"
+              loading="lazy"
+            />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Bernard Kastrati</h3>
+            <p class="team-card-role">Web Developer</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="portfolio-section" id="portfolio">
       <h2 class="section-title">Portfolio</h2>
 
@@ -451,7 +687,6 @@
                 </div>
               </article>
 
-              <!-- Keep the rest the same pattern -->
               <article class="portfolio-slide" tabindex="0">
                 <img
                   src="Projektet/SE3.png"
@@ -467,9 +702,6 @@
                 </div>
               </article>
 
-              <!-- ... continue SE4..SE12 as portfolio-slide ... -->
-
-              <!-- Keep the rest the same pattern -->
               <article class="portfolio-slide" tabindex="0">
                 <img
                   src="Projektet/SE4.png"
@@ -624,11 +856,115 @@
       </div>
     </section>
 
+    <section id="contact" class="contact-section" aria-label="Contact us">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="contact-intro">
+        Tell us about your project or ask a question. We usually reply within one
+        to two business days.
+      </p>
+
+      <div class="contact-layout">
+        <div class="contact-aside">
+          <div class="contact-info-card">
+            <div class="contact-info-row">
+              <span class="material-symbols-outlined contact-info-icon" aria-hidden="true">mail</span>
+              <div>
+                <span class="contact-info-label">Email</span>
+                <a class="contact-info-value" href="mailto:uvejsgjelaj03@gmail.com"
+                  >uvejsgjelaj03@gmail.com</a
+                >
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <span class="material-symbols-outlined contact-info-icon" aria-hidden="true">call</span>
+              <div>
+                <span class="contact-info-label">Phone</span>
+                <a class="contact-info-value" href="tel:+38349135073">(+383) 49 135 073</a>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <span class="material-symbols-outlined contact-info-icon" aria-hidden="true">location_on</span>
+              <div>
+                <span class="contact-info-label">Location</span>
+                <span class="contact-info-value"
+                  >Ulpiana, Pristina, Kosovo, 30000</span
+                >
+              </div>
+            </div>
+            <p class="contact-faq-nudge">
+              Quick answers?
+              <a href="#faq">See frequently asked questions</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- FormSubmit form id (submissions go to the inbox you activated) -->
+        <form
+          id="contact-form"
+          class="contact-form"
+          action="https://formsubmit.co/519cb8ceae47e5cedcee15486890ce6d"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="SET website — new contact message" />
+          <input type="text" name="_gotcha" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="contact-fields">
+            <label class="contact-field">
+              <span class="contact-label">Name</span>
+              <input
+                type="text"
+                name="name"
+                class="contact-input"
+                required
+                autocomplete="name"
+                placeholder="Your name"
+              />
+            </label>
+            <label class="contact-field">
+              <span class="contact-label">Email</span>
+              <input
+                type="email"
+                name="email"
+                class="contact-input"
+                required
+                autocomplete="email"
+                placeholder="you@company.com"
+              />
+            </label>
+            <label class="contact-field contact-field-full">
+              <span class="contact-label">Subject</span>
+              <input
+                type="text"
+                name="subject"
+                class="contact-input"
+                required
+                placeholder="What is this about?"
+              />
+            </label>
+            <label class="contact-field contact-field-full">
+              <span class="contact-label">Message</span>
+              <textarea
+                name="message"
+                class="contact-textarea"
+                required
+                rows="5"
+                placeholder="Describe your project, timeline, or question…"
+              ></textarea>
+            </label>
+          </div>
+          <button type="submit" class="contact-submit">
+            <span class="material-symbols-outlined" aria-hidden="true">send</span>
+            Send message
+          </button>
+          <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </section>
+
     <section id="faq" class="faq-section">
       <h2 class="section-title">Frequently Asked Questions</h2>
 
       <div class="faq-grid">
-        <details class="faq-card card-glass" open>
+        <details class="faq-card card-glass">
           <summary class="faq-summary">
             <span class="material-symbols-outlined faq-icon">help</span>
             <span class="faq-q">Can you handle large-scale projects?</span>
