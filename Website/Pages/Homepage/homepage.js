@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Motion Graphics",
         "Rendering & Animation",
         "React JS",
-        "Test for Intuitivity & Experience",
+        "3D Printing",
         "Stop Motion"
       ],
       teamRoles: [
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Motion Graphics",
         "Renderim & Animacion",
         "React JS",
-        "Testim për Intuitivitet & Përvojë",
+        "Printim 3D",
         "Stop Motion"
       ],
       teamRoles: [
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (messageInput) messageInput.placeholder = dict.phMessage;
 
     setText(".footer-text span", dict.footerBrand);
-    setText(".footer-link", dict.footerPolicy);
+    setText(".footer-link-policy", dict.footerPolicy);
 
     const aboutCards = document.querySelectorAll(".cards > div p");
     dict.aboutCards.forEach((txt, i) => {
