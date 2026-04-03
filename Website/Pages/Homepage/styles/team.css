@@ -19,14 +19,22 @@
   opacity: 0.95;
 }
 
+.team-grid-outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
 
 .team-grid {
-  max-width: 1400px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 308px), 1fr));
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 308px));
   gap: 28px 24px;
-  justify-items: center;
+  justify-content: center;
+  justify-items: stretch;
 }
 
 .team-card {
@@ -96,6 +104,10 @@
 
   .team-intro {
     font-size: 15px;
+  }
+
+  .team-grid-outer {
+    margin-top: 20px;
   }
 
   .team-grid {

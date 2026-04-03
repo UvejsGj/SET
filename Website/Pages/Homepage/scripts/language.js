@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const i18n = {
+  const language = {
     en: {
       navHome: "Home",
       navAbout: "About",
@@ -74,17 +74,17 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       ],
       teamRoles: [
         "Chief Executive Officer",
-        "Project Lead Developer",
         "Manager of finance",
+        "Project Lead Developer",
         "Senior mechanical engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
         "Mechatronics Engineer",
         "Mechanical Engineer",
         "Mechanical Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
         "Web Developer"
       ],
       faqA: [
@@ -168,17 +168,17 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       ],
       teamRoles: [
         "Drejtor Ekzekutiv",
-        "Udhëheqës i Zhvillimit të Projekteve",
         "Menaxher i Financave",
+        "Udhëheqës i Zhvillimit të Projekteve",
         "Inxhinier Mekanik Senior",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
         "Inxhinier i Mekatronikës",
         "Inxhinier Mekanik",
         "Inxhinier Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
         "Zhvillues Web"
       ],
       faqA: [
@@ -202,7 +202,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
   };
 
   const applyLanguage = (lang) => {
-    const dict = i18n[lang] || i18n.en;
+    const dict = language[lang] || language.en;
     document.documentElement.lang = lang;
     setText(".homebtn", dict.navHome);
     setText(".aboutbtn", dict.navAbout);
