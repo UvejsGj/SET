@@ -51,10 +51,6 @@
     gap: 60px;
     animation: scroll 35s linear infinite;
   }
-
-  .project-card {
-    height: 420px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -89,7 +85,7 @@
   .servicecards > div:nth-child(3),
   .servicecards > div:nth-child(4),
   .servicecards > div:nth-child(5) {
-    transform: none !important;
+    transform: none;
   }
 }
 
@@ -178,7 +174,7 @@
     width: min(300px, 92vw);
     height: auto;
     min-height: 320px;
-    transform: none !important;
+    transform: none;
   }
 
   .faq-grid {
@@ -220,9 +216,9 @@
     font-size: 14.5px;
   }
   .servicecards .material-symbols-outlined {
-    width: 56px !important;
-    height: 56px !important;
-    font-size: 30px !important;
+    width: 56px;
+    height: 56px;
+    font-size: 30px;
   }
 
   
@@ -254,9 +250,9 @@
     line-height: 1.35;
   }
   .tech-card .material-symbols-outlined {
-    width: 48px !important;
-    height: 48px !important;
-    font-size: 26px !important;
+    width: 48px;
+    height: 48px;
+    font-size: 26px;
     margin-top: 2px;
   }
 }
@@ -321,16 +317,16 @@
   }
 
   .servicecards .material-symbols-outlined {
-    width: 74px !important;
-    height: 74px !important;
-    font-size: 42px !important;
+    width: 74px;
+    height: 74px;
+    font-size: 42px;
   }
 }
 
 
 
 .card1, .card2, .card3 {
-  height: auto !important;
+  height: auto;
   min-height: 360px;
 }
 
@@ -378,19 +374,19 @@
   }
 
   .tech-card .material-symbols-outlined {
-    width: 56px !important;
-    height: 56px !important;
-    font-size: 32px !important;
-    border-radius: 14px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    color: #2e7bd1 !important;
-    box-shadow: 0 0 14px rgba(46, 123, 209, 0.32) !important;
+    width: 56px;
+    height: 56px;
+    font-size: 32px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2e7bd1;
+    box-shadow: 0 0 14px rgba(46, 123, 209, 0.32);
   }
 
   .tech-card:hover .material-symbols-outlined {
-    background: #2e7bd1 !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 22px rgba(46, 123, 209, 0.5) !important;
+    background: #2e7bd1;
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(46, 123, 209, 0.5);
   }
 }
 
@@ -405,16 +401,16 @@
 }
 
 .faq-icon {
-  width: 72px !important;
-  height: 72px !important;
-  font-size: 40px !important;
-  border-radius: 18px !important;
+  width: 72px;
+  height: 72px;
+  font-size: 40px;
+  border-radius: 18px;
 }
 
 .faq-card[open] .faq-icon {
-  background: #2e7bd1 !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 22px rgba(46, 123, 209, 0.55) !important;
+  background: #2e7bd1;
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(46, 123, 209, 0.55);
 }
 
 
@@ -461,11 +457,11 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
 @media (max-width: 760px) {
   .navbarlogo {
-    left: 12px !important;
-    top: 10px !important;
-    height: 36px !important;
-    max-width: calc(100vw - 92px) !important;
-    width: auto !important;
+    left: 12px;
+    top: 10px;
+    height: 36px;
+    max-width: calc(100vw - 92px);
+    width: auto;
     z-index: 2490;
   }
 
@@ -489,28 +485,28 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   }
 
   .nav-toggle .material-symbols-outlined {
-    font-size: 28px !important;
+    font-size: 28px;
     color: #fff;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    line-height: 1 !important;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    line-height: 1;
   }
 
   
   .navbar {
-    left: 12px !important;
-    right: 12px !important;
-    top: 64px !important;
-    transform: none !important;
+    left: 12px;
+    right: 12px;
+    top: 64px;
+    transform: none;
 
     display: grid;
     gap: 10px;
-    padding: 14px !important;
-    border-radius: 18px !important;
+    padding: 14px;
+    border-radius: 18px;
 
     opacity: 0;
-    transform: translateY(-10px) !important;
+    transform: translateY(-10px);
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
 
@@ -519,7 +515,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
   body.nav-open .navbar {
     opacity: 1;
-    transform: translateY(0) !important;
+    transform: translateY(0);
     pointer-events: auto;
   }
 
@@ -529,7 +525,7 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
     justify-content: center;
     padding: 12px 12px;
     border-radius: 14px;
-    font-size: 15px !important;
+    font-size: 15px;
     background: rgba(255, 255, 255, 0.06);
   }
 
@@ -583,50 +579,50 @@ html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
 @media (min-width: 1400px) {
   .cards {
-    width: 760px !important;
-    gap: 32px !important;
-    margin: 90px 0 0 !important;
-    left: 22% !important;
-    top: -60px !important;
+    width: 760px;
+    gap: 32px;
+    margin: 90px 0 0;
+    left: 22%;
+    top: -60px;
   }
 
   .card1,
   .card2,
   .card3 {
-    width: 220px !important;
-    min-height: 300px !important;
-    padding: 20px 16px !important;
+    width: 220px;
+    min-height: 300px;
+    padding: 20px 16px;
   }
 
   .card1 h1,
   .card2 h1,
   .card3 h1 {
-    font-size: 44px !important;
+    font-size: 44px;
   }
 
   .card1 p,
   .card2 p,
   .card3 p {
-    font-size: 17px !important;
-    line-height: 1.55 !important;
+    font-size: 17px;
+    line-height: 1.55;
   }
 }
 
 html {
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  height: auto !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
 }
 
 body {
-  overflow: visible !important; 
-  height: auto !important;
-  min-height: 100vh !important;
+  overflow: visible; 
+  height: auto;
+  min-height: 100vh;
 }
 
 
 body.nav-open {
-  overflow: hidden !important;
+  overflow: hidden;
 }
 
 

@@ -2,7 +2,7 @@
 .services-stack {
   margin: 0;
   padding: 0;
-  background-color: var(--page-bg);
+  background-color: transparent;
 }
 
 .services {
@@ -17,7 +17,7 @@
   display: inline-block;
   font-size: 40px;
   font-weight: 800;
-  color: #ffffff;
+  color: inherit;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin: 0 0 32px;
@@ -33,7 +33,7 @@
   transform: translateX(-50%);
   width: 140px;
   height: 4px;
-  background: #2e7bd1;
+  background: currentColor;
   border-radius: 2px;
   transition: width 0.4s ease;
 }
@@ -46,7 +46,7 @@
   margin: 28px auto 0;
   font-size: 17px;
   font-weight: 800;
-  color: #ffffff;
+  color: inherit;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-family: "Playwrite US Modern", cursive;
@@ -54,8 +54,8 @@
 }
 
 .servicecards {
-  --accent: #2e7bd1;
-  --glass-hover: rgba(255, 255, 255, 0.3);
+  --accent: currentColor;
+  --glass-hover: transparent;
 
   font-family: "Roboto", sans-serif;
   max-width: 1200px;
@@ -79,12 +79,12 @@
   max-width: 260px;
   min-height: 370px;
   padding: 28px 22px;
-  color: #fff;
+  color: inherit;
 
-  background: rgba(255, 255, 255, 0.22);
+  background: transparent;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid transparent;
   border-radius: 20px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
   transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.3s ease;

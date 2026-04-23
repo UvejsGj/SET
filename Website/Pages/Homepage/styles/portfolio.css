@@ -3,11 +3,11 @@
   padding: 120px 24px;
   text-align: center;
   overflow: hidden;
-  background-color: var(--page-bg);
+  background-color: transparent;
 }
 
 .portfolio-shell{
-  --accent: #2e7bd1;
+  --accent: currentColor;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;

@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const DESKTOP_MIN_WIDTH = 761;
+  const NAV_SCROLL_THRESHOLD = 22;
+  let lastScrollY = window.scrollY;
+  const progressFill = document.querySelector(".nav-progress-fill");
 // Mobile menu
   let closeMobileNav = () => {};
   const navToggle = document.querySelector(".nav-toggle");
@@ -7,12 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const navOverlay = document.querySelector(".nav-overlay");
 
   if (navToggle && mainNav && navOverlay) {
+    let lastFocused = null;
     const openMobileNav = () => {
+      lastFocused = document.activeElement;
       document.body.classList.add("nav-open");
       navOverlay.hidden = false;
       navToggle.setAttribute("aria-expanded", "true");
       const icon = navToggle.querySelector(".material-symbols-outlined");
       if (icon) icon.textContent = "close";
+      const firstLink = mainNav.querySelector("a");
+      if (firstLink) firstLink.focus();
     };
 
     closeMobileNav = () => {
@@ -21,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
       navToggle.setAttribute("aria-expanded", "false");
       const icon = navToggle.querySelector(".material-symbols-outlined");
       if (icon) icon.textContent = "menu";
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      }
     };
 
     const mobileNavOpen = () => document.body.classList.contains("nav-open");
@@ -69,16 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const NAV_SCROLL_EXTRA_DOWN = {
     servicesection: 56,
-    portfolio: 12,
   };
 
   function getNavScrollAnchor(id) {
     const root = document.getElementById(id);
     if (!root) return null;
-    if (id === "portfolio") {
-      const heading = root.querySelector(":scope > h2.section-title");
-      if (heading) return heading;
-    }
     return root;
   }
 
@@ -151,11 +157,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   const setActive = (id) => {
-    navLinks.forEach((a) => a.classList.toggle("active", normalizeHash(a.hash) === id));
+    navLinks.forEach((a) => {
+      const isActive = normalizeHash(a.hash) === id;
+      a.classList.toggle("active", isActive);
+      if (isActive) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
   };
+
+  function updateNavbarImmersionState() {
+    const y = window.scrollY;
+    const scrollingDown = y > lastScrollY + 4;
+    const nearTop = y <= NAV_SCROLL_THRESHOLD;
+    const isDesktop = window.innerWidth >= DESKTOP_MIN_WIDTH;
+    const drawerOpen = document.body.classList.contains("nav-open");
+
+    document.body.classList.toggle("nav-scrolled", !nearTop);
+
+    if (drawerOpen || !isDesktop || nearTop) {
+      document.body.classList.remove("nav-hidden");
+    } else if (scrollingDown) {
+      document.body.classList.add("nav-hidden");
+    } else {
+      document.body.classList.remove("nav-hidden");
+    }
+
+    lastScrollY = y;
+  }
+
+  function updateScrollProgress() {
+    if (!progressFill) return;
+    const doc = document.documentElement;
+    const maxScrollable = Math.max(1, doc.scrollHeight - window.innerHeight);
+    const raw = (window.scrollY / maxScrollable) * 100;
+    const progress = Math.min(100, Math.max(0, raw));
+    progressFill.style.width = `${progress.toFixed(2)}%`;
+  }
 
   function updateActiveNavFromScroll() {
     if (!sections.length) return;
+    const nearBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+    if (nearBottom) {
+      setActive(sections[sections.length - 1].id);
+      return;
+    }
+
     const line = window.scrollY + getAnchorOffsetPx() + 12;
     let currentId = sections[0].id;
     for (const sec of sections) {
@@ -173,6 +220,8 @@ document.addEventListener("DOMContentLoaded", () => {
       navScrollTick = true;
       requestAnimationFrame(() => {
         navScrollTick = false;
+        updateNavbarImmersionState();
+        updateScrollProgress();
         updateActiveNavFromScroll();
       });
     },
@@ -182,9 +231,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let resizeNavTimer = null;
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeNavTimer);
-    resizeNavTimer = window.setTimeout(() => updateActiveNavFromScroll(), 100);
+    resizeNavTimer = window.setTimeout(() => {
+      updateNavbarImmersionState();
+      updateScrollProgress();
+      updateActiveNavFromScroll();
+    }, 100);
   });
 
+  updateNavbarImmersionState();
+  updateScrollProgress();
   updateActiveNavFromScroll();
 
   if (location.hash) {

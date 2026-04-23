@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Portfolio | Smart Engineering Tech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore portfolio projects by Smart Engineering Tech across 3D visualization, web experiences, and product storytelling."
+    />
+    <link rel="stylesheet" href="portfolio.css" />
+    <script defer src="../Homepage/scripts/analytics.js"></script>
+    <script defer src="portfolio-data.js"></script>
+    <script defer src="portfolio-lightbox.js"></script>
+  </head>
+  <body>
+    <main class="portfolio-page">
+      <p class="back-home-wrap">
+        <a class="back-home-btn" href="../Homepage/homepage.html">Back to Home</a>
+      </p>
+      <header class="portfolio-head">
+        <p class="eyebrow">Smart Engineering Tech</p>
+        <h1>Portfolio</h1>
+        <p class="intro">
+          A curated overview of selected visual, engineering, and web delivery work.
+        </p>
+      </header>
+
+      <section class="portfolio-grid" aria-label="Portfolio projects" data-locale="en">
+        <p class="portfolio-loading" aria-live="polite">Loading projects…</p>
+      </section>
+    </main>
+    <div class="lightbox" hidden aria-hidden="true">
+      <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">Prev</button>
+      <button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">Next</button>
+      <p class="lightbox-counter" aria-live="polite">1 / 1</p>
+      <p class="lightbox-title" aria-live="polite">Project title</p>
+      <button type="button" class="lightbox-close" aria-label="Close fullscreen image">Close</button>
+      <img class="lightbox-image" src="" alt="" />
+    </div>
+  </body>
+</html>

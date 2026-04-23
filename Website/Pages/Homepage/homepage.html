@@ -5,6 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Smart Engineering Tech</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Smart Engineering Tech builds 3D design, web platforms, and product visualization experiences for ambitious teams."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://smart-engineering.tech/Pages/Homepage/homepage.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Smart Engineering Tech" />
+    <meta
+      property="og:description"
+      content="Engineering, design, and development services focused on speed, clarity, and measurable business outcomes."
+    />
+    <meta property="og:url" content="https://smart-engineering.tech/Pages/Homepage/homepage.html" />
+    <meta property="og:image" content="https://smart-engineering.tech/Imazhet/CNCimage2.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Smart Engineering Tech" />
+    <meta
+      name="twitter:description"
+      content="3D CAD, web development, UI/UX, and product visualization delivered by Smart Engineering Tech."
+    />
+    <meta name="twitter:image" content="https://smart-engineering.tech/Imazhet/CNCimage2.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="../../Imazhet/smartengineeringtech.png" />
+    <link rel="preload" as="image" href="../../Imazhet/CNCimage2.png" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/base.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/partners.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/about.css" />
@@ -14,26 +39,51 @@
     <link rel="stylesheet" type="text/css" media="screen" href="styles/team.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/contact.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/faq.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/portfolio.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/responsive.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/shadcn-theme.css" />
     <script defer src="scripts/language.js"></script>
     <script defer src="scripts/navigation.js"></script>
+    <script defer src="scripts/analytics.js"></script>
     <script defer src="scripts/culture.js"></script>
-    <script defer src="scripts/portfolio.js"></script>
+    <script defer src="scripts/contact-form-endpoint.js"></script>
     <script defer src="scripts/contact.js"></script>
     <script defer src="scripts/touch.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Smart Engineering Tech",
+        "url": "https://smart-engineering.tech",
+        "logo": "https://smart-engineering.tech/Imazhet/smartengineeringtech.png",
+        "sameAs": [
+          "https://www.facebook.com/share/1FE8JSUcZQ/?mibextid=wwXIfr",
+          "https://www.instagram.com/3dprinting_serviceks/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+38349135073",
+          "contactType": "customer support",
+          "areaServed": "XK",
+          "availableLanguage": ["English", "Albanian"]
+        }
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#homesection">Skip to content</a>
     <!-- Site logo -->
     <a href="#homesection">
       <img
         class="navbarlogo"
         src="../../Imazhet/smartengineeringtech.png"
         alt="Smart Engineering Tech"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
       />
     </a>
 
@@ -49,14 +99,17 @@
       <a href="#aboutsection" class="aboutbtn">About</a>
       <a href="#servicesection" class="servicesbtn">Services</a>
       <a href="#team" class="teambtn">Team</a>
-      <a href="#portfolio" class="portofoliobtn">Portofolio</a>
-      <a href="#contact" class="contactusbtn">Contact Us</a>
+      <a href="../Portfolio/portfolio.html" class="portofoliobtn">Portfolio</a>
+      <a href="#contact" class="contactusbtn nav-cta">Contact Us</a>
       <a href="#faq" class="faqbtn">FAQ</a>
       <div class="lang-switch" role="group" aria-label="Language switcher">
         <button type="button" class="lang-btn active" data-lang="en">EN</button>
         <button type="button" class="lang-btn" data-lang="sq">SQ</button>
       </div>
     </nav>
+    <div class="nav-progress" aria-hidden="true">
+      <span class="nav-progress-fill"></span>
+    </div>
 
     <!-- Dark layer behind menu; click to close -->
     <div class="nav-overlay" hidden></div>
@@ -64,16 +117,24 @@
     <div id="homesection" class="homelayout">
       <div class="title">
         <h1>
-          Innovate Your Future with <br />
+          Build Smarter Products with <br />
           Smart Engineering
         </h1>
-        <p>IF YOU CAN DREAM IT, WE CAN DESIGN IT.</p>
+        <p>From concept to launch-ready delivery.</p>
         <img
           class="theart"
           src="../../Imazhet/CNCimage2.png"
           alt="CNC machining"
-          loading="lazy"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          width="800"
+          height="700"
         />
+        <div class="hero-cta-row">
+          <a class="hero-cta hero-cta-primary" href="#contact">Start your project</a>
+          <a class="hero-cta hero-cta-secondary" href="../Portfolio/portfolio.html">See case studies</a>
+        </div>
       </div>
     </div>
 
@@ -87,127 +148,147 @@
             src="../../Imazhet/Customer/gropys.svg"
             alt="Gropyus logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.hildebrandindustry.ch/en/home-en/"
           ><img
             src="../../Imazhet/Customer/hildebrand.svg"
             alt="Hildebrand logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.aircrete.com/"
           ><img
             src="../../Imazhet/Customer/logo-aircrete.png"
             alt="Aircrete logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.promessmontage.de/en/"
           ><img
             src="../../Imazhet/Customer/promess.svg"
             alt="Promess logo"
             loading="lazy"
-          />
+                  decoding="async"
+                />
         </a>
         <a href="https://www.detaystudio.com/"
           ><img
             src="../../Imazhet/Customer/detay-studio.svg"
             alt="Detay Studio logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <!-- Step 2 -->
         <a href="https://www.gropyus.com/">
           <img
             src="../../Imazhet/Customer/gropys.svg"
             alt="Gropyus logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.hildebrandindustry.ch/en/home-en/"
           ><img
             src="../../Imazhet/Customer/hildebrand.svg"
             alt="Hildebrand logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.promessmontage.de/en/"
           ><img
             src="../../Imazhet/Customer/promess.svg"
             alt="Promess logo"
             loading="lazy"
-          />
+                  decoding="async"
+                />
         </a>
         <a href="https://www.detaystudio.com/"
           ><img
             src="../../Imazhet/Customer/detay-studio.svg"
             alt="Detay Studio logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <!-- Step 3 -->
         <a href="https://www.gropyus.com/">
           <img
             src="../../Imazhet/Customer/gropys.svg"
             alt="Gropyus logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.hildebrandindustry.ch/en/home-en/"
           ><img
             src="../../Imazhet/Customer/hildebrand.svg"
             alt="Hildebrand logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.aircrete.com/"
           ><img
             src="../../Imazhet/Customer/logo-aircrete.png"
             alt="Aircrete logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.promessmontage.de/en/"
           ><img
             src="../../Imazhet/Customer/promess.svg"
             alt="Promess logo"
             loading="lazy"
-          />
+                  decoding="async"
+                />
         </a>
         <a href="https://www.detaystudio.com/"
           ><img
             src="../../Imazhet/Customer/detay-studio.svg"
             alt="Detay Studio logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.gropyus.com/">
           <img
             src="../../Imazhet/Customer/gropys.svg"
             alt="Gropyus logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.hildebrandindustry.ch/en/home-en/"
           ><img
             src="../../Imazhet/Customer/hildebrand.svg"
             alt="Hildebrand logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.aircrete.com/"
           ><img
             src="../../Imazhet/Customer/logo-aircrete.png"
             alt="Aircrete logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
         <a href="https://www.promessmontage.de/en/"
           ><img
             src="../../Imazhet/Customer/promess.svg"
             alt="Promess logo"
             loading="lazy"
-          />
+                  decoding="async"
+                />
         </a>
         <a href="https://www.detaystudio.com/"
           ><img
             src="../../Imazhet/Customer/detay-studio.svg"
             alt="Detay Studio logo"
             loading="lazy"
-        /></a>
+                  decoding="async"
+                /></a>
       </div>
     </div>
 
-    <h1 class="about-title">About Us</h1>
+    <h2 class="about-title">About Us</h2>
     <div id="aboutsection" class="aboutlayout">
-      <img class="handshakeimg" src="../../Imazhet/isometricshake.png" />
+      <img class="handshakeimg" src="../../Imazhet/isometricshake.png"  decoding="async"
+          />
       <div id="cardsection" class="cards">
         <div class="card1">
           <span class="material-symbols-outlined">contacts_product</span>
@@ -255,7 +336,7 @@
 
     <section id="servicesection" class="services-stack" aria-label="Services">
       <div class="services">
-        <h1 class="servicetitle">Services</h1>
+        <h2 class="servicetitle">Services</h2>
         <br />
         <p>
           Smart engineering meets innovation — modern solutions that move your
@@ -429,22 +510,21 @@
     <section id="team" class="team-section" aria-label="Our team">
       <h2 class="section-title">Meet our Team</h2>
       <p class="team-intro">
-        Meet the experienced and talented team behind our cutting-edge
-        technology solutions.
+        Meet the engineers, designers, and builders behind our delivery team.
       </p>
 
-      <div class="team-grid-outer">
       <div class="team-grid">
         <article class="team-card">
           <div class="team-card-photo-wrap">
             <img
               class="team-card-photo"
               src="../../Imazhet/Team/besart-berisha.jpg"
-              alt=""
+              alt="Besart Berisha"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Besart Berisha</h3>
@@ -456,29 +536,13 @@
           <div class="team-card-photo-wrap">
             <img
               class="team-card-photo"
-              src="../../Imazhet/Team/ardian-berisha.jpg"
-              alt=""
-              width="308"
-              height="415"
-              loading="lazy"
-            />
-          </div>
-          <div class="team-card-text">
-            <h3 class="team-card-name">Ardian Berisha</h3>
-            <p class="team-card-role">Manager of finance</p>
-          </div>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card-photo-wrap">
-            <img
-              class="team-card-photo"
               src="../../Imazhet/Team/clirim-zenelaj.jpg"
-              alt=""
+              alt="Çlirim Zenelaj"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Çlirim Zenelaj</h3>
@@ -490,12 +554,31 @@
           <div class="team-card-photo-wrap">
             <img
               class="team-card-photo"
-              src="../../Imazhet/Team/mehmet-zeqiraj.jpg"
-              alt=""
+              src="../../Imazhet/Team/ardian-berisha.jpg"
+              alt="Ardian Berisha"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Ardian Berisha</h3>
+            <p class="team-card-role">Manager of finance</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="../../Imazhet/Team/mehmet-zeqiraj.jpg"
+              alt="Mehmet Zeqiraj"
+              width="308"
+              height="415"
+              loading="lazy"
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Mehmet Zeqiraj</h3>
@@ -507,80 +590,13 @@
           <div class="team-card-photo-wrap">
             <img
               class="team-card-photo"
-              src="../../Imazhet/Team/endrit-gashi.jpg"
-              alt=""
-              width="308"
-              height="415"
-              loading="lazy"
-            />
-          </div>
-          <div class="team-card-text">
-            <h3 class="team-card-name">Endrit Gashi</h3>
-            <p class="team-card-role">Mechatronics Engineer</p>
-          </div>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card-photo-wrap">
-            <img
-              class="team-card-photo"
-              src="../../Imazhet/Team/enes-gjelaj.jpg"
-              alt=""
-              width="308"
-              height="415"
-              loading="lazy"
-            />
-          </div>
-          <div class="team-card-text">
-            <h3 class="team-card-name">Enes Gjelaj</h3>
-            <p class="team-card-role">Mechanical Engineer</p>
-          </div>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card-photo-wrap">
-            <img
-              class="team-card-photo"
-              src="../../Imazhet/Team/endrit-gjelaj.jpg"
-              alt=""
-              width="308"
-              height="415"
-              loading="lazy"
-            />
-          </div>
-          <div class="team-card-text">
-            <h3 class="team-card-name">Endrit Gjelaj</h3>
-            <p class="team-card-role">Mechanical Engineer</p>
-          </div>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card-photo-wrap">
-            <img
-              class="team-card-photo"
-              src="../../Imazhet/Team/albi-macula.jpg"
-              alt=""
-              width="308"
-              height="415"
-              loading="lazy"
-            />
-          </div>
-          <div class="team-card-text">
-            <h3 class="team-card-name">Albi Macula</h3>
-            <p class="team-card-role">Mechanical Design Engineer</p>
-          </div>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card-photo-wrap">
-            <img
-              class="team-card-photo"
               src="../../Imazhet/Team/gezim-preniqi.jpg"
-              alt=""
+              alt="Gëzim Preniqi"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Gëzim Preniqi</h3>
@@ -593,11 +609,12 @@
             <img
               class="team-card-photo"
               src="../../Imazhet/Team/granit-arifaj.jpg"
-              alt=""
+              alt="Granit Arifaj"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Granit Arifaj</h3>
@@ -609,29 +626,13 @@
           <div class="team-card-photo-wrap">
             <img
               class="team-card-photo"
-              src="../../Imazhet/Team/qendrim-tara.jpg"
-              alt=""
-              width="308"
-              height="415"
-              loading="lazy"
-            />
-          </div>
-          <div class="team-card-text">
-            <h3 class="team-card-name">Qendrim Tara</h3>
-            <p class="team-card-role">Mechanical Design Engineer</p>
-          </div>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card-photo-wrap">
-            <img
-              class="team-card-photo"
               src="../../Imazhet/Team/samet-xhemajli.jpg"
-              alt=""
+              alt="Samet Xhemaili"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Samet Xhemaili</h3>
@@ -643,12 +644,103 @@
           <div class="team-card-photo-wrap">
             <img
               class="team-card-photo"
-              src="../../Imazhet/Team/bernard-kastrati.jpg"
-              alt=""
+              src="../../Imazhet/Team/qendrim-tara.jpg"
+              alt="Qendrim Tara"
               width="308"
               height="415"
               loading="lazy"
-            />
+                  decoding="async"
+                />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Qendrim Tara</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="../../Imazhet/Team/albi-macula.jpg"
+              alt="Albi Macula"
+              width="308"
+              height="415"
+              loading="lazy"
+                  decoding="async"
+                />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Albi Macula</h3>
+            <p class="team-card-role">Mechanical Design Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="../../Imazhet/Team/endrit-gashi.jpg"
+              alt="Endrit Gashi"
+              width="308"
+              height="415"
+              loading="lazy"
+                  decoding="async"
+                />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Endrit Gashi</h3>
+            <p class="team-card-role">Mechatronics Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="../../Imazhet/Team/enes-gjelaj.jpg"
+              alt="Enes Gjelaj"
+              width="308"
+              height="415"
+              loading="lazy"
+                  decoding="async"
+                />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Enes Gjelaj</h3>
+            <p class="team-card-role">Mechanical Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="../../Imazhet/Team/endrit-gjelaj.jpg"
+              alt="Endrit Gjelaj"
+              width="308"
+              height="415"
+              loading="lazy"
+                  decoding="async"
+                />
+          </div>
+          <div class="team-card-text">
+            <h3 class="team-card-name">Endrit Gjelaj</h3>
+            <p class="team-card-role">Mechanical Engineer</p>
+          </div>
+        </article>
+
+        <article class="team-card">
+          <div class="team-card-photo-wrap">
+            <img
+              class="team-card-photo"
+              src="../../Imazhet/Team/bernard-kastrati.jpg"
+              alt="Bernard Kastrati"
+              width="308"
+              height="415"
+              loading="lazy"
+                  decoding="async"
+                />
           </div>
           <div class="team-card-text">
             <h3 class="team-card-name">Bernard Kastrati</h3>
@@ -656,232 +748,36 @@
           </div>
         </article>
       </div>
-      </div>
     </section>
 
-    <section class="portfolio-section" id="portfolio">
-      <h2 class="section-title">Portfolio</h2>
-
-      <div class="portfolio-shell" aria-roledescription="carousel">
-        <button
-          class="portfolio-arrow prev"
-          type="button"
-          aria-label="Previous project"
-        >
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >chevron_left</span
-          >
-        </button>
-
-        <div class="portfolio-frame">
-          <div class="portfolio-viewport">
-            <div class="portfolio-track">
-              <!-- Slide 1 -->
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE1.png"
-                  alt="Project 1"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Interactive 3D Web Experience</h3>
-                  <p>
-                    Immersive real-time 3D website built for high-end brand
-                    presentation.
-                  </p>
-                </div>
-              </article>
-
-              <!-- Slide 2 -->
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE2.png"
-                  alt="Project 2"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Motion-Driven Landing Page</h3>
-                  <p>
-                    Smooth motion graphics and micro-interactions enhancing user
-                    flow.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE3.png"
-                  alt="Project 3"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE4.png"
-                  alt="Project 4"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE5.png"
-                  alt="Project 5"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE6.png"
-                  alt="Project 6"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE7.png"
-                  alt="Project 7"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE8.png"
-                  alt="Project 8"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE9.png"
-                  alt="Project 9"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE10.png"
-                  alt="Project 10"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE11.png"
-                  alt="Project 11"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-
-              <article class="portfolio-slide" tabindex="0">
-                <img
-                  src="../../Imazhet/Projektet/SE12.png"
-                  alt="Project 12"
-                  loading="lazy"
-                />
-                <div class="portfolio-overlay">
-                  <h3>Product Visualization Platform</h3>
-                  <p>
-                    High-resolution 3D product renders with interactive
-                    rotation.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <button
-          class="portfolio-arrow next"
-          type="button"
-          aria-label="Next project"
-        >
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >chevron_right</span
-          >
-        </button>
-
-        <div class="portfolio-ui">
-          <div class="portfolio-dots" aria-label="Slide navigation"></div>
-        </div>
+    <section class="proof-section" aria-label="Client testimonials">
+      <h2 class="section-title">What Clients Say</h2>
+      <div class="proof-grid">
+        <blockquote class="proof-card">
+          <p>
+            “Their team turned a vague product concept into a production-ready visual and web flow in weeks.”
+          </p>
+          <cite>Placeholder testimonial — Manufacturing PM</cite>
+        </blockquote>
+        <blockquote class="proof-card">
+          <p>
+            “Communication was clear, milestones were predictable, and the quality bar stayed high.”
+          </p>
+          <cite>Placeholder testimonial — Startup Founder</cite>
+        </blockquote>
+        <blockquote class="proof-card">
+          <p>
+            “We finally have one partner that understands engineering detail and digital experience equally well.”
+          </p>
+          <cite>Placeholder testimonial — Operations Lead</cite>
+        </blockquote>
       </div>
     </section>
 
     <section id="contact" class="contact-section" aria-label="Contact us">
       <h2 class="section-title">Contact Us</h2>
       <p class="contact-intro">
-        Tell us about your project or ask a question. We usually reply within
-        one to two business days.
+        Share your goals, timeline, and constraints. We usually respond within one business day.
       </p>
 
       <div class="contact-layout">
@@ -935,12 +831,13 @@
           </div>
         </div>
 
-        <!-- FormSubmit form id (submissions go to the inbox you activated) -->
+        <!-- Ship with scripts/contact.js: action="#" relies on data-fallback-action + contact-form-endpoint.js; do not merge this form without those scripts. -->
         <form
           id="contact-form"
           class="contact-form"
-          action="https://formsubmit.co/519cb8ceae47e5cedcee15486890ce6d"
+          action="#"
           method="POST"
+          data-fallback-action="https://formsubmit.co/519cb8ceae47e5cedcee15486890ce6d"
         >
           <input
             type="hidden"
@@ -1005,6 +902,9 @@
             >
             <span class="contact-submit-text">Send message</span>
           </button>
+          <p class="contact-trust-note">
+            Typical first reply time: within 1 business day.
+          </p>
           <p
             id="contact-form-status"
             class="contact-form-status"

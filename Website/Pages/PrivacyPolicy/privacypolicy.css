@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap");
 
 :root {
-  --bg: rgb(163, 195, 238);
-  --card: rgba(255, 255, 255, 0.9);
-  --border: rgba(46, 123, 209, 0.22);
-  --text: #123056;
-  --muted: #27486e;
-  --accent: #2e7bd1;
+  --bg: #09090b;
+  --bg-soft: #16161a;
+  --card: rgba(24, 24, 27, 0.9);
+  --border: #27272a;
+  --text: #fafafa;
+  --muted: #a1a1aa;
+  --accent: #f4f4f5;
 }
 
 *,
@@ -19,9 +20,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background: radial-gradient(circle at 10% 0%, var(--bg-soft) 0%, var(--bg) 58%);
   color: var(--text);
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 .policy-wrap {
@@ -49,18 +50,18 @@ body {
   min-width: 42px;
   padding: 7px 10px;
   border-radius: 10px;
-  border: 1px solid rgba(124, 182, 223, 0.42);
-  background: rgba(46, 123, 209, 0.12);
-  color: #123056;
+  border: 1px solid var(--border);
+  background: #111114;
+  color: #d4d4d8;
   text-decoration: none;
   font-size: 12px;
   font-weight: 700;
 }
 
 .policy-lang-btn.active {
-  background: rgba(46, 123, 209, 0.24);
-  border-color: rgba(46, 123, 209, 0.58);
-  color: #0f2a4a;
+  background: #27272a;
+  border-color: #3f3f46;
+  color: #fafafa;
 }
 
 .back-home-wrap {
@@ -73,9 +74,9 @@ body {
   gap: 8px;
   padding: 9px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(124, 182, 223, 0.42);
-  background: rgba(46, 123, 209, 0.18);
-  color: #ffffff;
+  border: 1px solid #e4e4e7;
+  background: #f4f4f5;
+  color: #09090b;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
@@ -83,19 +84,18 @@ body {
 }
 
 .back-home-btn:hover {
-  background: rgba(46, 123, 209, 0.3);
-  border-color: rgba(124, 182, 223, 0.62);
+  filter: brightness(0.95);
 }
 
 .eyebrow {
   margin: 0 0 6px;
-  color: #315882;
+  color: var(--muted);
   font-weight: 500;
 }
 
 .updated {
   margin-top: 0;
-  color: #315882;
+  color: var(--muted);
 }
 
 h1,
@@ -111,26 +111,26 @@ h1 {
   margin-top: 0;
   font-size: clamp(30px, 5vw, 42px);
   font-weight: 800;
-  color: #0f2a4a;
+  color: var(--text);
 }
 
 h2 {
   font-size: clamp(23px, 3.4vw, 30px);
   font-weight: 800;
   padding-top: 8px;
-  color: #16385f;
+  color: var(--text);
 }
 
 h3 {
   font-size: clamp(19px, 2.7vw, 24px);
   font-weight: 700;
-  color: #1b416c;
+  color: #e4e4e7;
 }
 
 h4 {
   font-size: clamp(17px, 2.2vw, 20px);
   font-weight: 700;
-  color: #1f4a79;
+  color: #d4d4d8;
 }
 
 p,
@@ -147,7 +147,16 @@ ul {
 }
 
 strong {
-  color: #123056;
+  color: #e4e4e7;
+}
+
+a {
+  color: #e4e4e7;
+  text-decoration-color: rgba(212, 212, 216, 0.45);
+}
+
+a:hover {
+  color: #fafafa;
 }
 
 @media (max-width: 700px) {

@@ -2,7 +2,7 @@
 .faq-section {
   position: relative;
   padding: 110px 24px 120px;
-  background-color: var(--page-bg);
+  background-color: transparent;
   text-align: center;
   font-family: "Roboto", sans-serif;
   isolation: isolate;
@@ -88,7 +88,7 @@
   line-height: 1;
   text-align: center;
   vertical-align: middle;
-  padding-top: 14px !important; 
+  padding-top: 14px; 
   transform: translateZ(0);
   will-change: transform;
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -188,8 +188,8 @@
   .faq-a,
   .faq-toggle::before,
   .faq-toggle::after {
-    transition: none !important;
-    animation: none !important;
+    transition: none;
+    animation: none;
   }
 }
 

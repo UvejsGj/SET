@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Shelved backend (see archive/backend)
+archive/backend/.env
+archive/backend/*.db
+archive/backend/uploads/
+# Leftover local DB if backend/ stub folder exists
+backend/*.db
+
+# OS / editor
+.DS_Store
+Thumbs.db

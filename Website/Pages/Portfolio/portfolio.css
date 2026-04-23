@@ -1,0 +1,257 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 10% 0%, #16161a 0%, #09090b 58%);
+  color: #fafafa;
+  font-family: "Inter", "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.portfolio-page {
+  width: min(1200px, calc(100% - 32px));
+  margin: 24px auto 56px;
+}
+
+.back-home-wrap {
+  margin: 0 0 18px;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  background: #f4f4f5;
+  color: #09090b;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 14px;
+}
+
+.portfolio-head {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #a1a1aa;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 5vw, 52px);
+}
+
+.intro {
+  margin: 0;
+  color: #a1a1aa;
+  max-width: 760px;
+  line-height: 1.65;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.portfolio-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 28px 20px;
+  text-align: center;
+  color: #a1a1aa;
+  border: 1px dashed #3f3f46;
+  border-radius: 16px;
+  line-height: 1.6;
+}
+
+.portfolio-empty--warn {
+  border-color: #52525b;
+  color: #e4e4e7;
+}
+
+.portfolio-loading {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 36px 20px;
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 15px;
+}
+
+.portfolio-card {
+  margin: 0;
+  background: rgba(24, 24, 27, 0.85);
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.portfolio-open {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.portfolio-card img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.portfolio-card h2 {
+  margin: 0;
+  padding: 12px 14px 14px;
+  font-size: 16px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8px, 1.2vw, 18px);
+  background: rgba(5, 5, 7, 0.92);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-image {
+  max-width: calc(100vw - clamp(16px, 2.4vw, 36px));
+  max-height: calc(100vh - clamp(64px, 10vh, 110px));
+  width: min(100%, auto);
+  height: min(100%, auto);
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.lightbox-image.is-transitioning {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  background: #18181b;
+  color: #fafafa;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  background: #18181b;
+  color: #fafafa;
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 14px;
+}
+
+.lightbox-next {
+  right: 14px;
+}
+
+.lightbox-counter {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  background: #18181b;
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.lightbox-title {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #3f3f46;
+  border-radius: 10px;
+  background: #18181b;
+  color: #fafafa;
+  font-size: 14px;
+  font-weight: 600;
+  max-width: min(80vw, 640px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .lightbox-nav {
+    top: auto;
+    bottom: 14px;
+    transform: none;
+  }
+
+  .lightbox-title {
+    top: 52px;
+    max-width: calc(100vw - 28px);
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-page {
+    width: calc(100% - 20px);
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-image {
+    transition: none;
+  }
+}

@@ -1,0 +1,42 @@
+SET — static website (default)
+==============================
+
+The site runs without a backend: portfolio data is embedded in
+Website/Pages/Portfolio/portfolio-data.js, the contact form uses FormSubmit,
+and analytics is a no-op stub.
+
+Project root:
+  C:/Users/Admin/Documents/GitHub/SET
+
+
+Run local preview
+-----------------
+From project root:
+
+  python -m http.server 5500
+
+Or use the helper scripts:
+
+  Git Bash:     ./scripts/run-dev.sh
+  CMD:          scripts\run-dev.bat
+
+Then open in the browser (examples):
+
+  http://127.0.0.1:5500/Website/Pages/Homepage/homepage.html
+  http://127.0.0.1:5500/Website/Pages/Portfolio/portfolio.html
+
+
+Archived backend (optional later)
+---------------------------------
+All backend-related source and local data belong under:
+
+  archive/README.txt
+  archive/backend/
+
+To stop any local API on port 8000 and move a leftover SQLite file from
+backend\ into the archive (nothing is deleted on purpose):
+
+  scripts\stop-backend-services.bat
+
+If backend\set_backend.db is still present, close anything that might
+hold the file open, then run the script again.

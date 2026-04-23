@@ -7,22 +7,22 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       navAbout: "About",
       navServices: "Services",
       navTeam: "Team",
-      navPortfolio: "Portofolio",
+      navPortfolio: "Portfolio",
       navContact: "Contact Us",
       navFaq: "FAQ",
-      heroTitle: "Innovate Your Future with <br />Smart Engineering",
-      heroTagline: "IF YOU CAN DREAM IT, WE CAN DESIGN IT.",
+      heroTitle: "Build Smarter Products with <br />Smart Engineering",
+      heroTagline: "From concept to launch-ready delivery.",
       partners: "Partners",
       about: "About Us",
       servicesTitle: "Services",
-      servicesIntro: "Smart engineering meets innovation - modern solutions that move your business forward.",
+      servicesIntro: "Engineering, design, and product storytelling services tailored to move work from idea to execution.",
       lifeTitle: "Life at Smart Engineering",
       techTitle: "Our Technologies",
-      techIntro: "We use advanced tools-3D animation, motion graphics, modern frameworks-to build visually captivating and interactive experiences.",
-      teamTitle: "Meet our Team",
+      techIntro: "We combine proven tools and modern frameworks to ship reliable digital and visual product experiences.",
+      teamTitle: "Meet Our Team",
       portfolioTitle: "Portfolio",
       contactTitle: "Contact Us",
-      contactIntro: "Tell us about your project or ask a question. We usually reply within one to two business days.",
+      contactIntro: "Share your goals, timeline, and constraints. We usually respond within one business day.",
       contactEmail: "Email",
       contactPhone: "Phone",
       contactLocation: "Location",
@@ -36,20 +36,20 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       footerPolicy: "Privacy Policy",
       phName: "Your name",
       phEmail: "you@company.com",
-      phSubject: "What is this about?",
-      phMessage: "Describe your project, timeline, or question...",
+      phSubject: "Project scope or support request",
+      phMessage: "Share your goals, timeline, budget range, and what success looks like...",
       aboutCards: [
-        "Happy Clients Satisfied clients are the foundation of our success.",
-        "Years of experience Years of experience delivering client success",
-        "Projects Successful projects are a testament to our technology expertise."
+        "Happy clients who trust us to deliver practical, measurable outcomes.",
+        "Years of cross-disciplinary delivery experience across engineering and digital products.",
+        "Projects completed from early concept through production-ready delivery."
       ],
       serviceTitles: ["3D Cad", "Web Development", "UI/UX Design", "Animation", "Support"],
       serviceDescs: [
-        "Experience the power of precision with our 3D CAD solutions - from detailed product modeling to architectural visualization, we turn ideas into fully realized designs.",
-        "We craft responsive, high-performance websites and apps that combine functionality with aesthetics, driving engagement and business growth.",
-        "Our design team blends creativity and usability to build intuitive interfaces that delight users and reflect your brand's identity.",
-        "Bring your concepts to life with our stunning 2D and 3D animations - perfect for storytelling, marketing, or product visualization.",
-        "Our dedicated support team ensures your systems run smoothly with reliable maintenance, fast response, and long-term technical assistance."
+        "Precision 3D CAD from detailed part modeling to presentation-ready product visuals.",
+        "Responsive web products engineered for performance, clarity, and growth.",
+        "UI/UX systems designed for fast adoption and real-world usability.",
+        "2D and 3D animation that explains products, processes, and ideas clearly.",
+        "Ongoing technical support with predictable response times and long-term reliability."
       ],
       cultureTitles: ["Comfort of Workers", "Work Environment", "Tech Stack", "Sociable Culture"],
       cultureDescs: [
@@ -74,17 +74,17 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       ],
       teamRoles: [
         "Chief Executive Officer",
-        "Manager of finance",
         "Project Lead Developer",
+        "Manager of finance",
         "Senior mechanical engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
+        "Mechanical Design Engineer",
         "Mechatronics Engineer",
         "Mechanical Engineer",
         "Mechanical Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
-        "Mechanical Design Engineer",
         "Web Developer"
       ],
       faqA: [
@@ -168,17 +168,17 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       ],
       teamRoles: [
         "Drejtor Ekzekutiv",
-        "Menaxher i Financave",
         "Udhëheqës i Zhvillimit të Projekteve",
+        "Menaxher i Financave",
         "Inxhinier Mekanik Senior",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
+        "Inxhinier i Dizajnit Mekanik",
         "Inxhinier i Mekatronikës",
         "Inxhinier Mekanik",
         "Inxhinier Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
-        "Inxhinier i Dizajnit Mekanik",
         "Zhvillues Web"
       ],
       faqA: [
@@ -222,7 +222,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
     setText("#techstack .section-title", dict.techTitle);
     setText(".tech-intro", dict.techIntro);
     setText("#team .section-title", dict.teamTitle);
-    setText("#portfolio .section-title", dict.portfolioTitle);
     setText("#contact .section-title", dict.contactTitle);
     setText(".contact-intro", dict.contactIntro);
     setText("#faq .section-title", dict.faqTitle);
