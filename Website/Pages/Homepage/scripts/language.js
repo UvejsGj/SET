@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
       navHome: "Home",
       navAbout: "About",
       navServices: "Services",
-      navTeam: "Team",
       navPortfolio: "Portfolio",
       navContact: "Contact Us",
       navFaq: "FAQ",
@@ -18,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
       techTitle: "Our Technologies",
       techIntro: "We combine proven tools and modern frameworks to ship reliable digital and visual product experiences.",
       teamTitle: "Meet Our Team",
+      teamSectionIntro:
+        "Meet the engineers, designers, and builders behind our delivery team.",
+      teamCtaFull: "View full team",
+      linkedinLabel: "LinkedIn",
       contactTitle: "Contact Us",
       contactIntro: "Share your goals, timeline, and constraints. We usually respond within one business day.",
       contactEmail: "Email",
@@ -80,8 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "Mechanical Design Engineer",
         "Mechanical Design Engineer",
         "Mechatronics Engineer",
-        "Mechanical Engineer",
-        "Mechanical Engineer",
         "Web Developer"
       ],
       faqA: [
@@ -138,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
       navHome: "Ballina",
       navAbout: "Rreth Nesh",
       navServices: "Shërbime",
-      navTeam: "Ekipi",
       navPortfolio: "Portofoli",
       navContact: "Na Kontaktoni",
       navFaq: "Pyetje",
@@ -152,6 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
       techTitle: "Teknologjitë Tona",
       techIntro: "Ne përdorim mjete të avancuara-si animacioni 3D, motion graphics dhe framework modern-për të ndërtuar përvoja vizuale tërheqëse dhe interaktive.",
       teamTitle: "Njihuni me Ekipin Tonë",
+      teamSectionIntro:
+        "Njihuni me inxhinierët, dizajnerët dhe ndërtuesit pas ekipit tonë të dorëzimit.",
+      teamCtaFull: "Shiko ekipin e plotë",
+      linkedinLabel: "LinkedIn",
       contactTitle: "Na Kontaktoni",
       contactIntro: "Na tregoni për projektin tuaj ose na bëni një pyetje. Zakonisht përgjigjemi brenda një ose dy ditëve pune.",
       contactEmail: "Email",
@@ -214,8 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "Inxhinier i Dizajnit Mekanik",
         "Inxhinier i Dizajnit Mekanik",
         "Inxhinier i Mekatronikës",
-        "Inxhinier Mekanik",
-        "Inxhinier Mekanik",
         "Zhvillues Web"
       ],
       faqA: [
@@ -285,7 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setText(".homebtn", dict.navHome);
     setText(".aboutbtn", dict.navAbout);
     setText(".servicesbtn", dict.navServices);
-    setText(".teambtn", dict.navTeam);
     setText(".portofoliobtn", dict.navPortfolio);
     setText(".contactusbtn", dict.navContact);
     setText(".faqbtn", dict.navFaq);
@@ -300,6 +301,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setText("#techstack .section-title", dict.techTitle);
     setText(".tech-intro", dict.techIntro);
     setText("#team .section-title", dict.teamTitle);
+    setText("#team .team-intro", dict.teamSectionIntro);
+    setText(".team-cta-btn", dict.teamCtaFull);
+    setText(".team-page-head h1", dict.teamTitle);
+    setText(".team-page-head .team-intro", dict.teamSectionIntro);
     setText("#contact .section-title", dict.contactTitle);
     setText(".contact-intro", dict.contactIntro);
     setText("#faq .section-title", dict.faqTitle);
@@ -359,6 +364,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const roles = document.querySelectorAll(".team-card-role");
     dict.teamRoles.forEach((txt, i) => {
       if (roles[i]) roles[i].textContent = txt;
+    });
+
+    document.querySelectorAll(".team-card-linkedin__label").forEach((el) => {
+      el.textContent = dict.linkedinLabel;
     });
 
     const faqAnswers = document.querySelectorAll(".faq-a");

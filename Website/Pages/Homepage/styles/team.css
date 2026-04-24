@@ -89,6 +89,34 @@
   color: inherit;
 }
 
+.team-card-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.team-card-linkedin:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.team-card-linkedin__icon {
+  display: block;
+  flex-shrink: 0;
+}
+
 @media (max-width: 600px) {
   .team-section {
     padding: 64px 16px 72px;
@@ -105,4 +133,19 @@
   .team-card-name {
     font-size: 18px;
   }
+}
+
+.team-cta-section {
+  padding: 72px 24px 88px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.team-cta-section .team-intro {
+  max-width: 720px;
+  margin: 0 auto 8px;
+}
+
+.team-cta-section .team-cta-wrap {
+  margin: 24px 0 0;
 }
