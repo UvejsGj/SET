@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-// Portfolio slider
+  // Portfolio slider
   (() => {
-    const shell = document.querySelector(".portfolio-shell");
     const viewport = document.querySelector(".portfolio-viewport");
     const track = document.querySelector(".portfolio-track");
     const slides = Array.from(document.querySelectorAll(".portfolio-slide"));
@@ -9,7 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.querySelector(".portfolio-arrow.prev");
     const nextBtn = document.querySelector(".portfolio-arrow.next");
 
-    if (!shell || !viewport || !track || !slides.length || !dotsWrap || !prevBtn || !nextBtn) return;
+    if (
+      !document.querySelector(".portfolio-shell") ||
+      !viewport ||
+      !track ||
+      !slides.length ||
+      !dotsWrap ||
+      !prevBtn ||
+      !nextBtn
+    ) {
+      return;
+    }
 
     let index = 0;
     let isDragging = false;

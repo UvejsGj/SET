@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   const language = {
     en: {
       navHome: "Home",
@@ -20,7 +18,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       techTitle: "Our Technologies",
       techIntro: "We combine proven tools and modern frameworks to ship reliable digital and visual product experiences.",
       teamTitle: "Meet Our Team",
-      portfolioTitle: "Portfolio",
       contactTitle: "Contact Us",
       contactIntro: "Share your goals, timeline, and constraints. We usually respond within one business day.",
       contactEmail: "Email",
@@ -94,7 +91,48 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
         "We offer full post-delivery support, including performance monitoring, regular maintenance, updates, and technical assistance. Our team ensures that your system continues to operate smoothly long after the initial launch."
       ],
       contactQuick: "Quick answers?",
-      contactQuickLink: "See frequently asked questions"
+      contactQuickLink: "See frequently asked questions",
+      workflowTitle: "How we work",
+      workflowSteps: [
+        {
+          title: "Discovery",
+          body: "We align on goals, constraints, stakeholders, and success criteria so scope stays realistic."
+        },
+        {
+          title: "Proposal",
+          body: "You get a clear plan: deliverables, milestones, communication rhythm, and a fixed or phased estimate."
+        },
+        {
+          title: "Build",
+          body: "We execute in tight loops—CAD, UI, or visuals—with incremental reviews so feedback lands early."
+        },
+        {
+          title: "Review",
+          body: "Structured checkpoints against acceptance criteria keep quality and timelines predictable."
+        },
+        {
+          title: "Handoff",
+          body: "You receive assets, documentation, and optional support so the work stays useful after launch."
+        }
+      ],
+      featuredTitle: "Featured work",
+      featuredIntro:
+        "A sample of recent delivery across interactive 3D, web experiences, and product storytelling—see the full grid in the portfolio.",
+      featuredCards: [
+        {
+          title: "Interactive 3D Web Experience",
+          outcome: "Immersive product exploration on the web, tuned for clarity and performance."
+        },
+        {
+          title: "Motion-Driven Landing Page",
+          outcome: "Campaign-ready landing visuals with motion that supports the story, not noise."
+        },
+        {
+          title: "Product Visualization Platform",
+          outcome: "Consistent renders and variants for stakeholders and sales enablement."
+        }
+      ],
+      featuredCta: "Browse full portfolio"
     },
     sq: {
       navHome: "Ballina",
@@ -114,7 +152,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
       techTitle: "Teknologjitë Tona",
       techIntro: "Ne përdorim mjete të avancuara-si animacioni 3D, motion graphics dhe framework modern-për të ndërtuar përvoja vizuale tërheqëse dhe interaktive.",
       teamTitle: "Njihuni me Ekipin Tonë",
-      portfolioTitle: "Portofolio",
       contactTitle: "Na Kontaktoni",
       contactIntro: "Na tregoni për projektin tuaj ose na bëni një pyetje. Zakonisht përgjigjemi brenda një ose dy ditëve pune.",
       contactEmail: "Email",
@@ -188,7 +225,48 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
         "Ofrojmë mbështetje të plotë pas dorëzimit: monitorim performance, mirëmbajtje, përditësime dhe asistencë teknike."
       ],
       contactQuick: "Përgjigje të shpejta?",
-      contactQuickLink: "Shih pyetjet e bëra shpesh"
+      contactQuickLink: "Shih pyetjet e bëra shpesh",
+      workflowTitle: "Si punojmë",
+      workflowSteps: [
+        {
+          title: "Zbulim",
+          body: "Përputhemi me objektivat, kufizimet, palët dhe kriteret e suksesit që fushëveprimi të mbetet realist."
+        },
+        {
+          title: "Propozim",
+          body: "Merrni një plan të qartë: dorëzimet, fazat, ritmi i komunikimit dhe një vlerësim i fazuar ose fiks."
+        },
+        {
+          title: "Ndërtim",
+          body: "Ekzekutojmë në cikle të shkurtra—CAD, UI ose vizuale—me shqyrtime të hershme që feedback-u të hyjë herët."
+        },
+        {
+          title: "Shqyrtim",
+          body: "Pikat e kontrollit të strukturuara sipas kritereve të pranimit mbajnë cilësinë dhe afatet të parashikueshme."
+        },
+        {
+          title: "Dorëzim",
+          body: "Merrni asete, dokumentacion dhe mbështetje opsionale që puna të mbetet e dobishme pas lançimit."
+        }
+      ],
+      featuredTitle: "Punë të zgjedhura",
+      featuredIntro:
+        "Një përzgjedhje nga dorëzimet e fundit në 3D interaktive, përvoja web dhe storytelling produkti—shihni rrjetin e plotë në portofol.",
+      featuredCards: [
+        {
+          title: "Përvojë 3D interaktive në web",
+          outcome: "Eksplorim i zhytur i produktit në web, i optimizuar për qartësi dhe performancë."
+        },
+        {
+          title: "Faqe ulëse e drejtuar nga lëvizja",
+          outcome: "Vizuale kampanjeje me lëvizje që përforcon historinë, jo zhurmën."
+        },
+        {
+          title: "Platformë vizualizimi produkti",
+          outcome: "Render të qëndrueshëm dhe variante për palët e interesuara dhe aktivizim shitjesh."
+        }
+      ],
+      featuredCta: "Shiko portofolin e plotë"
     }
   };
 
@@ -295,14 +373,69 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
     }
     if (quickLink) quickLink.textContent = dict.contactQuickLink;
 
+    setText(".workflow-section-title", dict.workflowTitle);
+    document.querySelectorAll(".workflow-step").forEach((step, i) => {
+      const s = dict.workflowSteps[i];
+      if (!s) return;
+      const ht = step.querySelector(".workflow-step-title");
+      const pt = step.querySelector(".workflow-step-text");
+      if (ht) ht.textContent = s.title;
+      if (pt) pt.textContent = s.body;
+    });
+
+    setText(".featured-work-main-title", dict.featuredTitle);
+    setText(".featured-work-intro", dict.featuredIntro);
+    document.querySelectorAll(".featured-work-card").forEach((card, i) => {
+      const fc = dict.featuredCards[i];
+      if (!fc) return;
+      const ht = card.querySelector(".featured-work-card-title");
+      const pt = card.querySelector(".featured-work-card-outcome");
+      const img = card.querySelector(".featured-work-thumb");
+      if (ht) ht.textContent = fc.title;
+      if (pt) pt.textContent = fc.outcome;
+      if (img) img.alt = fc.title;
+    });
+    setText(".featured-portfolio-cta", dict.featuredCta);
+
     document.querySelectorAll(".lang-btn").forEach((b) => {
       b.classList.toggle("active", b.dataset.lang === lang);
     });
+
+    try {
+      const u = new URL(window.location.href);
+      if (lang === "en") {
+        u.searchParams.delete("lang");
+      } else {
+        u.searchParams.set("lang", lang);
+      }
+      const nextSearch = u.searchParams.toString();
+      const next = `${u.pathname}${nextSearch ? `?${nextSearch}` : ""}${u.hash}`;
+      const cur = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+      if (next !== cur) {
+        history.replaceState(null, "", next);
+      }
+    } catch {
+      /* ignore URL sync errors */
+    }
+  };
+
+  const readLangFromQuery = () => {
+    try {
+      const q = new URLSearchParams(window.location.search).get("lang");
+      if (q === "sq" || q === "en") return q;
+    } catch {
+      /* ignore */
+    }
+    return null;
   };
 
   const storedLang = localStorage.getItem("site_lang");
   const browserLang = navigator.language && navigator.language.toLowerCase().startsWith("sq") ? "sq" : "en";
-  const initialLang = storedLang || browserLang;
+  const fromUrl = readLangFromQuery();
+  const initialLang = fromUrl || storedLang || browserLang;
+  if (fromUrl) {
+    localStorage.setItem("site_lang", fromUrl);
+  }
   applyLanguage(initialLang);
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => {

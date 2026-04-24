@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-// Touch devices: one-tap hover feedback (without sticky :hover behavior)
+  // Touch devices: one-tap hover feedback (without sticky :hover behavior)
   if (window.matchMedia("(hover: none), (pointer: coarse)").matches) {
     const tapCards = document.querySelectorAll(
       ".card1, .card2, .card3, .servicecards > div, .culture-card, .tech-card, .team-card, .faq-card"

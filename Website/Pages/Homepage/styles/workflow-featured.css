@@ -1,0 +1,147 @@
+.workflow-section,
+.featured-work-section {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 24px);
+}
+
+.workflow-section .section-title,
+.featured-work-section .section-title {
+  text-align: center;
+}
+
+.workflow-steps {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.workflow-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 16px 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  color: var(--muted-foreground);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.workflow-step-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(250, 250, 250, 0.08);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.workflow-step-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+.workflow-step-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.featured-work-intro {
+  max-width: 52rem;
+  margin: 12px auto 0;
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.6;
+}
+
+.featured-work-grid {
+  max-width: var(--container);
+  margin: 24px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.featured-work-card {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0 0 18px;
+  overflow: hidden;
+  text-align: left;
+  color: var(--muted-foreground);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.featured-work-image-link {
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid var(--border);
+}
+
+.featured-work-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-work-card-title {
+  margin: 16px 18px 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+}
+
+.featured-work-card-outcome {
+  margin: 0 18px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.featured-work-cta-wrap {
+  margin: 28px 0 0;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .workflow-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .featured-work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .workflow-steps {
+    grid-template-columns: 1fr;
+  }
+}

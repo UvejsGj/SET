@@ -47,8 +47,11 @@
     max-height: 80px;
     max-width: 140px;
   }
-  .customerlist-track {
+  .customerlist-set {
     gap: 60px;
+  }
+
+  .customerlist-track {
     animation: scroll 35s linear infinite;
   }
 }

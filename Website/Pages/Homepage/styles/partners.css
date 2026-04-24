@@ -52,11 +52,17 @@
 .customerlist-track {
   display: flex;
   align-items: center;
-  gap: 150px;
+  gap: 0;
   animation: scroll 25s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   width: max-content;
+}
+
+.customerlist-set {
+  display: flex;
+  align-items: center;
+  gap: 150px;
 }
 
 .customerlist:hover .customerlist-track {

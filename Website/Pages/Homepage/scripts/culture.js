@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-// Culture cards: fade in when they scroll into view
+  // Culture cards: fade in when they scroll into view
   const cultureCards = document.querySelectorAll(".culture-card");
   if (cultureCards.length) {
     const observer = new IntersectionObserver(

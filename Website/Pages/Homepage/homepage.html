@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function () {
+        try {
+          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.documentElement.classList.add("js-motion");
+          }
+        } catch {
+          document.documentElement.classList.add("js-motion");
+        }
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Smart Engineering Tech</title>
@@ -11,6 +22,21 @@
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://smart-engineering.tech/Pages/Homepage/homepage.html" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://smart-engineering.tech/Pages/Homepage/homepage.html?lang=en"
+    />
+    <link
+      rel="alternate"
+      hreflang="sq"
+      href="https://smart-engineering.tech/Pages/Homepage/homepage.html?lang=sq"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://smart-engineering.tech/Pages/Homepage/homepage.html"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Smart Engineering Tech" />
     <meta
@@ -18,18 +44,18 @@
       content="Engineering, design, and development services focused on speed, clarity, and measurable business outcomes."
     />
     <meta property="og:url" content="https://smart-engineering.tech/Pages/Homepage/homepage.html" />
-    <meta property="og:image" content="https://smart-engineering.tech/Imazhet/CNCimage2.png" />
+    <meta property="og:image" content="https://smart-engineering.tech/Imazhet/CNCimageBW.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Smart Engineering Tech" />
     <meta
       name="twitter:description"
       content="3D CAD, web development, UI/UX, and product visualization delivered by Smart Engineering Tech."
     />
-    <meta name="twitter:image" content="https://smart-engineering.tech/Imazhet/CNCimage2.png" />
+    <meta name="twitter:image" content="https://smart-engineering.tech/Imazhet/CNCimageBW.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="image" href="../../Imazhet/smartengineeringtech.png" />
-    <link rel="preload" as="image" href="../../Imazhet/CNCimage2.png" />
+    <link rel="preload" as="image" href="../../Imazhet/CNCimageBW.png" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/base.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/partners.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/about.css" />
@@ -41,8 +67,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="styles/faq.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/responsive.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/shadcn-theme.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/motion.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/workflow-featured.css" />
+    <script defer src="scripts/partners-marquee.js"></script>
     <script defer src="scripts/language.js"></script>
     <script defer src="scripts/navigation.js"></script>
+    <script defer src="scripts/scroll-reveal.js"></script>
     <script defer src="scripts/analytics.js"></script>
     <script defer src="scripts/culture.js"></script>
     <script defer src="scripts/contact-form-endpoint.js"></script>
@@ -50,8 +80,13 @@
     <script defer src="scripts/touch.js"></script>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
     />
+    <script
+      defer
+      data-domain="smart-engineering.tech"
+      src="https://plausible.io/js/script.js"
+    ></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -138,155 +173,57 @@
       </div>
     </div>
 
-    <h2 class="partners-title">Partners</h2>
+    <h2 class="partners-title reveal-on-scroll">Partners</h2>
 
-    <div class="customerlist">
+    <div class="customerlist reveal-on-scroll">
       <div class="customerlist-track">
-        <!-- Step 1 -->
-        <a href="https://www.gropyus.com/">
-          <img
-            src="../../Imazhet/Customer/gropys.svg"
-            alt="Gropyus logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.hildebrandindustry.ch/en/home-en/"
-          ><img
-            src="../../Imazhet/Customer/hildebrand.svg"
-            alt="Hildebrand logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.aircrete.com/"
-          ><img
-            src="../../Imazhet/Customer/logo-aircrete.png"
-            alt="Aircrete logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.promessmontage.de/en/"
-          ><img
-            src="../../Imazhet/Customer/promess.svg"
-            alt="Promess logo"
-            loading="lazy"
-                  decoding="async"
-                />
-        </a>
-        <a href="https://www.detaystudio.com/"
-          ><img
-            src="../../Imazhet/Customer/detay-studio.svg"
-            alt="Detay Studio logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <!-- Step 2 -->
-        <a href="https://www.gropyus.com/">
-          <img
-            src="../../Imazhet/Customer/gropys.svg"
-            alt="Gropyus logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.hildebrandindustry.ch/en/home-en/"
-          ><img
-            src="../../Imazhet/Customer/hildebrand.svg"
-            alt="Hildebrand logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.promessmontage.de/en/"
-          ><img
-            src="../../Imazhet/Customer/promess.svg"
-            alt="Promess logo"
-            loading="lazy"
-                  decoding="async"
-                />
-        </a>
-        <a href="https://www.detaystudio.com/"
-          ><img
-            src="../../Imazhet/Customer/detay-studio.svg"
-            alt="Detay Studio logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <!-- Step 3 -->
-        <a href="https://www.gropyus.com/">
-          <img
-            src="../../Imazhet/Customer/gropys.svg"
-            alt="Gropyus logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.hildebrandindustry.ch/en/home-en/"
-          ><img
-            src="../../Imazhet/Customer/hildebrand.svg"
-            alt="Hildebrand logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.aircrete.com/"
-          ><img
-            src="../../Imazhet/Customer/logo-aircrete.png"
-            alt="Aircrete logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.promessmontage.de/en/"
-          ><img
-            src="../../Imazhet/Customer/promess.svg"
-            alt="Promess logo"
-            loading="lazy"
-                  decoding="async"
-                />
-        </a>
-        <a href="https://www.detaystudio.com/"
-          ><img
-            src="../../Imazhet/Customer/detay-studio.svg"
-            alt="Detay Studio logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.gropyus.com/">
-          <img
-            src="../../Imazhet/Customer/gropys.svg"
-            alt="Gropyus logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.hildebrandindustry.ch/en/home-en/"
-          ><img
-            src="../../Imazhet/Customer/hildebrand.svg"
-            alt="Hildebrand logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.aircrete.com/"
-          ><img
-            src="../../Imazhet/Customer/logo-aircrete.png"
-            alt="Aircrete logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
-        <a href="https://www.promessmontage.de/en/"
-          ><img
-            src="../../Imazhet/Customer/promess.svg"
-            alt="Promess logo"
-            loading="lazy"
-                  decoding="async"
-                />
-        </a>
-        <a href="https://www.detaystudio.com/"
-          ><img
-            src="../../Imazhet/Customer/detay-studio.svg"
-            alt="Detay Studio logo"
-            loading="lazy"
-                  decoding="async"
-                /></a>
+        <div class="customerlist-set">
+          <a href="https://www.gropyus.com/">
+            <img
+              src="../../Imazhet/Customer/gropys.svg"
+              alt="Gropyus logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a href="https://www.hildebrandindustry.ch/en/home-en/">
+            <img
+              src="../../Imazhet/Customer/hildebrand.svg"
+              alt="Hildebrand logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a href="https://www.aircrete.com/">
+            <img
+              src="../../Imazhet/Customer/logo-aircrete.png"
+              alt="Aircrete logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a href="https://www.promessmontage.de/en/">
+            <img
+              src="../../Imazhet/Customer/promess.svg"
+              alt="Promess logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <a href="https://www.detaystudio.com/">
+            <img
+              src="../../Imazhet/Customer/detay-studio.svg"
+              alt="Detay Studio logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </div>
       </div>
     </div>
 
-    <h2 class="about-title">About Us</h2>
-    <div id="aboutsection" class="aboutlayout">
+    <h2 class="about-title reveal-on-scroll">About Us</h2>
+    <div id="aboutsection" class="aboutlayout reveal-on-scroll">
       <img class="handshakeimg" src="../../Imazhet/isometricshake.png"  decoding="async"
           />
       <div id="cardsection" class="cards">
@@ -315,26 +252,7 @@
       </div>
     </div>
 
-    <!-- Wave SVGs (turned off)
-    <div class="wave-stack">
-      <svg class="wave w1" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path
-          d="M0,192L60,181.3C120,171,240,149,360,128C480,107,600,85,720,106.7C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160V320H0Z"
-        ></path>
-      </svg>
-
-      <svg
-        class="wave w2 flip"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,192L60,181.3C120,171,240,149,360,128C480,107,600,85,720,106.7C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160V320H0Z"
-        ></path>
-      </svg>
-    </div> -->
-
-    <section id="servicesection" class="services-stack" aria-label="Services">
+    <section id="servicesection" class="services-stack reveal-on-scroll" aria-label="Services">
       <div class="services">
         <h2 class="servicetitle">Services</h2>
         <br />
@@ -391,7 +309,7 @@
       </div>
     </section>
 
-    <section class="culture-section">
+    <section class="culture-section reveal-on-scroll">
       <h2 id="lifesection" class="section-title">Life at Smart Engineering</h2>
 
       <div class="culture-grid">
@@ -435,7 +353,7 @@
       </div>
     </section>
 
-    <section class="tech-section" id="techstack">
+    <section class="tech-section reveal-on-scroll" id="techstack">
       <h2 class="section-title">Our Technologies</h2>
       <p class="tech-intro">
         We use advanced tools—3D animation, motion graphics, modern
@@ -507,7 +425,7 @@
       </div>
     </section>
 
-    <section id="team" class="team-section" aria-label="Our team">
+    <section id="team" class="team-section reveal-on-scroll" aria-label="Our team">
       <h2 class="section-title">Meet our Team</h2>
       <p class="team-intro">
         Meet the engineers, designers, and builders behind our delivery team.
@@ -750,31 +668,116 @@
       </div>
     </section>
 
-    <section class="proof-section" aria-label="Client testimonials">
-      <h2 class="section-title">What Clients Say</h2>
-      <div class="proof-grid">
-        <blockquote class="proof-card">
-          <p>
-            “Their team turned a vague product concept into a production-ready visual and web flow in weeks.”
-          </p>
-          <cite>Placeholder testimonial — Manufacturing PM</cite>
-        </blockquote>
-        <blockquote class="proof-card">
-          <p>
-            “Communication was clear, milestones were predictable, and the quality bar stayed high.”
-          </p>
-          <cite>Placeholder testimonial — Startup Founder</cite>
-        </blockquote>
-        <blockquote class="proof-card">
-          <p>
-            “We finally have one partner that understands engineering detail and digital experience equally well.”
-          </p>
-          <cite>Placeholder testimonial — Operations Lead</cite>
-        </blockquote>
-      </div>
+    <section id="how-we-work" class="workflow-section reveal-on-scroll" aria-labelledby="workflow-heading">
+      <h2 id="workflow-heading" class="section-title workflow-section-title">How we work</h2>
+      <ol class="workflow-steps">
+        <li class="workflow-step">
+          <span class="workflow-step-num" aria-hidden="true">1</span>
+          <div class="workflow-step-body">
+            <h3 class="workflow-step-title">Discovery</h3>
+            <p class="workflow-step-text">
+              We align on goals, constraints, stakeholders, and success criteria so scope stays realistic.
+            </p>
+          </div>
+        </li>
+        <li class="workflow-step">
+          <span class="workflow-step-num" aria-hidden="true">2</span>
+          <div class="workflow-step-body">
+            <h3 class="workflow-step-title">Proposal</h3>
+            <p class="workflow-step-text">
+              You get a clear plan: deliverables, milestones, communication rhythm, and a fixed or phased estimate.
+            </p>
+          </div>
+        </li>
+        <li class="workflow-step">
+          <span class="workflow-step-num" aria-hidden="true">3</span>
+          <div class="workflow-step-body">
+            <h3 class="workflow-step-title">Build</h3>
+            <p class="workflow-step-text">
+              We execute in tight loops—CAD, UI, or visuals—with incremental reviews so feedback lands early.
+            </p>
+          </div>
+        </li>
+        <li class="workflow-step">
+          <span class="workflow-step-num" aria-hidden="true">4</span>
+          <div class="workflow-step-body">
+            <h3 class="workflow-step-title">Review</h3>
+            <p class="workflow-step-text">
+              Structured checkpoints against acceptance criteria keep quality and timelines predictable.
+            </p>
+          </div>
+        </li>
+        <li class="workflow-step">
+          <span class="workflow-step-num" aria-hidden="true">5</span>
+          <div class="workflow-step-body">
+            <h3 class="workflow-step-title">Handoff</h3>
+            <p class="workflow-step-text">
+              You receive assets, documentation, and optional support so the work stays useful after launch.
+            </p>
+          </div>
+        </li>
+      </ol>
     </section>
 
-    <section id="contact" class="contact-section" aria-label="Contact us">
+    <section id="featured-work" class="featured-work-section reveal-on-scroll" aria-labelledby="featured-heading">
+      <h2 id="featured-heading" class="section-title featured-work-main-title">Featured work</h2>
+      <p class="featured-work-intro">
+        A sample of recent delivery across interactive 3D, web experiences, and product storytelling—see the full grid
+        in the portfolio.
+      </p>
+      <div class="featured-work-grid">
+        <article class="featured-work-card">
+          <a class="featured-work-image-link" href="../Portfolio/portfolio.html">
+            <img
+              class="featured-work-thumb"
+              src="../../Imazhet/Projektet/SE1.png"
+              alt=""
+              width="640"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <h3 class="featured-work-card-title">Interactive 3D Web Experience</h3>
+          <p class="featured-work-card-outcome">Immersive product exploration on the web, tuned for clarity and performance.</p>
+        </article>
+        <article class="featured-work-card">
+          <a class="featured-work-image-link" href="../Portfolio/portfolio.html">
+            <img
+              class="featured-work-thumb"
+              src="../../Imazhet/Projektet/SE2.png"
+              alt=""
+              width="640"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <h3 class="featured-work-card-title">Motion-Driven Landing Page</h3>
+          <p class="featured-work-card-outcome">Campaign-ready landing visuals with motion that supports the story, not noise.</p>
+        </article>
+        <article class="featured-work-card">
+          <a class="featured-work-image-link" href="../Portfolio/portfolio.html">
+            <img
+              class="featured-work-thumb"
+              src="../../Imazhet/Projektet/SE3.png"
+              alt=""
+              width="640"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <h3 class="featured-work-card-title">Product Visualization Platform</h3>
+          <p class="featured-work-card-outcome">Consistent renders and variants for stakeholders and sales enablement.</p>
+        </article>
+      </div>
+      <p class="featured-work-cta-wrap">
+        <a class="hero-cta hero-cta-secondary featured-portfolio-cta" href="../Portfolio/portfolio.html">Browse full portfolio</a>
+      </p>
+    </section>
+
+    <section id="contact" class="contact-section reveal-on-scroll" aria-label="Contact us">
       <h2 class="section-title">Contact Us</h2>
       <p class="contact-intro">
         Share your goals, timeline, and constraints. We usually respond within one business day.
@@ -793,7 +796,7 @@
                 <span class="contact-info-label">Email</span>
                 <a
                   class="contact-info-value"
-                  href="mailto:uvejsgjelaj03@gmail.com"
+                  href="mailto:besart@smart-engineering.tech"
                   >besart@smart-engineering.tech</a
                 >
               </div>
@@ -916,7 +919,7 @@
       </div>
     </section>
 
-    <section id="faq" class="faq-section">
+    <section id="faq" class="faq-section reveal-on-scroll">
       <h2 class="section-title">Frequently Asked Questions</h2>
 
       <div class="faq-grid">

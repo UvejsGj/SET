@@ -3,11 +3,11 @@
  * Used by contact.js; tested from repo tests/ via Node (globalThis).
  */
 (function (root) {
-  var DEFAULT = "https://formsubmit.co/519cb8ceae47e5cedcee15486890ce6d";
+  const DEFAULT = "https://formsubmit.co/519cb8ceae47e5cedcee15486890ce6d";
 
   function resolveFormSubmitAjaxUrl(fromAttr, defaultUrl) {
-    var raw = (fromAttr && String(fromAttr).trim()) || defaultUrl || DEFAULT;
-    var u;
+    const raw = (fromAttr && String(fromAttr).trim()) || defaultUrl || DEFAULT;
+    let u;
     try {
       u = new URL(raw);
     } catch {
@@ -16,8 +16,8 @@
     if (u.protocol !== "https:" || u.hostname !== "formsubmit.co") {
       return { ok: false };
     }
-    var href = u.href;
-    var ajaxUrl =
+    const href = u.href;
+    const ajaxUrl =
       href.indexOf("/ajax/") !== -1
         ? href
         : href.replace(/^https:\/\/formsubmit\.co\//i, "https://formsubmit.co/ajax/");

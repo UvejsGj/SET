@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const DESKTOP_MIN_WIDTH = 761;
+  const MOBILE_NAV_MAX = 760;
+  const DESKTOP_MIN_WIDTH = MOBILE_NAV_MAX + 1;
   const NAV_SCROLL_THRESHOLD = 22;
   let lastScrollY = window.scrollY;
   const progressFill = document.querySelector(".nav-progress-fill");
-// Mobile menu
+
+  // Mobile menu
   let closeMobileNav = () => {};
   const navToggle = document.querySelector(".nav-toggle");
   const mainNav = document.getElementById("main-nav");
@@ -44,13 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 760 && mobileNavOpen()) closeMobileNav();
+      if (window.innerWidth > MOBILE_NAV_MAX && mobileNavOpen()) closeMobileNav();
     });
   }
 
   // # links: line up under the fixed header
-  const MOBILE_NAV_MAX = 760;
-
   // How tall is the sticky header area (logo, bar, menu button). Skip the bar on mobile when it's hidden.
   function getAnchorOffsetPx() {
     const w = window.innerWidth;
@@ -82,12 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     servicesection: 56,
   };
 
-  function getNavScrollAnchor(id) {
-    const root = document.getElementById(id);
-    if (!root) return null;
-    return root;
-  }
-
   function scrollToTarget(target, { smooth = true, extraDownPx = 0 } = {}) {
     if (!target) return;
     const y =
@@ -99,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function scrollToSectionId(id, { smooth = true } = {}) {
-    const anchor = getNavScrollAnchor(id);
+    const anchor = document.getElementById(id);
     if (!anchor) return;
     const extra = NAV_SCROLL_EXTRA_DOWN[id] ?? 0;
     scrollToTarget(anchor, { smooth, extraDownPx: extra });
@@ -254,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-// Nav link in mobile menu: close the drawer
+  // Nav link in mobile menu: close the drawer
   if (mainNav) {
     mainNav.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", () => closeMobileNav());
