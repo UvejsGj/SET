@@ -13,7 +13,7 @@ Stop services and finish moving a leftover DB from backend\:
 ------------------------------------------------------------
 From repo root (Windows):
 
-  scripts\stop-backend-services.bat
+  archive\tools\scripts\stop-backend-services.bat
 
 That script stops processes listening on port 8000 and Python workers
 that match this repo and uvicorn, then moves backend\set_backend.db

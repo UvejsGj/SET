@@ -12,11 +12,11 @@ services and finish moving the database into the archive without deleting it:
   1) Close database viewers / stop running the API.
   2) From the repo root, run:
 
-       scripts\stop-backend-services.bat
+       archive\tools\scripts\stop-backend-services.bat
 
      or in PowerShell:
 
-       .\scripts\stop-backend-services.ps1
+       .\archive\tools\scripts\stop-backend-services.ps1
 
 Nothing in this repo is intentionally deleted by that script: it stops
 listeners on port 8000, stops SET-related uvicorn/python workers, then

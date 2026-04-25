@@ -15,10 +15,10 @@ From project root:
 
   python -m http.server 5500
 
-Or use the helper scripts:
+Or use the helper scripts (archived under `archive/tools/scripts`):
 
-  Git Bash:     ./scripts/run-dev.sh
-  CMD:          scripts\run-dev.bat
+  Git Bash:     ./archive/tools/scripts/run-dev.sh
+  CMD:          archive\tools\scripts\run-dev.bat
 
 Then open in the browser (examples):
 
@@ -36,7 +36,7 @@ All backend-related source and local data belong under:
 To stop any local API on port 8000 and move a leftover SQLite file from
 backend\ into the archive (nothing is deleted on purpose):
 
-  scripts\stop-backend-services.bat
+  archive\tools\scripts\stop-backend-services.bat
 
 If backend\set_backend.db is still present, close anything that might
 hold the file open, then run the script again.
