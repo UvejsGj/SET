@@ -168,21 +168,6 @@ svg {
 }
 
 
-html[lang="sq"] .navbar {
-  gap: 24px;
-  font-size: 16px;
-  padding: 14px 22px;
-}
-
-@media (min-width: 1101px) and (max-width: 1500px) {
-  html[lang="sq"] .navbar {
-    gap: 14px;
-    font-size: 14px;
-    padding: 12px 16px;
-  }
-}
-
-
 .navbar::before {
   content: "";
   position: absolute;

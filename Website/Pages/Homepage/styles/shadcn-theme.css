@@ -109,6 +109,39 @@ html {
   top: -70px;
 }
 
+@media (min-width: 901px) {
+  .aboutlayout {
+    display: grid;
+    grid-template-columns: minmax(340px, 44%) minmax(420px, 1fr);
+    align-items: start;
+    column-gap: clamp(20px, 2.8vw, 42px);
+    max-width: var(--container);
+    margin-inline: auto;
+  }
+
+  .handshakeimg {
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    width: min(760px, 100%);
+    height: auto;
+    margin: 0;
+    align-self: start;
+    justify-self: start;
+  }
+
+  .cards {
+    position: relative;
+    width: 100%;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(20px, 2.4vw, 34px);
+  }
+}
+
 .services {
   max-width: var(--container);
   margin: var(--section-gap) auto 0;
@@ -168,10 +201,12 @@ html {
 .navbar {
   top: 14px;
   right: var(--nav-edge);
+  justify-content: center;
   gap: clamp(8px, 1vw, 16px);
   padding: 12px clamp(14px, 1.4vw, 24px);
   font-size: clamp(13px, 0.8vw, 16px);
-  max-width: min(1040px, calc(100vw - (var(--nav-edge) * 2) - clamp(170px, 16vw, 250px)));
+  width: clamp(620px, 54vw, 760px);
+  max-width: calc(100vw - (var(--nav-edge) * 2) - clamp(170px, 16vw, 250px));
   overflow-x: auto;
   scrollbar-width: none;
   white-space: nowrap;
@@ -299,6 +334,7 @@ body.nav-scrolled .navbar {
   }
 
   .navbar {
+    width: clamp(540px, 60vw, 690px);
     max-width: calc(100vw - (var(--nav-edge) * 2) - 148px);
     padding: 10px 12px;
     gap: 8px;

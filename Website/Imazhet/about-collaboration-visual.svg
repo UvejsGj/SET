@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="aboutTitle aboutDesc">
+  <title id="aboutTitle">Collaboration and trust illustration</title>
+  <desc id="aboutDesc">A section-specific visual for About: collaboration between teams, trust, and measurable impact.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#0f0f12" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.33"/>
+    </filter>
+  </defs>
+
+  <!-- reference grid -->
+  <g opacity="0.34" stroke="#3f3f46" stroke-width="1">
+    <path d="M112 106h676M112 170h676M112 234h676M112 298h676M112 362h676M112 426h676M112 490h676"/>
+    <path d="M158 72v468M238 72v468M318 72v468M398 72v468M478 72v468M558 72v468M638 72v468M718 72v468"/>
+  </g>
+
+  <!-- Left profile / team -->
+  <g filter="url(#shadow)" transform="translate(122 154)">
+    <rect x="0" y="0" width="220" height="210" rx="20" fill="url(#panel)" stroke="#27272a"/>
+    <circle cx="60" cy="66" r="30" fill="#111114" stroke="#3f3f46"/>
+    <path d="M60 52a11 11 0 100 22 11 11 0 000-22zm-18 40c5-10 31-10 36 0v12H42z" fill="#d4d4d8" opacity="0.86"/>
+    <path d="M108 50h86M108 72h72M108 94h64" stroke="#a1a1aa" stroke-width="8" stroke-linecap="round"/>
+    <rect x="26" y="126" width="168" height="62" rx="12" fill="#111114" stroke="#27272a"/>
+    <text x="38" y="148" fill="#a1a1aa" font-size="11" font-family="Inter, Roboto, sans-serif">Project coordination</text>
+    <path d="M40 168h140" stroke="#3f3f46" stroke-width="1"/>
+    <path d="M40 178h94" stroke="#71717a" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right profile / client -->
+  <g filter="url(#shadow)" transform="translate(560 154)">
+    <rect x="0" y="0" width="220" height="210" rx="20" fill="url(#panel)" stroke="#27272a"/>
+    <circle cx="60" cy="66" r="30" fill="#111114" stroke="#3f3f46"/>
+    <path d="M60 52a11 11 0 100 22 11 11 0 000-22zm-18 40c5-10 31-10 36 0v12H42z" fill="#d4d4d8" opacity="0.86"/>
+    <path d="M108 50h86M108 72h72M108 94h64" stroke="#a1a1aa" stroke-width="8" stroke-linecap="round"/>
+    <rect x="26" y="126" width="168" height="62" rx="12" fill="#111114" stroke="#27272a"/>
+    <text x="38" y="148" fill="#a1a1aa" font-size="11" font-family="Inter, Roboto, sans-serif">Outcome alignment</text>
+    <path d="M40 168h140" stroke="#3f3f46" stroke-width="1"/>
+    <path d="M40 178h112" stroke="#71717a" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Center trust medallion -->
+  <g filter="url(#shadow)" transform="translate(368 226)">
+    <circle cx="82" cy="82" r="82" fill="#111114" stroke="#27272a"/>
+    <circle cx="82" cy="82" r="58" fill="#0f0f12" stroke="#3f3f46"/>
+    <path d="M82 44l10 20 22 3-16 16 4 22-20-10-20 10 4-22-16-16 22-3z" fill="#f4f4f5"/>
+    <circle cx="82" cy="82" r="8" fill="#0f0f12"/>
+  </g>
+
+  <!-- handshake-like connector -->
+  <g stroke="#71717a" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M344 258c42 0 58 22 92 40"/>
+    <path d="M560 258c-42 0-58 22-92 40"/>
+  </g>
+  <g fill="#d4d4d8">
+    <circle cx="344" cy="258" r="5"/>
+    <circle cx="436" cy="298" r="5"/>
+    <circle cx="560" cy="258" r="5"/>
+    <circle cx="468" cy="298" r="5"/>
+  </g>
+
+  <!-- impact cards below -->
+  <g filter="url(#shadow)" transform="translate(230 454)">
+    <rect x="0" y="0" width="130" height="76" rx="12" fill="url(#panel)" stroke="#27272a"/>
+    <text x="14" y="24" fill="#a1a1aa" font-size="10" font-family="Inter, Roboto, sans-serif">Trust</text>
+    <text x="14" y="52" fill="#f4f4f5" font-size="26" font-weight="700" font-family="Inter, Roboto, sans-serif">100</text>
+  </g>
+  <g filter="url(#shadow)" transform="translate(386 454)">
+    <rect x="0" y="0" width="130" height="76" rx="12" fill="url(#panel)" stroke="#27272a"/>
+    <text x="14" y="24" fill="#a1a1aa" font-size="10" font-family="Inter, Roboto, sans-serif">Years</text>
+    <text x="14" y="52" fill="#f4f4f5" font-size="26" font-weight="700" font-family="Inter, Roboto, sans-serif">7</text>
+  </g>
+  <g filter="url(#shadow)" transform="translate(542 454)">
+    <rect x="0" y="0" width="130" height="76" rx="12" fill="url(#panel)" stroke="#27272a"/>
+    <text x="14" y="24" fill="#a1a1aa" font-size="10" font-family="Inter, Roboto, sans-serif">Projects</text>
+    <text x="14" y="52" fill="#f4f4f5" font-size="26" font-weight="700" font-family="Inter, Roboto, sans-serif">150</text>
+  </g>
+
+  <g fill="#fafafa" opacity="0.52">
+    <circle cx="130" cy="92" r="2.6"/>
+    <circle cx="214" cy="70" r="2.2"/>
+    <circle cx="786" cy="196" r="2.6"/>
+    <circle cx="732" cy="292" r="2.2"/>
+    <circle cx="674" cy="538" r="2.6"/>
+    <circle cx="274" cy="560" r="2.2"/>
+  </g>
+</svg>

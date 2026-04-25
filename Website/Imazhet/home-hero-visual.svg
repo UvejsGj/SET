@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Product delivery hero illustration</title>
+  <desc id="heroDesc">A polished shadcn-style visual showing roadmap, build pipeline, and launch metrics.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#0f0f12" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f4f4f5"/>
+      <stop offset="100%" stop-color="#d4d4d8"/>
+    </linearGradient>
+    <filter id="ds" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+
+  <!-- subtle layout grid -->
+  <g opacity="0.34" stroke="#3f3f46" stroke-width="1">
+    <path d="M88 102h624M88 162h624M88 222h624M88 282h624M88 342h624M88 402h624M88 462h624M88 522h624"/>
+    <path d="M128 70v500M198 70v500M268 70v500M338 70v500M408 70v500M478 70v500M548 70v500M618 70v500"/>
+  </g>
+
+  <!-- Left: roadmap / discovery -->
+  <g filter="url(#ds)" transform="translate(78 156)">
+    <rect x="0" y="0" width="274" height="186" rx="18" fill="url(#panel)" stroke="#27272a"/>
+    <rect x="16" y="16" width="242" height="30" rx="10" fill="#111114" stroke="#27272a"/>
+    <path d="M30 78h104M30 100h178M30 122h148" stroke="#a1a1aa" stroke-width="8" stroke-linecap="round"/>
+    <rect x="30" y="142" width="96" height="26" rx="8" fill="#f4f4f5"/>
+    <rect x="136" y="142" width="106" height="26" rx="8" fill="#131316" stroke="#3f3f46"/>
+    <text x="30" y="36" fill="#d4d4d8" font-size="12" font-family="Inter, Roboto, sans-serif">Discovery</text>
+  </g>
+
+  <!-- Center: build pipeline -->
+  <g filter="url(#ds)" transform="translate(260 230)">
+    <rect x="0" y="0" width="284" height="180" rx="18" fill="url(#panel)" stroke="#27272a"/>
+    <text x="20" y="28" fill="#d4d4d8" font-size="12" font-family="Inter, Roboto, sans-serif">Build Pipeline</text>
+    <rect x="20" y="46" width="244" height="18" rx="9" fill="#111114" stroke="#27272a"/>
+    <rect x="26" y="50" width="64" height="10" rx="5" fill="#f4f4f5"/>
+    <rect x="96" y="50" width="64" height="10" rx="5" fill="#52525b"/>
+    <rect x="166" y="50" width="44" height="10" rx="5" fill="#52525b"/>
+    <rect x="214" y="50" width="44" height="10" rx="5" fill="#52525b"/>
+    <path d="M34 138l44-30 32 18 46-34 32 20 40-24" fill="none" stroke="url(#accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="78" cy="108" r="4.5" fill="#fafafa"/>
+    <circle cx="156" cy="92" r="4.5" fill="#fafafa"/>
+    <circle cx="188" cy="112" r="4.5" fill="#fafafa"/>
+    <rect x="20" y="146" width="116" height="20" rx="7" fill="#131316" stroke="#3f3f46"/>
+    <text x="30" y="160" fill="#a1a1aa" font-size="11" font-family="Inter, Roboto, sans-serif">Quality checks</text>
+  </g>
+
+  <!-- Right: launch outcomes -->
+  <g filter="url(#ds)" transform="translate(504 148)">
+    <rect x="0" y="0" width="222" height="232" rx="18" fill="url(#panel)" stroke="#27272a"/>
+    <text x="18" y="30" fill="#d4d4d8" font-size="12" font-family="Inter, Roboto, sans-serif">Launch Outcomes</text>
+    <rect x="18" y="44" width="186" height="52" rx="12" fill="#111114" stroke="#27272a"/>
+    <text x="30" y="66" fill="#a1a1aa" font-size="10" font-family="Inter, Roboto, sans-serif">Performance</text>
+    <text x="30" y="86" fill="#f4f4f5" font-size="16" font-weight="700" font-family="Inter, Roboto, sans-serif">+34% engagement</text>
+    <rect x="18" y="106" width="186" height="108" rx="12" fill="#111114" stroke="#27272a"/>
+    <path d="M30 188h160M30 166h160M30 144h160" stroke="#3f3f46" stroke-width="1"/>
+    <path d="M38 182l32-18 28 10 38-26 34 18 22-14" fill="none" stroke="#fafafa" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Connector from discovery -> build -> launch -->
+  <g stroke="#71717a" stroke-width="2.2" fill="none" opacity="0.9">
+    <path d="M352 250c28 6 44 18 66 34"/>
+    <path d="M546 288c18-20 26-34 42-58"/>
+    <circle cx="352" cy="250" r="4" fill="#d4d4d8"/>
+    <circle cx="418" cy="284" r="4" fill="#d4d4d8"/>
+    <circle cx="546" cy="288" r="4" fill="#d4d4d8"/>
+    <circle cx="588" cy="230" r="4" fill="#d4d4d8"/>
+  </g>
+
+  <!-- bottom isometric product block -->
+  <g transform="translate(286 482)">
+    <path d="M0 34l114-66 114 66-114 66z" fill="#111114" stroke="#27272a"/>
+    <path d="M114 -32v132M0 34l114 66M228 34L114 100M114 -32L0 34M114 -32l114 66" stroke="#52525b" stroke-width="2"/>
+    <circle cx="114" cy="-32" r="7" fill="#fafafa"/>
+    <circle cx="0" cy="34" r="6" fill="#d4d4d8"/>
+    <circle cx="228" cy="34" r="6" fill="#d4d4d8"/>
+    <circle cx="114" cy="100" r="6" fill="#d4d4d8"/>
+  </g>
+
+  <g fill="#fafafa" opacity="0.52">
+    <circle cx="112" cy="92" r="2.6"/>
+    <circle cx="238" cy="128" r="2.2"/>
+    <circle cx="628" cy="122" r="2.6"/>
+    <circle cx="714" cy="208" r="2.2"/>
+    <circle cx="676" cy="542" r="2.6"/>
+    <circle cx="512" cy="610" r="2.2"/>
+  </g>
+</svg>
