@@ -1,0 +1,6 @@
+# Deploys the static site in ./Website as an assets-only Cloudflare Worker.
+name = "set"
+compatibility_date = "2025-06-01"
+
+[assets]
+directory = "./Website"
