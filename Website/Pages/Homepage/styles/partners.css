@@ -11,10 +11,6 @@
   margin-bottom: 30px;
   position: relative;
   text-transform: uppercase;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .partners-title::after {
@@ -32,12 +28,6 @@
   width: 180px;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .customerlist {
   overflow: hidden;

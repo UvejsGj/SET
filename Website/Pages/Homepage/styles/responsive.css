@@ -438,19 +438,7 @@
 
 
 html, body { overflow-x: hidden; }
-html { scroll-behavior: smooth; scrollbar-gutter: stable; }
-
-
-#homesection,
-#aboutsection,
-#servicesection,
-#portfolio,
-#techstack,
-#team,
-#contact,
-#faq {
-  scroll-margin-top: 155px;
-}
+html { scrollbar-gutter: stable; }
 
 
 .title { position: relative; }

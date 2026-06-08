@@ -652,27 +652,24 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* Final hover normalization: remove legacy blue accents */
+/* Hover colour normalisation (shadcn-theme wins by load order; !important only
+   where an earlier stylesheet also uses !important on the same property). */
 .navbar a:hover,
-.navbar a.active,
+.navbar a.active {
+  color: var(--foreground);
+}
+
+.navbar .nav-cta:hover,
+.navbar .nav-cta.active {
+  color: #09090b;
+}
+
 .contact-info-value:hover,
 .contact-faq-nudge a:hover,
 .contact-status-link:hover,
 .footer-link:hover,
 .footer-link-social:hover {
-  color: var(--foreground) !important;
-}
-
-.navbar .nav-cta:hover,
-.navbar .nav-cta.active {
-  color: #09090b !important;
-}
-
-.servicetitle:hover::after,
-.about-title:hover::after,
-.partners-title:hover::after,
-.section-title::after {
-  background: var(--foreground) !important;
+  color: var(--foreground);
 }
 
 .servicecards > div:hover,
@@ -685,9 +682,9 @@ textarea:focus-visible {
 .card1:hover,
 .card2:hover,
 .card3:hover {
-  background: var(--surface) !important;
-  border-color: var(--border) !important;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35) !important;
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
 }
 
 .servicecards > div:hover .material-symbols-outlined,
@@ -698,15 +695,9 @@ textarea:focus-visible {
 .card2:hover .material-symbols-outlined,
 .card3:hover .material-symbols-outlined,
 .contact-info-row:hover .contact-info-icon.material-symbols-outlined {
-  background: #fafafa !important;
-  color: #09090b !important;
-  box-shadow: none !important;
-}
-
-.contact-submit:hover:not(:disabled),
-.portfolio-arrow:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35) !important;
-  filter: brightness(0.96) !important;
+  background: #fafafa;
+  color: #09090b;
+  box-shadow: none;
 }
 
 @media (max-width: 1024px) {

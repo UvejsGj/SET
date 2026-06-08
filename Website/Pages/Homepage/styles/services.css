@@ -7,10 +7,9 @@
 
 .services {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 100px auto 0;
   padding: 120px 24px 40px;
   text-align: center;
-  margin-top: 100px;
 }
 
 .servicetitle {
@@ -43,14 +42,13 @@
 
 .services p {
   max-width: 900px;
-  margin: 28px auto 0;
+  margin: -100px auto 0;
   font-size: 17px;
   font-weight: 800;
   color: inherit;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-family: "Playwrite US Modern", cursive;
-  margin-top: -100px;
 }
 
 .servicecards {
@@ -59,14 +57,13 @@
 
   font-family: "Roboto", sans-serif;
   max-width: 1200px;
-  margin: 80px auto 0;
+  margin: 60px auto 0;
   padding: 20px 24px;
   display: grid;
   grid-template-columns: repeat(5, minmax(220px, 1fr));
   gap: 36px;
   justify-items: center;
   align-items: start;
-  margin-top: 60px;
 }
 
 .servicecards > div {
@@ -131,23 +128,7 @@
 }
 
 
-.servicecards > div:nth-child(1) {
-  transform: translateY(-6px) scale(1.04);
-  z-index: 1;
-}
-.servicecards > div:nth-child(2) {
-  transform: translateY(-6px) scale(1.04);
-  z-index: 1;
-}
-.servicecards > div:nth-child(3) {
-  transform: translateY(-6px) scale(1.04);
-  z-index: 1;
-}
-.servicecards > div:nth-child(4) {
-  transform: translateY(-6px) scale(1.04);
-  z-index: 1;
-}
-.servicecards > div:nth-child(5) {
+.servicecards > div {
   transform: translateY(-6px) scale(1.04);
   z-index: 1;
 }

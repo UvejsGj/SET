@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const body =
       `Name: ${name || "-"}` + `\nEmail: ${email || "-"}` + `\n\nMessage:\n${message || "-"}`;
     return (
-      `mailto:uvejsgjelaj03@gmail.com?subject=${encodeURIComponent(finalSubject)}` +
+      `mailto:besart@smart-engineering.tech?subject=${encodeURIComponent(finalSubject)}` +
       `&body=${encodeURIComponent(body)}`
     );
   };
